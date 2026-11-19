@@ -29,6 +29,7 @@ It is intended to help a new team member understand the organization and its pro
 | Portfolio | Multi-profile portfolio and professional/personal presentation experience | [Portfolio](https://github.com/ASAA1229/Portfolio) |
 | JARVIS | Personal AI assistant, developer assistant, and automation platform | [JARVIS](https://github.com/ASAA1229/JARVIS) |
 | Templates | Internal reusable templates and development platform | [Templates](https://github.com/ASAA1229/Templates) |
+| Configuration | Local-first identity, data-locality and dependency-approval policies for the project ecosystem | [Configuration](https://github.com/ASAA1229/Configuration) |
 
 ## Repository map
 
