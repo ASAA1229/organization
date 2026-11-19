@@ -116,3 +116,41 @@ A follow-up inspection found that `Configuration:new` contains 23 tracked files:
 | ASAA | [Run 44501324951](https://github.com/ASAA1229/ASAA/actions/runs/44501324951) | `2c6e39a2` | Failed: 623 passed, 1 failed in PostgreSQL backup/restore due to PostgreSQL 18 client output targeting PostgreSQL 16. Compatibility fix and regression test were committed; replacement run [44524049465](https://github.com/ASAA1229/ASAA/actions/runs/44524049465) on `new` SHA `71fb683d` was in progress. ASAA web build and dependency audit succeeded in [run 44524049436](https://github.com/ASAA1229/ASAA/actions/runs/44524049436); web E2E was still running. Local-load/smoke and Python dependency-audit jobs succeeded in [run 44524049350](https://github.com/ASAA1229/ASAA/actions/runs/44524049350). |
 
 The replacement CI runs had not completed when this audit addendum was written. Their final conclusions must be checked before treating either fix as verified. CI success on Portfolio or JARVIS does not imply device acceptance or release GO.
+
+
+## 8. Branch integration and follow-up CI snapshot (2026-11-19)
+
+### Branch divergence
+
+GitHub compare results for `dev...new` at the time of this audit:
+
+| Repository | new ahead of dev | Changed files | Compare status |
+|---|---:|---:|---|
+| Portfolio | 745 commits | 223 | ahead |
+| JARVIS | 60 commits | 121 | ahead |
+| Templates | 527 commits | 300 | ahead |
+| ASAA | 87 commits | 174 | ahead |
+| Configuration | 26 commits | 23 | ahead |
+| organization | 36 commits | 33 | ahead |
+
+GitHub compare results for `main...new`:
+
+| Repository | new ahead of main | main ahead of new | Changed files | Compare status |
+|---|---:|---:|---:|---|
+| Portfolio | 1,023 commits | 0 | 229 | ahead |
+| JARVIS | 66 commits | 1 | 122 | diverged |
+| Templates | 533 commits | 0 | 300 | ahead |
+| ASAA | 93 commits | 1 | 175 | diverged |
+| Configuration | 26 commits | 0 | 23 | ahead |
+| organization | 36 commits | 0 | 33 | ahead |
+
+The six repositories had **no open pull requests** in their GitHub open-PR listings at inspection time. The `new` branches therefore contain substantial unintegrated work. Do not attempt bulk merges: inspect each complete diff, branch history, CI evidence and project-specific release controls, then obtain explicit authorization for promotion.
+
+### Updated CI snapshot
+
+- **Portfolio:** [run 44520961480](https://github.com/ASAA1229/Portfolio/actions/runs/44520961480) succeeded on `new` SHA `783fb5f8`.
+- **JARVIS:** [run 44520895240](https://github.com/ASAA1229/JARVIS/actions/runs/44520895240) succeeded on `new` SHA `1d273157`.
+- **Templates:** the generated-project job in [run 44524205265](https://github.com/ASAA1229/Templates/actions/runs/44524205265) succeeded after the shared-contract build fix. The main validation job failed earlier at `format:check` because Prettier wanted the project-key markup wrapped. That formatting correction was committed at `ad8c91f9d3f5fe51f06cc966834d12e6f0efc66d`; replacement run [44524611276](https://github.com/ASAA1229/Templates/actions/runs/44524611276) was queued at the time of this snapshot.
+- **ASAA:** [PostgreSQL integration run 44524049465](https://github.com/ASAA1229/ASAA/actions/runs/44524049465) succeeded on application commit `71fb683d76892e9be5477199adb462fc5555e721`. [Run 44524049350](https://github.com/ASAA1229/ASAA/actions/runs/44524049350) also succeeded for local-load/smoke, Python dependency audit and people/finance API quality. In [run 44524049436](https://github.com/ASAA1229/ASAA/actions/runs/44524049436), web build and dependency audit succeeded while web E2E remained in progress.
+
+A successful workflow is scoped to its exact commit and jobs. It does not close device, owner, production or release gates.
