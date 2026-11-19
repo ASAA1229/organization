@@ -69,3 +69,12 @@ Use evidence-based lifecycle states: Not assessed, Planned, Ready, In developmen
 ## Important caution
 
 This initial baseline combines known organizational decisions and prior project context. Where exact owner decisions, current repository evidence, dates, metrics, named role holders, or operational proof are missing, the documents say so explicitly. Proposed decomposition is not a claim that every epic, sub-epic, or user story has been approved or implemented.
+
+
+## 2026-11-19 organization-wide audit update
+
+The current organization-wide repository inventory and evidence reconciliation are recorded in [Organization Baseline Audit](docs/ORGANIZATION_BASELINE_AUDIT.md). The audit now includes the six visible repositories: Portfolio, JARVIS, Templates, ASAA, organization and Configuration.
+
+The audit identified material branch divergence: current delivery implementation is concentrated on `new` in several repositories. In particular, Templates' application is present on `new` while `dev` and `test` remain documentation-only at the inspected snapshot. No automatic promotion or merge is implied.
+
+The [Configuration repository](https://github.com/ASAA1229/Configuration) is now included in the organization inventory; its purpose and ownership still require confirmation from the approved organization requirements baseline before its technical design is changed.
