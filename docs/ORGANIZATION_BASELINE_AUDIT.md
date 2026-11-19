@@ -98,3 +98,21 @@ Important branch-specific evidence:
 ## 6. Audit limitations
 
 This first pass inspected repository inventory, selected branch trees, top-level contents, selected project documents and recent commit history. It did not complete a source-code security review, run application test suites, inspect every workflow execution, validate deployments, exercise physical devices, or verify all repository rulesets and secrets. Those items remain unverified, not implicitly passed.
+
+
+## 7. Follow-up: configuration branch and current CI evidence (2026-11-19)
+
+### Configuration repository branch reconciliation
+
+A follow-up inspection found that `Configuration:new` contains 23 tracked files: data-locality and dependency-approval policies, an approved dependency snapshot, a local Keycloak realm/Compose definition, PowerShell lifecycle scripts, and dependency-free read-only Node checks. `Configuration:main` and `Configuration:dev` were documentation-only at the inspected snapshot. A purpose and operating-boundaries README was added to `new` at commit `53d6b875543040a02214450d0bcdca76d32232ce`. No policy values, credentials or identity settings were changed.
+
+### CI evidence inspected
+
+| Repository | Workflow evidence | Exact SHA | Result at inspection |
+|---|---|---|---|
+| Portfolio | [Run 44520961480](https://github.com/ASAA1229/Portfolio/actions/runs/44520961480) | `783fb5f8` | Success on `new` |
+| JARVIS | [Run 44520895240](https://github.com/ASAA1229/JARVIS/actions/runs/44520895240) | `1d273157` | Success on `new` |
+| Templates | [Run 44520937403](https://github.com/ASAA1229/Templates/actions/runs/44520937403) | `417e7b1c` | Failed: 320px reflow overflow and generated validation missing shared-contract build. Fixes were committed; replacement run [44524205265](https://github.com/ASAA1229/Templates/actions/runs/44524205265) on `new` SHA `988cc977` was in progress at the time of this report. |
+| ASAA | [Run 44501324951](https://github.com/ASAA1229/ASAA/actions/runs/44501324951) | `2c6e39a2` | Failed: 623 passed, 1 failed in PostgreSQL backup/restore due to PostgreSQL 18 client output targeting PostgreSQL 16. Compatibility fix and regression test were committed; replacement run [44524049465](https://github.com/ASAA1229/ASAA/actions/runs/44524049465) on `new` SHA `71fb683d` was in progress. ASAA web build and dependency audit succeeded in [run 44524049436](https://github.com/ASAA1229/ASAA/actions/runs/44524049436); web E2E was still running. Local-load/smoke and Python dependency-audit jobs succeeded in [run 44524049350](https://github.com/ASAA1229/ASAA/actions/runs/44524049350). |
+
+The replacement CI runs had not completed when this audit addendum was written. Their final conclusions must be checked before treating either fix as verified. CI success on Portfolio or JARVIS does not imply device acceptance or release GO.
