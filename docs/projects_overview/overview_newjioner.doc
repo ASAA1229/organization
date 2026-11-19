@@ -1,0 +1,762 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 Arial;}}\viewkind4\uc1\paperw11907\paperh16840\margl1440\margr1440\margt1200\margb1200\f0\fs22
+\par\pard\sb360\sa180\fs36\b ASAA Organization and Project Overview\b0\fs22\par
+\par\pard\sb260\sa120\fs30\b New Team Member Handbook\b0\fs22\par
+\par
+\pard\sa80\fs21 \b Organization:\b0  ASAA  \par
+\pard\sa80\fs21 \b GitHub organization:\b0  https://github.com/ASAA1229  \par
+\pard\sa80\fs21 \b Canonical documentation repository:\b0  https://github.com/ASAA1229/organization  \par
+\pard\sa80\fs21 \b Version:\b0  1.0  \par
+\pard\sa80\fs21 \b Prepared:\b0  14 November 2026  \par
+\pard\sa80\fs21 \b Audience:\b0  New employees, collaborators, contractors, contributors and authorized stakeholders  \par
+\pard\sa80\fs21 \b Status:\b0  Comprehensive onboarding baseline. Decisions marked pending remain pending until approved.\par
+\par
+\pard\brdrb\brdrs\brdrw10\sa120\par
+\par
+\par\pard\sb260\sa120\fs30\b 1. Welcome to ASAA\b0\fs22\par
+\par
+\pard\sa80\fs21 Welcome to ASAA. This handbook explains the organization, its operating model and policies, the four current projects, how they relate, how work is governed, and how new team members are expected to contribute.\par
+\par
+\pard\sa80\fs21 ASAA is an evolving technology organization that builds, operates, governs and improves software products, reusable engineering capabilities, automation and technology services. Its four current projects are:\par
+\par
+\pard\li360\fi-180\sa60\fs21 1. \b ASAA\b0  - organization governance and enterprise project integration platform.\par
+\pard\li360\fi-180\sa60\fs21 2. \b Portfolio\b0  - multi-profile portfolio and professional presentation product.\par
+\pard\li360\fi-180\sa60\fs21 3. \b JARVIS\b0  - personal AI assistant, developer assistant and automation platform.\par
+\pard\li360\fi-180\sa60\fs21 4. \b Templates\b0  - internal reusable software-template and development platform.\par
+\par
+\pard\sa80\fs21 The organization repository is the central reference for organization descriptions, policies, decisions, reports, project summaries and onboarding. Each product's own repository remains the authoritative place for its implementation, project-specific requirements, tests, issues and release evidence.\par
+\par
+\pard\sa80\fs21 This handbook is designed to answer ordinary orientation questions. It does not invent legal, commercial, staffing, security or product decisions that have not been approved. Those items are identified as open.\par
+\par
+\par\pard\sb260\sa120\fs30\b 2. Organization identity, purpose and direction\b0\fs22\par
+\par
+\par\pard\sb200\sa80\fs25\b 2.1 Identity\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Organization name: \b ASAA\b0 \par
+\pard\li360\fi-180\sa60\fs21\bullet\tab GitHub organization: \b ASAA1229\b0 \par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Organization repository: https://github.com/ASAA1229/organization\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Current project repositories:\par
+\pard\sa80\fs21   - https://github.com/ASAA1229/ASAA\par
+\pard\sa80\fs21   - https://github.com/ASAA1229/Portfolio\par
+\pard\sa80\fs21   - https://github.com/ASAA1229/JARVIS\par
+\pard\sa80\fs21   - https://github.com/ASAA1229/Templates\par
+\par
+\pard\sa80\fs21 Use ASAA as the current organization identity. Do not introduce a former organization or company name into new documentation unless the owner explicitly reintroduces it.\par
+\par
+\par\pard\sb200\sa80\fs25\b 2.2 Purpose\b0\fs22\par
+\par
+\pard\sa80\fs21 ASAA aims to build, operate, govern and continuously improve useful software products and technology services. Its direction combines:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab A clear organization and governance model.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Independently manageable products with clear ownership and scope.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Reusable engineering practices, templates and assets.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab AI-assisted development and automation with privacy and human-approval safeguards.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Traceable requirements, decisions, risks, delivery evidence and project status.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Professional delivery practices and sustainable growth.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Cost-aware engineering without sacrificing security, quality or maintainability.\par
+\par
+\par\pard\sb200\sa80\fs25\b 2.3 Vision, mission and values\b0\fs22\par
+\par
+\pard\sa80\fs21 \b Vision:\b0  Build an adaptable technology organization where projects can be planned, delivered, monitored, reused, secured and improved through consistent governance and shared capabilities, without forcing every product into one architecture or release cycle.\par
+\par
+\pard\sa80\fs21 \b Mission:\b0  Deliver reliable software and digital experiences; reduce repeated engineering effort; use AI and automation responsibly; make progress and risks visible; and distinguish planning, implementation, testing, acceptance and release.\par
+\par
+\pard\sa80\fs21 \b Values:\b0  Trust, accountability, transparency, security and privacy by design, evidence over assumption, explicit ownership and approval, reuse without unnecessary coupling, incremental delivery, cost awareness, human oversight, accessibility, usability, operational readiness and no silent scope expansion.\par
+\par
+\par\pard\sb260\sa120\fs30\b 3. Organization structure and operating model\b0\fs22\par
+\par
+\pard\sa80\fs21 ASAA uses five operating layers:\par
+\par
+\pard\li360\fi-180\sa60\fs21 1. \b Organization:\b0  direction, governance, policies, portfolio priorities, risk appetite and organization-level reporting.\par
+\pard\li360\fi-180\sa60\fs21 2. \b Portfolio:\b0  cross-project priorities, capacity, dependencies, outcomes and risks.\par
+\pard\li360\fi-180\sa60\fs21 3. \b Project/product:\b0  scope, requirements, architecture, backlog, delivery, quality, acceptance and release.\par
+\pard\li360\fi-180\sa60\fs21 4. \b Engineering/platform:\b0  shared engineering standards, CI/CD practices, security, tooling and reusable assets.\par
+\pard\li360\fi-180\sa60\fs21 5. \b Delivery/operations:\b0  deployment, monitoring, support, incident handling, backup, recovery and operational handover.\par
+\par
+\par\pard\sb200\sa80\fs25\b 3.1 How decisions and work flow\b0\fs22\par
+\par
+\pard\sa80\fs21 A normal work item moves through this lifecycle:\par
+\par
+\pard\li360\fi-180\sa60\fs21 1. Capture a business, user, operational or technical need.\par
+\pard\li360\fi-180\sa60\fs21 2. Identify the accountable project and stakeholders.\par
+\pard\li360\fi-180\sa60\fs21 3. Record project classification, intended outcome, scope and exclusions.\par
+\pard\li360\fi-180\sa60\fs21 4. Define requirements and acceptance criteria.\par
+\pard\li360\fi-180\sa60\fs21 5. Decompose work into epics, sub-epics, features, user stories and tasks as appropriate.\par
+\pard\li360\fi-180\sa60\fs21 6. Identify dependencies, security/privacy concerns, data impact, cost and operational risks.\par
+\pard\li360\fi-180\sa60\fs21 7. Prioritize and obtain authorization.\par
+\pard\li360\fi-180\sa60\fs21 8. Implement on the correct branch.\par
+\pard\li360\fi-180\sa60\fs21 9. Review, test and collect evidence.\par
+\pard\li360\fi-180\sa60\fs21 10. Obtain acceptance and explicit release authorization where applicable.\par
+\pard\li360\fi-180\sa60\fs21 11. Monitor the result, record issues and improve it.\par
+\par
+\par\pard\sb200\sa80\fs25\b 3.2 Organization coordination versus project execution\b0\fs22\par
+\par
+\pard\sa80\fs21 The organization repository is for coordination, governance, documentation, portfolio monitoring and reports. Implementation, testing and DevOps execution belong in the relevant project context.\par
+\par
+\pard\sa80\fs21 A status report, recommendation, approved planning baseline or onboarding document is not permission to change source code, deploy, merge, buy services or access sensitive data. Obtain explicit authorization for the specific work and project.\par
+\par
+\par\pard\sb200\sa80\fs25\b 3.3 Organization roles\b0\fs22\par
+\par
+\pard\sa80\fs21 Potential role categories include Organization Owner, Portfolio Coordinator, Project/Product Owner, Technical or Architecture Lead, Engineering Lead, Security/Privacy Lead, Data Owner, QA/Release Lead, Platform/Operations Lead and Business/Acceptance Owner.\par
+\par
+\pard\sa80\fs21 The final organization chart, named role holders, reporting lines, delegated authority, backups and approval limits have not yet been fully ratified. Use the reporting and approval contact explicitly provided during onboarding; do not assume a title grants authority.\par
+\par
+\par\pard\sb260\sa120\fs30\b 4. Four-project ecosystem at a glance\b0\fs22\par
+\par
+\pard\sa40\fs18   |   Project   |   Primary purpose   |   Main users   |   Repository   |  \par
+\pard\sa40\fs18   |  ---  |  ---  |  ---  |  ---  |  \par
+\pard\sa40\fs18   |   ASAA   |   Organization/project integration and governance platform; broader operations boundary pending   |   Owner, administrators, managers, project owners, technical leads and authorized stakeholders   |   ASAA1229/ASAA   |  \par
+\pard\sa40\fs18   |   Portfolio   |   Multi-profile portfolio and presentation product   |   Visitors, profile owners and authorized content administrators   |   ASAA1229/Portfolio   |  \par
+\pard\sa40\fs18   |   JARVIS   |   Personal AI, developer assistance and controlled automation   |   Primarily the owner; authorized device and workflow users as defined   |   ASAA1229/JARVIS   |  \par
+\pard\sa40\fs18   |   Templates   |   Internal reusable templates and development platform   |   ASAA employees, management and authorized developers/designers   |   ASAA1229/Templates   |  \par
+\par
+\pard\sa80\fs21 These products have different purposes. A shared organization does not mean they must share a database, runtime, credentials, deployment environment or unrestricted user data. Integration must be intentional, documented and authorized.\par
+\par
+\pard\brdrb\brdrs\brdrw10\sa120\par
+\par
+\par\pard\sb360\sa180\fs36\b PART I - PROJECT DETAILS\b0\fs22\par
+\par
+\par\pard\sb260\sa120\fs30\b 5. Project 1: ASAA\b0\fs22\par
+\par
+\pard\sa80\fs21 \b Repository:\b0  https://github.com/ASAA1229/ASAA  \par
+\pard\sa80\fs21 \b Working product description:\b0  Enterprise Project Integration Platform  \par
+\pard\sa80\fs21 \b Status:\b0  Product boundary and current implementation maturity require validation against the live repository and evidence.\par
+\par
+\par\pard\sb200\sa80\fs25\b 5.1 Purpose and problem\b0\fs22\par
+\par
+\pard\sa80\fs21 The ASAA software project is intended to provide an organization-level platform for registering and understanding projects and repositories, reviewing branches and documentation, tracking requirements and dependencies, collecting implementation evidence, and producing portfolio summaries and gap reports.\par
+\par
+\pard\sa80\fs21 As an organization grows, project information becomes fragmented across repositories, documents, issues, branches, teams and tools. It becomes difficult to determine what exists, who owns it, what is implemented or tested, which requirements are covered, what risks exist and what evidence supports a status claim. The platform should make this information consistent, traceable and actionable.\par
+\par
+\pard\sa80\fs21 A broader organizational vision has also discussed workforce, HR, onboarding, payroll, leave, finance, procurement, suppliers, customers and commercial operations. It is not yet confirmed whether every capability belongs inside this ASAA product, should be a separate product/module, or should remain an organizational process. Do not silently treat the entire broad operations vision as approved product scope.\par
+\par
+\par\pard\sb200\sa80\fs25\b 5.2 Intended users\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Organization owner and administrators.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Managers and portfolio coordinators.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Project and product owners.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Technical leads and engineering contributors.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab QA, release and operations personnel.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Auditors, reviewers and authorized business stakeholders.\par
+\par
+\pard\sa80\fs21 Exact role names, permission boundaries and approval authority require formal confirmation.\par
+\par
+\par\pard\sb200\sa80\fs25\b 5.3 Capability and scope map\b0\fs22\par
+\par
+\pard\sa80\fs21 The current candidate capability register contains:\par
+\par
+\pard\li360\fi-180\sa60\fs21 1. \b Governance and organization administration:\b0  organization profile, divisions, teams, roles, policies, approval matrix and settings.\par
+\pard\li360\fi-180\sa60\fs21 2. \b Identity and access:\b0  authentication, MFA, session management, role/attribute-based access, provisioning and deprovisioning.\par
+\pard\li360\fi-180\sa60\fs21 3. \b People and workforce lifecycle:\b0  people directory, onboarding, offboarding, role changes, skills and access reviews.\par
+\pard\li360\fi-180\sa60\fs21 4. \b Payroll, time, leave and expenses:\b0  time capture, leave workflows, expense claims, payroll review and integrations.\par
+\pard\li360\fi-180\sa60\fs21 5. \b Supplier, procurement and accounts payable:\b0  supplier onboarding, purchase requests, approvals, invoices and reconciliation.\par
+\pard\li360\fi-180\sa60\fs21 6. \b Customer, commercial and accounts receivable:\b0  customer records, proposals, contracts, billing, collections and support obligations.\par
+\pard\li360\fi-180\sa60\fs21 7. \b Project and service delivery:\b0  project registry, POC, requirements, epics, dependencies, milestones, status, evidence and acceptance.\par
+\pard\li360\fi-180\sa60\fs21 8. \b Analytics and reporting:\b0  portfolio dashboards, delivery metrics, risk trends, cost views and audit exports.\par
+\pard\li360\fi-180\sa60\fs21 9. \b Security, privacy and audit:\b0  policy controls, audit events, incident workflow, privacy requests and evidence retention.\par
+\pard\li360\fi-180\sa60\fs21 10. \b CI/CD, release and operations:\b0  repository integration, pipeline status, deployment records, environment inventory and monitoring.\par
+\pard\li360\fi-180\sa60\fs21 11. \b Backup, recovery and continuity:\b0  backup policy, restore tests, recovery objectives and continuity runbooks.\par
+\pard\li360\fi-180\sa60\fs21 12. \b Shared ecosystem and data integration:\b0  API contracts, events, identity integration, data ownership, connectors and synchronization.\par
+\par
+\pard\sa80\fs21 \b Scope caution:\b0  Items 3-6 are broad capability candidates and require a product-boundary decision. Do not silently treat them as approved implementation scope.\par
+\par
+\par\pard\sb200\sa80\fs25\b 5.4 Expected outputs\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Reliable organization, project and repository registry.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Traceable requirements and delivery structures.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Cross-project dashboards and reports.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Clear status definitions and evidence links.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Dependency, risk and decision registers.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Controlled access and auditability.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Approved integration points with other ASAA systems.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Operational and release visibility.\par
+\par
+\par\pard\sb200\sa80\fs25\b 5.5 Architecture and technology\b0\fs22\par
+\par
+\pard\sa80\fs21 Historical project documentation described a web UI/API and PostgreSQL-backed data direction, including React/Vite and FastAPI/SQLAlchemy. This is historical context, not verified current architecture. Inspect the current repository, active branches, package manifests, migrations, APIs and deployment configuration before making implementation claims or changes.\par
+\par
+\par\pard\sb200\sa80\fs25\b 5.6 Work remaining and validation\b0\fs22\par
+\par
+\pard\sa80\fs21 The following areas must be assessed and tracked. This is not a claim that none has been built; actual state must be evidenced:\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Confirm product boundary, especially HR, payroll, finance, procurement, vendor and customer operations.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Inventory current modules, APIs, schemas, migrations, UI screens and integrations.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Reconcile requirements to approved epics, stories, acceptance criteria and tests.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify authentication, authorization, role separation and audit controls.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify data protection, retention, backup and restore.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Re-run build, unit, integration, E2E and security checks.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify production database, hosting, provider activation and environment configuration.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Complete user acceptance testing and independent assurance as required.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Define and test recovery objectives, live monitoring, incident handling and rollback.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Record operational ownership and release evidence.\par
+\par
+\pard\sa80\fs21 A prior assessment reported local API/UI/E2E/security/database evidence but a production NO-GO decision. Provider activation, production database/hosting, UAT, independent assurance, recovery objectives, live monitoring and release readiness were among the gates. This is historical and must be revalidated before being used as today's status.\par
+\par
+\par\pard\sb200\sa80\fs25\b 5.7 Guidance for a new contributor\b0\fs22\par
+\par
+\pard\sa80\fs21 Read the ASAA repository README, POC, requirements, architecture, status and open issues. Confirm the exact assigned module and acceptance criteria. Do not expand the product into every organization capability without a recorded decision. Protect sensitive workforce, financial, customer and supplier data with least privilege and approved environments.\par
+\par
+\pard\brdrb\brdrs\brdrw10\sa120\par
+\par
+\par\pard\sb260\sa120\fs30\b 6. Project 2: Portfolio\b0\fs22\par
+\par
+\pard\sa80\fs21 \b Repository:\b0  https://github.com/ASAA1229/Portfolio  \par
+\pard\sa80\fs21 \b Product type:\b0  Multi-profile portfolio and presentation experience  \par
+\pard\sa80\fs21 \b Status:\b0  Design direction and feature scope are recorded; current completion, testing and publishing state require revalidation.\par
+\par
+\par\pard\sb200\sa80\fs25\b 6.1 Purpose\b0\fs22\par
+\par
+\pard\sa80\fs21 Portfolio is a presentation product that showcases profile-specific skills, projects, experience, certifications, education, contact information and AI-assisted introductions through a polished, cinematic interface.\par
+\par
+\pard\sa80\fs21 It is designed as a multi-profile experience rather than four unrelated websites. The data model and administration approach should support consistent management while preserving each profile's identity, permissions and content boundaries.\par
+\par
+\par\pard\sb200\sa80\fs25\b 6.2 Profiles in scope\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21 1. \b Abhishek\b0 \par
+\pard\li360\fi-180\sa60\fs21 2. \b Amulya (Ammu)\b0 \par
+\pard\li360\fi-180\sa60\fs21 3. \b Anjini (Bava)\b0 \par
+\pard\li360\fi-180\sa60\fs21 4. \b Sai (Darling)\b0 \par
+\par
+\pard\sa80\fs21 Profile content must be accurate and authorized by the relevant profile owner. Consent, visibility and ownership must be respected, especially for resumes, personal images, contact details and AI-generated representations.\par
+\par
+\par\pard\sb200\sa80\fs25\b 6.3 Intended users\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Public visitors viewing a portfolio.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Individual profile owners reviewing their own information.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Authorized administrators/content managers maintaining content and media.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Organization owner responsible for product governance.\par
+\par
+\pard\sa80\fs21 The public visitor experience must be separated from administrative capabilities. Profile-specific access and edit permissions must be verified.\par
+\par
+\par\pard\sb200\sa80\fs25\b 6.4 Experience and design direction\b0\fs22\par
+\par
+\pard\sa80\fs21 The remembered design direction is a dark, streaming-service-inspired interface with a cinematic presentation. Historical design tokens include dark backgrounds such as #141414 and #18181b, with a red accent such as #E50914.\par
+\par
+\pard\sa80\fs21 The planned experience includes profile selection and navigation for Home, Skills, Projects, Experience, Certifications, Education, Contact and AI Intro. These are design requirements, not proof that every page or interaction is complete.\par
+\par
+\par\pard\sb200\sa80\fs25\b 6.5 Capability and scope map\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21 1. \b Profile architecture:\b0  four profile records, profile routing, profile-specific content and reusable components.\par
+\pard\li360\fi-180\sa60\fs21 2. \b Presentation UI:\b0  responsive layout, navigation, visual consistency, loading/empty/error states and accessibility.\par
+\pard\li360\fi-180\sa60\fs21 3. \b Career content:\b0  skills, projects, experience, certifications, education and contact sections.\par
+\pard\li360\fi-180\sa60\fs21 4. \b Resume/document management:\b0  authorized upload, validation, versioning, download, replacement and privacy.\par
+\pard\li360\fi-180\sa60\fs21 5. \b Image and media management:\b0  upload, validation, storage, galleries, ordering, optimization and deletion.\par
+\pard\li360\fi-180\sa60\fs21 6. \b AI introduction and chat:\b0  provider integration, prompt/context management, safe responses, key handling, usage limits and fallback.\par
+\pard\li360\fi-180\sa60\fs21 7. \b Shared data layer:\b0  consistent profile content management without mixing private data or permissions.\par
+\pard\li360\fi-180\sa60\fs21 8. \b Quality and publishing:\b0  security, performance, accessibility, browser/device testing, hosting, domain, analytics and release support.\par
+\par
+\par\pard\sb200\sa80\fs25\b 6.6 Expected outputs\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Four coherent profile experiences.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Consistent and maintainable visual system.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Profile-specific career and project content.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Secure resume and media administration.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab AI-assisted introduction experience with clear limits.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Responsive, accessible visitor experience.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Reliable publishing and content-update workflow.\par
+\par
+\par\pard\sb200\sa80\fs25\b 6.7 Work remaining and validation\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify current source branch, framework, dependencies and deployment configuration.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify profile schema, profile routing and data separation.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Confirm content accuracy, consent and rights for all four profiles.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify admin authentication, authorization and audit trail.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Test resume/media upload validation, storage, access, retention and deletion.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify AI provider selection, key storage, rate/cost controls and privacy behavior.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Complete responsive, accessibility, performance and browser/device testing.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Validate error states, loading states and content publishing.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Obtain profile-owner acceptance and release approval.\par
+\par
+\pard\sa80\fs21 Historical context indicates development activity and a period when testing/validation was paused. Source code existing does not mean a feature is tested, accepted or operational. Recheck the live repository and deployment.\par
+\par
+\par\pard\sb200\sa80\fs25\b 6.8 Guidance for a new contributor\b0\fs22\par
+\par
+\pard\sa80\fs21 Understand the shared profile architecture before changing a profile-specific feature. Do not hardcode one profile's content into shared components. Protect personal information and resume/media assets. Do not expose admin operations to public visitors. Obtain the relevant profile owner's approval for content changes.\par
+\par
+\pard\brdrb\brdrs\brdrw10\sa120\par
+\par
+\par\pard\sb260\sa120\fs30\b 7. Project 3: JARVIS\b0\fs22\par
+\par
+\pard\sa80\fs21 \b Repository:\b0  https://github.com/ASAA1229/JARVIS  \par
+\pard\sa80\fs21 \b Product type:\b0  Personal AI assistant, developer assistant and automation platform  \par
+\pard\sa80\fs21 \b Long-term direction:\b0  Personal AI operating-system-style environment  \par
+\pard\sa80\fs21 \b Status:\b0  Significant existing work has been reported; continue from current implementation and verify feature-by-feature rather than restarting from basics.\par
+\par
+\par\pard\sb200\sa80\fs25\b 7.1 Purpose\b0\fs22\par
+\par
+\pard\sa80\fs21 JARVIS is intended to help its owner interact with an AI assistant, perform development tasks, automate desktop workflows, coordinate device interactions and orchestrate approved tools and workflows.\par
+\par
+\pard\sa80\fs21 It is a long-term platform direction. Build incrementally with reliable runtime behavior, explicit permissions, privacy protections and safeguards for consequential actions.\par
+\par
+\par\pard\sb200\sa80\fs25\b 7.2 Initial target environment\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab One MSI laptop running Windows 11.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Two Android phones.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Desktop and developer workflows first, with device-aware expansion.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Local and cloud AI capabilities in a hybrid design.\par
+\par
+\par\pard\sb200\sa80\fs25\b 7.3 Explicit product requirements and constraints\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Wake phrase: \b "Hey Jarvis"\b0 .\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Ready response: \b "Hi sir, I am ready to work."\b0 \par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Hybrid local/cloud architecture.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Zero ongoing cost is the default unless explicitly changed.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab No continuous cloud audio upload.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Per-device sessions.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab QR pairing plus authenticator preference.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab High autonomy with safeguards and human approval gates.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Payment applications are excluded from automation scope.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Preserve existing implementation and progress incrementally.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Do not restart from fundamentals merely because a new contributor joins.\par
+\par
+\pard\sa80\fs21 Any proposed change that weakens these constraints requires explicit owner review.\par
+\par
+\par\pard\sb200\sa80\fs25\b 7.4 Capability and scope map\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21 1. \b Core runtime and agent architecture:\b0  process lifecycle, configuration, event bus, state, logging and graceful shutdown.\par
+\pard\li360\fi-180\sa60\fs21 2. \b Agent behavior:\b0  system/user prompt schemas, task context, planning, tool selection and memory boundaries.\par
+\pard\li360\fi-180\sa60\fs21 3. \b Workflow orchestration:\b0  DAG definitions, dependencies, scheduling, retries, timeouts, cancellation and checkpoints.\par
+\pard\li360\fi-180\sa60\fs21 4. \b Capability/tool execution:\b0  capability registry, permissions, sandboxing, allowlists, audit and result validation.\par
+\pard\li360\fi-180\sa60\fs21 5. \b Windows desktop automation:\b0  application control, keyboard/mouse, files, terminal, IDE/editor and developer workflows.\par
+\pard\li360\fi-180\sa60\fs21 6. \b Android and device sessions:\b0  device enrollment, QR pairing, authenticator flow, notifications, commands, session isolation and offline behavior.\par
+\pard\li360\fi-180\sa60\fs21 7. \b Voice and audio privacy:\b0  local wake-word detection, capture indicators, speech-to-text, text-to-speech, interruption and privacy controls.\par
+\pard\li360\fi-180\sa60\fs21 8. \b AI providers:\b0  local model selection, cloud fallback, routing, secret management, quotas, cost and privacy controls.\par
+\pard\li360\fi-180\sa60\fs21 9. \b Trust and safety:\b0  risk tiers, confirmations, deny rules, payment-app exclusion, emergency stop and audit.\par
+\pard\li360\fi-180\sa60\fs21 10. \b CI/CD and artifacts:\b0  Jenkins integration, Nexus/artifact handling, pipeline triggers, credentials, approvals and rollback.\par
+\pard\li360\fi-180\sa60\fs21 11. \b Monitoring and operations:\b0  health checks, audit trail, telemetry, backup, recovery, diagnostics and support.\par
+\par
+\par\pard\sb200\sa80\fs25\b 7.5 Expected outputs\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Reliable assistant runtime and conversation/task handling.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Reusable workflow orchestration and tool capabilities.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Controlled Windows desktop and developer automation.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Secure device pairing and per-device session management.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Private and predictable voice interaction.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Local-first or hybrid AI routing consistent with privacy and cost constraints.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Approval gates for risky actions.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Traceable automation logs, monitoring and recovery.\par
+\par
+\par\pard\sb200\sa80\fs25\b 7.6 Existing work and work remaining\b0\fs22\par
+\par
+\pard\sa80\fs21 Prior project context reports substantial existing implementation and merged work related to DAG/CI, including PRs #61 and #65. This is a pointer for repository review, not proof that every dependent feature is complete.\par
+\par
+\pard\sa80\fs21 Required verification and remaining work include:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Inventory current modules, workflows, prompts, tool registry and merged changes.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Map existing implementation to approved epics and acceptance criteria.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify actual wake-word operation on the target Windows laptop.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Test both Android devices, pairing, session isolation and recovery.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Validate audio capture indicators and no-continuous-cloud-audio-upload constraint.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify local/cloud routing, provider failures, secret handling and cost behavior.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Test each automation capability in a controlled environment.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify payment-app exclusion and approvals for high-risk actions.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify audit logs, emergency stop, monitoring, backup and recovery.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Validate CI/CD and artifact integrations before enabling them.\par
+\par
+\pard\sa80\fs21 Jenkins/Nexus were previously described as disabled or inactive. Do not enable them until credentials, infrastructure, security review, tests, rollback and explicit approval are in place.\par
+\par
+\par\pard\sb200\sa80\fs25\b 7.7 Safety boundaries\b0\fs22\par
+\par
+\pard\sa80\fs21 JARVIS can interact with devices and tools, so its permissions must be narrower than the user's total system permissions wherever possible. Actions should be classified by risk. Irreversible, financial, security-sensitive or externally consequential actions require explicit approval or must be denied. Payment apps remain excluded. Secrets must never be exposed in prompts, logs or repositories.\par
+\par
+\par\pard\sb200\sa80\fs25\b 7.8 Guidance for a new contributor\b0\fs22\par
+\par
+\pard\sa80\fs21 Start with a code and test inventory. Understand current agent/runtime and workflow design before proposing replacements. Preserve working behavior and established safety constraints. Test device-dependent functionality on actual target devices. Do not activate cloud services, paid providers, Jenkins/Nexus or high-impact automation without authorization.\par
+\par
+\pard\brdrb\brdrs\brdrw10\sa120\par
+\par
+\par\pard\sb260\sa120\fs30\b 8. Project 4: Templates\b0\fs22\par
+\par
+\pard\sa80\fs21 \b Repository:\b0  https://github.com/ASAA1229/Templates  \par
+\pard\sa80\fs21 \b Product type:\b0  Internal reusable software-template and development platform  \par
+\pard\sa80\fs21 \b Primary audience:\b0  ASAA employees, management and authorized contributors  \par
+\pard\sa80\fs21 \b Status:\b0  The owner reports that the basic platform is built. Feature-level implementation, test, security and acceptance evidence must be revalidated.\par
+\par
+\par\pard\sb200\sa80\fs25\b 8.1 Purpose\b0\fs22\par
+\par
+\pard\sa80\fs21 Templates is intended to reduce software delivery time and improve consistency by allowing authorized team members to discover, configure, create, test, version, reuse and distribute software templates and engineering assets.\par
+\par
+\pard\sa80\fs21 It should support different kinds of software and different sectors rather than being limited to one website-template category. The platform is intended to serve internal teams first. External agencies, businesses or customers are possible future audiences, not current default access.\par
+\par
+\par\pard\sb200\sa80\fs25\b 8.2 Intended users\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Organization management and platform administrators.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Internal employees and developers.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab UI/UX designers and engineering teams.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Authorized project teams that need reusable templates.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Reviewers responsible for template quality and publication.\par
+\par
+\pard\sa80\fs21 Access is intended to be employee/management-only. External access must not be enabled by assumption.\par
+\par
+\par\pard\sb200\sa80\fs25\b 8.3 Technology direction\b0\fs22\par
+\par
+\pard\sa80\fs21 Current chosen direction:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Frontend: React, Vite, TypeScript and JavaScript.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Backend: Node.js and Express.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Database: PostgreSQL with Prisma.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab UI: Tailwind CSS and shadcn/ui.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Architecture: modular monolith direction.\par
+\par
+\pard\sa80\fs21 Verify package manifests, runtime versions, migrations, environment configuration and actual source before treating every technology as deployed/current.\par
+\par
+\par\pard\sb200\sa80\fs25\b 8.4 Capability and scope map\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21 1. \b Platform foundation:\b0  workspace packages/contracts, API, web app, database, migrations, configuration and error handling.\par
+\pard\li360\fi-180\sa60\fs21 2. \b Internal access and governance:\b0  employee/management access, roles, approvals, audit and account lifecycle.\par
+\pard\li360\fi-180\sa60\fs21 3. \b Taxonomy and discovery:\b0  websites, web apps, e-commerce, mobile, desktop, backend/API, enterprise, UI systems, DevOps, AI/data and sector categories; support hybrid sectors and custom divisions.\par
+\pard\li360\fi-180\sa60\fs21 4. \b Template catalog and lifecycle:\b0  metadata, previews, demo templates, ownership, compatibility, draft/review/published/retired lifecycle.\par
+\pard\li360\fi-180\sa60\fs21 5. \b Visual builder and source configuration:\b0  visual editing, advanced configuration, source access, validation and preview.\par
+\pard\li360\fi-180\sa60\fs21 6. \b Workspaces and collaboration:\b0  project creation, version history, branching, collaboration and conflict handling.\par
+\pard\li360\fi-180\sa60\fs21 7. \b AI-assisted creation:\b0  safe scaffolding, context management, review, usage limits and cost/privacy controls.\par
+\pard\li360\fi-180\sa60\fs21 8. \b Distribution and delivery:\b0  ZIP downloads, GitHub repositories, online workspaces and deployment pathways.\par
+\pard\li360\fi-180\sa60\fs21 9. \b QA, security and documentation:\b0  automated validation, isolated build/test, dependency checks, secret scanning and documentation.\par
+\pard\li360\fi-180\sa60\fs21 10. \b Offline Linux/AIX environment snapshot:\b0  offline environment inventory, TXT/JSON reports and CMM ICG/ACQ/ISS context, with no network requirement.\par
+\pard\li360\fi-180\sa60\fs21 11. \b Operations, assets and connectors:\b0  monitoring, asset library, connector registry, audit, backup and support.\par
+\par
+\par\pard\sb200\sa80\fs25\b 8.5 Template lifecycle and access principles\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Employees may request access; an administrator approves access.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Sharing can be individual, team or organization-wide according to permissions.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Employee-created templates can remain drafts until reviewed and published by an authorized reviewer.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Certification/validation should use automated checks and isolated build/test, followed by manual approval.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Predefined and custom compatible stacks should be supported.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Build environments may be local, server-based or browser-based as approved.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab ZIP export, GitHub integration, online workspaces and deployment should have explicit permission and audit trails.\par
+\par
+\par\pard\sb200\sa80\fs25\b 8.6 AI and JARVIS relationship\b0\fs22\par
+\par
+\pard\sa80\fs21 Templates may include limited JARVIS-related capabilities such as AI assistance, agents, chatbots or monitoring bots. These are mini-features/integrations, not a reason to embed the entire personal JARVIS system into Templates. Each integration must have a defined interface, permissions, data scope and cost/privacy policy.\par
+\par
+\par\pard\sb200\sa80\fs25\b 8.7 Offline environment snapshot feature\b0\fs22\par
+\par
+\pard\sa80\fs21 This feature is intended to capture Linux/AIX environment information without requiring network connectivity. It should:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Operate offline.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Produce TXT and JSON reports.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Support the relevant CMM ICG/ACQ/ISS context.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Document collection profiles, data fields, limitations and execution prerequisites.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Avoid sending collected environment data to external services.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Include validation and safe handling of potentially sensitive system details.\par
+\par
+\par\pard\sb200\sa80\fs25\b 8.8 Work remaining and validation\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Run current repository inventory and verify the actual running application.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify build, unit/integration tests, migrations and runtime behavior.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Confirm employee/management-only access and the role/approval matrix.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Validate catalog taxonomy, demo templates and template lifecycle.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify visual editor, advanced configuration and source editing.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify versioning, collaboration and conflict handling.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify ZIP export, GitHub integration, workspace provisioning and deployment paths.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify isolated build/test, security scanning and manual publication approval.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Validate AI/JARVIS mini-feature boundaries, secrets, privacy and cost controls.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Test offline Linux/AIX environment snapshot behavior and TXT/JSON outputs.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verify monitoring, backup, audit and support processes.\par
+\par
+\pard\sa80\fs21 Historical local development context includes workspaces named @asaa/contracts, @asaa/api and @asaa/web, with the API using tsx watch and the web app using Vite. A prior Vite port 5173 conflict was recorded and later the dev server reported ready on 127.0.0.1. These are historical troubleshooting notes, not evidence of current runtime health.\par
+\par
+\par\pard\sb200\sa80\fs25\b 8.9 Guidance for a new contributor\b0\fs22\par
+\par
+\pard\sa80\fs21 Understand the existing platform before adding another template category or builder workflow. Preserve internal-only access. Use the approved template lifecycle. Do not publish templates, connect external services, deploy generated applications or incur costs without required approval.\par
+\par
+\pard\brdrb\brdrs\brdrw10\sa120\par
+\par
+\par\pard\sb360\sa180\fs36\b PART II - SHARED POLICIES AND HOW TO WORK\b0\fs22\par
+\par
+\par\pard\sb260\sa120\fs30\b 9. Repository and branch standards\b0\fs22\par
+\par
+\pard\sa80\fs21 The organization-wide standard branch names are:\par
+\par
+\pard\sa40\fs18   |   Branch   |   Purpose   |  \par
+\pard\sa40\fs18   |  ---  |  ---  |  \par
+\pard\sa40\fs18   |   main   |   Production/release line   |  \par
+\pard\sa40\fs18   |   dev   |   Integration line   |  \par
+\pard\sa40\fs18   |   new   |   Routine feature and planned change work   |  \par
+\pard\sa40\fs18   |   fix   |   Focused defect correction   |  \par
+\pard\sa40\fs18   |   test   |   Testing and validation   |  \par
+\par
+\pard\sa80\fs21 Routine work targets new. Do not use main or dev as routine work branches. Promotion from new to dev, and from dev to main, requires a separately reviewed and explicitly authorized pull request.\par
+\par
+\pard\sa80\fs21 This is the documented policy. It does not prove GitHub branch protection or rulesets are enabled in every repository. Verify actual repository settings. Do not bypass required review or protection.\par
+\par
+\par\pard\sb260\sa120\fs30\b 10. Change authorization and approvals\b0\fs22\par
+\par
+\pard\sa80\fs21 Before changing a project:\par
+\pard\li360\fi-180\sa60\fs21 1. Confirm the project, requested outcome and scope.\par
+\pard\li360\fi-180\sa60\fs21 2. Obtain explicit authorization from the appropriate owner.\par
+\pard\li360\fi-180\sa60\fs21 3. Read current project documentation and inspect repository state.\par
+\pard\li360\fi-180\sa60\fs21 4. Identify dependencies, security/privacy impact, data sensitivity, cost and rollback impact.\par
+\pard\li360\fi-180\sa60\fs21 5. Use the correct branch and follow the contribution process.\par
+\pard\li360\fi-180\sa60\fs21 6. Keep changes focused and reviewable.\par
+\pard\li360\fi-180\sa60\fs21 7. Run relevant checks and record evidence.\par
+\pard\li360\fi-180\sa60\fs21 8. Obtain approval before merging, promoting, deploying, releasing or publishing.\par
+\par
+\pard\sa80\fs21 A planning discussion, recommendation, status report or approved requirements baseline does not automatically authorize implementation, testing, repository changes, paid subscriptions, external-provider activation, production deployment, merge, release, personal-data publication or consequential automation.\par
+\par
+\par\pard\sb260\sa120\fs30\b 11. Cost and procurement principle\b0\fs22\par
+\par
+\pard\sa80\fs21 Zero ongoing cost is the default constraint until the owner explicitly changes it. Before proposing any paid tool, AI provider, hosting, infrastructure or subscription, document:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Business/technical purpose.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab One-time and recurring cost, currency and expected usage.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Free or lower-cost alternatives.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Data, privacy and security implications.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Limits, renewal terms and exit plan.\par
+\par
+\pard\sa80\fs21 Do not activate a paid service or incur a cost without explicit approval.\par
+\par
+\par\pard\sb260\sa120\fs30\b 12. Requirements, backlog and traceability\b0\fs22\par
+\par
+\pard\sa80\fs21 The Master Requirements Baseline v1.0 was approved on 14 November 2026 as a planning and governance baseline only. It does not authorize implementation, testing, repository changes, deployment, paid services, merges or releases.\par
+\par
+\pard\sa80\fs21 The discovery program is recorded as five rounds, 50 sets and 1,000 questions, followed by 12 consolidation stages at framework/planning level. Exact question-level reconciliation and traceability remain open.\par
+\par
+\pard\sa80\fs21 Use this work-item hierarchy where appropriate:\par
+\par
+\pard\sa80\fs21 \b Organization / Project -> Epic -> Sub-epic -> Feature -> User Story -> Tasks -> Acceptance Criteria -> Dependencies -> Status -> Evidence\b0 \par
+\par
+\pard\sa80\fs21 Every meaningful work item should identify its owner, priority, scope, dependencies, acceptance criteria, test approach, status and evidence. Candidate epic or sub-epic lists in project profiles are planning structures and must be validated before being treated as approved implementation backlog.\par
+\par
+\par\pard\sb260\sa120\fs30\b 13. Work status definitions\b0\fs22\par
+\par
+\pard\sa80\fs21 Use explicit lifecycle states. Do not collapse all progress into "done".\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Not assessed:\b0  no reliable assessment has been performed.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Planned:\b0  accepted for planning, not started.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Ready:\b0  scope, owner, acceptance criteria and dependencies are sufficiently clear.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b In development:\b0  implementation is underway.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Implemented-unverified:\b0  code/configuration exists but required verification is incomplete.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Testing:\b0  verification is underway.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Tested:\b0  defined tests passed in the stated environment and scope.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Integration in progress:\b0  integration work is underway.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Integrated:\b0  required integration has been verified.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Partially complete:\b0  some acceptance criteria are met and others remain.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Blocked:\b0  progress depends on a recorded blocker or decision.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Accepted:\b0  authorized stakeholder has accepted the result.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Released/operational:\b0  deployed or made available with operational evidence.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Deprecated:\b0  no longer supported or intended for use.\par
+\par
+\pard\sa80\fs21 Evidence should identify the commit/build, environment, test or review performed, result, date, scope and limitations. Code existing does not mean tested; tested does not mean accepted; accepted does not automatically mean released.\par
+\par
+\par\pard\sb260\sa120\fs30\b 14. Definition of Ready and Definition of Done\b0\fs22\par
+\par
+\par\pard\sb200\sa80\fs25\b Definition of Ready\b0\fs22\par
+\par
+\pard\sa80\fs21 A work item should have:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Clear problem and intended outcome.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Project and stakeholders identified.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Scope and exclusions.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Acceptance criteria.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Dependencies, assumptions and risks.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Data, security and privacy impact.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Cost impact.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Technical approach where needed.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Owner and approval path.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Verification approach.\par
+\par
+\pard\sa80\fs21 If critical details are missing, mark the work item clarification required instead of guessing.\par
+\par
+\par\pard\sb200\sa80\fs25\b Definition of Done\b0\fs22\par
+\par
+\pard\sa80\fs21 A work item is done only when:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Acceptance criteria are met.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Code, configuration and documentation are reviewed.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Relevant tests pass.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Security and privacy checks are completed.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Required integration is verified.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Evidence is linked to the commit/build and environment.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Limitations are documented.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab The authorized acceptance owner accepts the result.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Release/operational requirements are satisfied if release is intended.\par
+\par
+\par\pard\sb260\sa120\fs30\b 15. Security, privacy and data handling\b0\fs22\par
+\par
+\pard\sa80\fs21 All team members must:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Use least-privilege access.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Never commit passwords, API keys, tokens, private certificates or other secrets.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Use approved environments and approved data only.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Avoid copying employee, profile, client, device or business data into unapproved systems.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Treat uploads, generated code, templates and external inputs as untrusted.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Avoid exposing sensitive information in logs, prompts, screenshots or reports.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Protect personal and client information according to approved purpose and access rules.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Report suspected exposure, unauthorized access, data loss or unsafe behavior immediately.\par
+\par
+\pard\sa80\fs21 Project-specific reminders:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab ASAA: protect workforce, financial, supplier, customer and organization records.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Portfolio: protect profile consent, personal data, resumes and media.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab JARVIS: preserve audio privacy, device isolation, payment-app exclusion and approval gates.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Templates: enforce internal access, isolated validation and safe handling of generated source and secrets.\par
+\par
+\par\pard\sb260\sa120\fs30\b 16. Project classification and commercial treatment\b0\fs22\par
+\par
+\pard\sa80\fs21 ASAA uses two conceptual project categories:\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Personal:\b0  only when the owner explicitly labels the project personal. Such work is unpaid and limited to close friends or family.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab \b Professional:\b0  the default for all other work, including work not explicitly classified as personal. Treat it as paid/commercial unless a specific exception is approved.\par
+\par
+\pard\sa80\fs21 Do not infer that a project is personal based on who benefits from it. Record classification and any approved exception.\par
+\par
+\par\pard\sb260\sa120\fs30\b 17. Communication and reporting expectations\b0\fs22\par
+\par
+\pard\sa80\fs21 A useful work update should state:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab What changed.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab What was verified and how.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab What remains.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Blockers and risks.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Decisions needed.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Next action and owner.\par
+\par
+\pard\sa80\fs21 Clearly distinguish verified facts, owner-reported context, assumptions, proposals and unknowns. Never report historical status as current without revalidation.\par
+\par
+\pard\sa80\fs21 Weekly project updates and monthly portfolio reviews have been proposed, but the reporting cadence is pending owner approval. Maintain release-readiness and incident reports when those events occur.\par
+\par
+\par\pard\sb260\sa120\fs30\b 18. Incident and escalation expectations\b0\fs22\par
+\par
+\pard\sa80\fs21 Escalate immediately if you suspect:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Security or privacy incident.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Unauthorized access or credential exposure.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Data loss or corruption.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Financial or legal exposure.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Production outage.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Unsafe or unauthorized automation.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Release or deployment bypassing required approval.\par
+\par
+\pard\sa80\fs21 For ordinary blockers, record impact, owner, due date, mitigation and the decision required.\par
+\par
+\par\pard\sb260\sa120\fs30\b 19. New team member onboarding path\b0\fs22\par
+\par
+\par\pard\sb200\sa80\fs25\b Before receiving access\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Confirm your role, project assignment, reporting line and approver.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Complete required confidentiality, security and policy onboarding.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Receive only minimum repository, system and environment access required.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Understand how to report incidents and urgent blockers.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Confirm whether you may view production or sensitive data; do not assume access.\par
+\par
+\par\pard\sb200\sa80\fs25\b First working days\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Read this handbook.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Read the organization charter, operating model and policy index.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Read your assigned project's README, POC, requirements, architecture, status and open issues.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Review branch and change-control policy.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Set up the development environment using project instructions.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Run existing checks without changing unrelated code.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Identify project owner, technical reviewer, dependencies and test commands.\par
+\par
+\par\pard\sb200\sa80\fs25\b Before the first change\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Confirm the work item and acceptance criteria.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Confirm explicit authorization and correct branch.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Review secrets, data, privacy, security and cost implications.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Record baseline behavior and relevant tests.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Make a small, reviewable change.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Report test results and link evidence.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Do not merge or deploy unless explicitly authorized.\par
+\par
+\par\pard\sb200\sa80\fs25\b Ongoing expectations\b0\fs22\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Keep project documentation and status evidence current when authorized.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Ask early when scope or acceptance criteria are unclear.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Share knowledge and document decisions.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Avoid unnecessary duplication and cross-project coupling.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Never purchase, publish, merge, deploy, enable external services or perform high-impact actions without approval.\par
+\par
+\par\pard\sb260\sa120\fs30\b 20. Future projects, repositories and organization growth\b0\fs22\par
+\par
+\pard\sa80\fs21 ASAA is expected to grow. This handbook is a living document, not a one-time description of only four projects.\par
+\par
+\pard\sa80\fs21 When a new project or repository is introduced:\par
+\par
+\pard\li360\fi-180\sa60\fs21 1. Register the project in the organization portfolio.\par
+\pard\li360\fi-180\sa60\fs21 2. Assign a unique project name, purpose, owner and repository.\par
+\pard\li360\fi-180\sa60\fs21 3. Classify it as Personal or Professional using the explicit rule in this handbook.\par
+\pard\li360\fi-180\sa60\fs21 4. Define users, business problem, outcomes, scope and exclusions.\par
+\pard\li360\fi-180\sa60\fs21 5. Identify whether it is an independent product, shared platform capability, internal tool or client engagement.\par
+\pard\li360\fi-180\sa60\fs21 6. Define architecture, data ownership, integrations and security boundaries.\par
+\pard\li360\fi-180\sa60\fs21 7. Record technology direction without assuming every project must use the same stack.\par
+\pard\li360\fi-180\sa60\fs21 8. Create a project profile with purpose, scope, users, capabilities, epics, risks, dependencies, status and remaining work.\par
+\pard\li360\fi-180\sa60\fs21 9. Apply the standard branch names: main, dev, new, fix and test.\par
+\pard\li360\fi-180\sa60\fs21 10. Define requirements, acceptance criteria, test approach and evidence expectations.\par
+\pard\li360\fi-180\sa60\fs21 11. Confirm cost, hosting, provider and operational requirements before activation.\par
+\pard\li360\fi-180\sa60\fs21 12. Add the project to this overview and the portfolio register.\par
+\pard\li360\fi-180\sa60\fs21 13. Update architecture, risks, dependencies, decisions and reports where affected.\par
+\pard\li360\fi-180\sa60\fs21 14. Provide a project-specific onboarding guide before assigning contributors.\par
+\par
+\par\pard\sb200\sa80\fs25\b 20.1 Recommended project profile template\b0\fs22\par
+\par
+\pard\sa80\fs21 Every future project should be described using:\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Project name and short description.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Repository URL and canonical documentation.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Product owner and technical owner.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Purpose and problem statement.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Intended users and stakeholders.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Business outcomes and success measures.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab In-scope and out-of-scope capabilities.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Functional and non-functional requirements.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Architecture and technology direction.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Data classification and ownership.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Security, privacy and compliance considerations.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Integrations and dependencies.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Epic and sub-epic register.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Current implementation state with evidence.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Testing, acceptance and release state.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Remaining work and known blockers.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Risks and mitigations.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Cost and operational model.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Contribution instructions and first tasks.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Open decisions and validation items.\par
+\par
+\par\pard\sb200\sa80\fs25\b 20.2 Repository organization\b0\fs22\par
+\par
+\pard\sa80\fs21 Use the ASAA1229 GitHub organization as the canonical home for organization projects. Give each project a clear repository and avoid duplicate repositories without an ownership and migration decision. Cross-project shared code should have a clear owner and versioning/integration strategy.\par
+\par
+\par\pard\sb260\sa120\fs30\b 21. Current organization-level open decisions\b0\fs22\par
+\par
+\pard\sa80\fs21 The following are deliberately not invented and must be confirmed by the organization owner or appropriate authority:\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Legal entity, jurisdiction, registration status and formal company structure.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Final organization chart, named role holders, reporting lines and approval limits.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab External-facing mission, vision and service descriptions.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Commercial terms, contracting, invoicing, tax, client acceptance and support policies.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Policy owners, formal ratification, effective dates and review periods.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Data classification, retention, deletion and privacy-request procedures.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Incident severity, response targets and notification requirements.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Final product boundary for HR, payroll, finance, procurement, supplier and customer capabilities in ASAA.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Current implementation, test, deployment and acceptance evidence for all four projects.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Branch protection and ruleset enforcement across repositories.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Exact reconciliation of the 1,000 discovery questions into approved, traceable requirements.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Named owners and measurable acceptance criteria for approved work.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Shared identity, API, event, secrets, monitoring, artifact and backup architecture decisions.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab Reporting cadence and organization KPIs.\par
+\par
+\pard\sa80\fs21 If an open item materially affects your assigned task, pause and ask the owner. Do not fill the gap with an assumption.\par
+\par
+\par\pard\sb260\sa120\fs30\b 22. Canonical organization documentation map\b0\fs22\par
+\par
+\pard\sa80\fs21 Use this repository as the organization-level starting point:\par
+\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab README.md - entry point and document map.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/organization/CHARTER.md - identity, purpose, principles and boundaries.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/organization/OPERATING_MODEL.md - operating layers, portfolio lifecycle and roles.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/governance/GOVERNANCE.md - governance and decision approach.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/policies/POLICY_INDEX.md - policy directory.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/policies/BRANCHING_AND_CHANGE_CONTROL.md - branch and change rules.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/policies/SECURITY_PRIVACY_AND_DATA_POLICY.md - security and data principles.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/engineering/ENGINEERING_STANDARDS.md - engineering lifecycle and quality standards.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/requirements/MASTER_REQUIREMENTS_BASELINE.md - approved planning baseline.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/portfolio/ - project profiles.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/architecture/ECOSYSTEM_ARCHITECTURE.md - cross-project architecture principles.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/team-member-guide/ - detailed topic-based team guide.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab reports/ - organization status, decisions, risks, dependencies and validation registers.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/projects_overview/overview_newjioner.md - consolidated overview for new team members.\par
+\pard\li360\fi-180\sa60\fs21\bullet\tab docs/projects_overview/overview_newjioner.doc - Word-compatible version of this overview.\par
+\par
+\pard\sa80\fs21 Project-specific repositories remain authoritative for current source code, tests, issues, project POC, implementation status and release evidence.\par
+\par
+\par\pard\sb260\sa120\fs30\b 23. Final message to every new team member\b0\fs22\par
+\par
+\pard\sa80\fs21 You are joining an organization with four distinct but related technology projects and a growing set of shared standards. Learn the purpose and boundaries of the project you are assigned to, preserve existing work, communicate clearly, protect data and credentials, and make progress verifiable.\par
+\par
+\pard\sa80\fs21 You are encouraged to identify gaps, suggest improvements and ask questions. The expectation is not that every policy or product decision is already complete. The expectation is that unknowns are visible, decisions are recorded, and no one silently converts an assumption into an approved requirement.\par
+\par
+\pard\sa80\fs21 \b Welcome to ASAA.\b0 \par
+\par
+\pard\brdrb\brdrs\brdrw10\sa120\par
+\par
+\pard\sa80\fs21 \b Document maintenance:\b0  The organization owner or explicitly delegated documentation owner should update this handbook when projects, repositories, scope, policies, architecture, owners or status materially change. Update the Markdown and Word-compatible copies together. Record the change date and summarize significant changes in the repository decision/change history.\par
+\par
+}
