@@ -154,3 +154,21 @@ The six repositories had **no open pull requests** in their GitHub open-PR listi
 - **ASAA:** [PostgreSQL integration run 44524049465](https://github.com/ASAA1229/ASAA/actions/runs/44524049465) succeeded on application commit `71fb683d76892e9be5477199adb462fc5555e721`. [Run 44524049350](https://github.com/ASAA1229/ASAA/actions/runs/44524049350) also succeeded for local-load/smoke, Python dependency audit and people/finance API quality. In [run 44524049436](https://github.com/ASAA1229/ASAA/actions/runs/44524049436), web build and dependency audit succeeded while web E2E remained in progress.
 
 A successful workflow is scoped to its exact commit and jobs. It does not close device, owner, production or release gates.
+
+
+## 9. Branch protection and ruleset enforcement (2026-11-19)
+
+The branch API reported `protected: false` for every listed branch in all six repositories, including `main`, `dev`, `new`, `fix` and `test`. Ruleset inspection returned:
+
+| Repository | Ruleset state | Current rules |
+|---|---|---|
+| Portfolio | `protection` disabled | Block deletion; block non-fast-forward updates |
+| JARVIS | `ABHISHEK` disabled | Block deletion; block non-fast-forward updates |
+| Templates | `protection` disabled | Block deletion; block non-fast-forward updates |
+| ASAA | No repository rulesets returned | None observed |
+| Configuration | `protection` active | Block deletion; block non-fast-forward updates; update rule |
+| organization | Ruleset endpoint returned 403: GitHub Free does not enable rulesets for this private repository | Not verifiable through the available connection |
+
+For Portfolio, JARVIS, Templates, ASAA and Configuration, branch-protection/ruleset administration was not available through the connected GitHub integration. The existing disabled rulesets were not activated and no new rulesets were created. The active Configuration ruleset is not proof of required PR reviews or CI checks. This is a material governance risk because current project policy says `main` and `dev` are protected integration/release branches.
+
+**Required follow-up:** obtain an authorized administrator path to configure and verify rulesets/branch protection, including pull-request-only promotion, appropriate status checks and deletion/force-push controls. For the private `organization` repository, confirm the plan limitation and choose a zero-cost-compatible governance approach rather than assuming protection is active.
