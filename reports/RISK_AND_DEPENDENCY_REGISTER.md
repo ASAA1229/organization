@@ -36,3 +36,15 @@ These are candidate dependencies, not proof that integrations are currently acti
 Risk ID, description, category, probability, impact, score, trigger, owner, mitigation, contingency, due date, residual risk, status, review date, evidence link.
 
 Dependency ID, provider, consumer, contract, owner, readiness, required-by date, failure impact, fallback, version, test evidence, status.
+
+
+## Risk and dependency update — 2026-11-20
+
+| Risk | Severity | Current evidence | Required response |
+|---|---|---|---|
+| Unprotected standard branches | Critical | 30/30 standard branch records observed `protected: false` | Apply approved protections and verify required checks/PR restrictions |
+| Failing downstream CI | High | ASAA `dev`/`main`, Templates `dev`, Portfolio `dev` have observed failures | Diagnose exact commits and rerun before promotion |
+| Configuration dependency policy | High | 22 findings; 187 approved vs 192 collected; 10 stale entries | Review snapshot delta and resolve immutable image pinning without policy weakening |
+| Missing organization CI | Medium | No workflow runs found | Add meaningful checks for actual policy artifacts, not placeholder jobs |
+| Physical-device/live-integration gaps | High | JARVIS devices, Templates native AIX/container/Jenkins/Nexus, Portfolio runtime acceptance remain open | Execute environment-specific validation and record evidence |
+| Production acceptance gaps | Critical | ASAA external identity/database/security/recovery/UAT gates remain open | Close P0 gates and obtain owner acceptance before release |
