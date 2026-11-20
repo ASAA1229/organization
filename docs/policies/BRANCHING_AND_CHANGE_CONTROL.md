@@ -45,3 +45,8 @@ For each repository, verify GitHub rulesets/branch protection:
 - confirm administrators are subject to intended rules.
 
 **Current evidence:** this repository initially had only `main`; branch `new` was created for this documentation work. Actual protection settings have not been inspected or enabled as part of this change. Do not represent policy text as proof of technical enforcement.
+
+
+## Organization-wide promotion verification — 2026-11-20
+
+The enforced target flow is: task/working branches → `new`; only `new` → `dev`; only `dev` → `main`. Do not open direct PRs from working branches to `dev`/`main), or from `new` directly to `main`. All six repositories have the five standard branch names. However, the 2026-11-20 audit observed all 30 standard branch records with `protected: false`; branch-protection configuration remains pending application and verification. Native rulesets may not fully enforce source/target branch relationships, so add a required CI policy check. No merge or promotion was performed by the documentation refresh.
