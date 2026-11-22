@@ -58,7 +58,7 @@ export function buildReport({ root = WORKSPACE_ROOT, github = false, configRepor
   const inventory = inventoryAll(reg, { github, root });
   const compliance = complianceReport(reg, { root, orgRoot: ORG_ROOT, inventory });
   const risk = riskReport(reg, { today: now.toISOString().slice(0, 10), root });
-  const progress = progressReport(reg, evidence, { root });
+  const progress = progressReport(reg, evidence, { root, github });
   const changeControl = changeControlReport(reg, { root, github });
   const contracts = contractsReport(reg, { root });
   const configReport = loadConfigurationReport({ file: configReportFile, root, run: runConfiguration });
