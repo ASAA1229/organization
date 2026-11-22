@@ -4,7 +4,8 @@
 //   health      [--github]                    per-project health ratings with reasons
 //   model                                     data-model integrity findings
 //   ownership                                 RACI per project and unassigned roles
-//   inventory   [--github]                    repositories, standard branches, work branches, promotion lag
+//   inventory   [--github]                    repositories, standard branches, work branches, promotion lag;
+//                                             --github also compares refs with GitHub and lists unregistered repositories
 //   compliance                                repository compliance checks and secret scan summary
 //   secrets     [--project <id>]              secret detections (file, line, rule, fingerprint; never values)
 //   risks                                     risk scores, completeness, dependency readiness and cycles
@@ -12,7 +13,7 @@
 //   trace       <task-id>                     requirement -> task -> repository -> commits/PRs -> evidence
 //   contracts                                 integration contract presence and copy drift
 //   change-control [--github]                 open pull request rules and protected-branch history
-//   pr-check    --base <b> --head <h> [--body-file <f>] [--labels a,b]
+//   pr-check    --base <b> --head <h> [--body-file <f>] [--labels a,b] [--repo <owner/name>] [--head-repo <owner/name>]
 //                                             evaluate one pull request (for use in project CI)
 //   evidence add --task <id> --status <status> --by <who> [--commit <sha>] [--pr <n>] [--repo <id>]
 //                [--blocker <text>] [--note <text>] [--requirement <ref>]
@@ -103,7 +104,13 @@ switch (command) {
     if (!base || !head) { usage('pr-check --base <b> --head <h> [--body-file <f>] [--labels a,b]'); break; }
     const body = opt('--body-file') ? readFileSync(opt('--body-file'), 'utf8') : '';
     const labels = (opt('--labels') ?? '').split(',').filter(Boolean).map((name) => ({ name }));
-    const f = evaluatePullRequest({ number: Number(opt('--number') ?? 0), baseRefName: base, headRefName: head, body, labels }, reg.changeControl);
+    const repository = opt('--repo') ?? null;
+    const project = repository ? reg.projects.find((p) => p.repository.slug.toLowerCase() === repository.toLowerCase())?.id ?? null : null;
+    const f = evaluatePullRequest(
+      { number: Number(opt('--number') ?? 0), baseRefName: base, headRefName: head, body, labels, headRepository: opt('--head-repo') ?? null },
+      reg.changeControl,
+      { project, repository, enforce: true },
+    );
     print({ findings: f });
     exitFor(f);
     break;

@@ -14,8 +14,10 @@ export function missingSections(body, cc) {
   return cc.pullRequestBodySections.filter((s) => !s.patterns.some((p) => text.includes(p))).map((s) => s.id);
 }
 
-// pr: { number, title, baseRefName, headRefName, body, labels: [{name}] }. Returns findings.
-export function evaluatePullRequest(pr, cc, { project = null } = {}) {
+// pr: { number, title, baseRefName, headRefName, body, labels: [{name}], headRepository? }. Returns findings.
+// enforce=true (pull request CI) makes a promotion without the owner-authorization marker an error, so the required
+// check blocks the merge until the owner adds the marker. Reports over open pull requests keep it a warning.
+export function evaluatePullRequest(pr, cc, { project = null, enforce = false, repository = null } = {}) {
   const out = [];
   const subject = `${project ?? ''}#${pr.number}`;
   const labels = new Set((pr.labels ?? []).map((l) => (typeof l === 'string' ? l : l.name)));
@@ -28,7 +30,11 @@ export function evaluatePullRequest(pr, cc, { project = null } = {}) {
     if (!allowed) {
       out.push(finding({ code: 'PR-PROTECTED-BASE', category: 'change-control', severity: 'error', project, subject, message: `PR #${pr.number} targets protected ${base} from ${head}; only ${cc.allowedPromotions.map((p) => `${p.from}->${p.to}`).join(', ')} promotions may target protected branches`, remediation: `retarget the pull request to ${cc.routinePullRequestBase}` }));
     } else if (!authorized) {
-      out.push(finding({ code: 'PR-PROMOTION-UNAUTHORIZED', category: 'change-control', severity: 'warning', project, subject, message: `promotion PR #${pr.number} (${head}->${base}) has no owner-authorization marker`, remediation: 'do not merge until the owner authorizes the promotion' }));
+      out.push(finding({ code: 'PR-PROMOTION-UNAUTHORIZED', category: 'change-control', severity: enforce ? 'error' : 'warning', project, subject, message: `promotion PR #${pr.number} (${head}->${base}) has no owner-authorization marker`, remediation: 'do not merge until the owner authorizes the promotion' }));
+    }
+    // A promotion must come from the same repository's branch, never from a fork that happens to use the same name.
+    if (allowed && repository && pr.headRepository && pr.headRepository !== repository) {
+      out.push(finding({ code: 'PR-PROTECTED-BASE', category: 'change-control', severity: 'error', project, subject, message: `PR #${pr.number} promotes ${head} from ${pr.headRepository}, not from ${repository}`, remediation: 'promotions are opened from the repository\'s own branch' }));
     }
   } else if (base !== cc.routinePullRequestBase) {
     out.push(finding({ code: 'PR-NONSTANDARD-BASE', category: 'change-control', severity: 'warning', project, subject, message: `PR #${pr.number} targets ${base}; routine work targets ${cc.routinePullRequestBase}` }));
