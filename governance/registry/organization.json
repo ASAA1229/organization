@@ -1,0 +1,26 @@
+{
+  "schema": "asaa.governance.organization.v1",
+  "id": "asaa",
+  "name": "ASAA",
+  "githubOrganization": "ASAA1229",
+  "defaultClassification": "Professional",
+  "standardBranches": ["main", "dev", "new", "fix", "test"],
+  "protectedBranches": ["dev", "main"],
+  "routineTargetBranch": "new",
+  "promotionFlow": ["new", "dev", "main"],
+  "decisions": [
+    { "id": "DEC-ORG-002", "summary": "Use ASAA as current organization identity", "status": "approved-direction" },
+    { "id": "DEC-ORG-003", "summary": "Personal classification only when the owner explicitly declares a project personal; otherwise Professional", "status": "approved-direction" },
+    { "id": "DEC-ORG-004", "summary": "Routine work targets new; dev and main are protected", "status": "required-policy" },
+    { "id": "DEC-ORG-005", "summary": "Zero-cost default until the owner explicitly changes it", "status": "approved-direction" },
+    { "id": "DEC-ORG-006", "summary": "Organization monitoring is not implementation authorization", "status": "approved-direction" }
+  ],
+  "roles": [
+    { "id": "organization-owner", "title": "Organization owner", "holder": "ASAA1229 owner" },
+    { "id": "project-owner", "title": "Project owner", "holder": null },
+    { "id": "repository-admin", "title": "Repository administrator", "holder": null },
+    { "id": "architecture-security", "title": "Architecture and security", "holder": null },
+    { "id": "security-ai-owner", "title": "Security / AI owner", "holder": null },
+    { "id": "operations-data-owner", "title": "Operations and data owner", "holder": null }
+  ]
+}

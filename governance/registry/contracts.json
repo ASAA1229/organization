@@ -1,0 +1,60 @@
+{
+  "schema": "asaa.governance.contracts.v1",
+  "description": "Integration contracts between the six ASAA1229 repositories. Each contract names its provider, consumers and the files that must exist (and, for shared copies, be identical) in the consumers.",
+  "contracts": [
+    {
+      "id": "ecosystem-registry.v1",
+      "provider": "asaa",
+      "canonical": { "project": "asaa", "path": "contracts/ecosystem/v1/ecosystem-registry.json" },
+      "copies": [
+        { "project": "jarvis", "path": "contracts/asaa-ecosystem/v1/ecosystem-registry.json" },
+        { "project": "templates", "path": "contracts/asaa-ecosystem/v1/ecosystem-registry.json" },
+        { "project": "portfolio", "path": "contracts/asaa-ecosystem/v1/ecosystem-registry.json" }
+      ]
+    },
+    {
+      "id": "event-envelope.v1",
+      "provider": "asaa",
+      "canonical": { "project": "asaa", "path": "contracts/ecosystem/v1/event-envelope.schema.json" },
+      "copies": [
+        { "project": "jarvis", "path": "contracts/asaa-ecosystem/v1/event-envelope.schema.json" },
+        { "project": "templates", "path": "contracts/asaa-ecosystem/v1/event-envelope.schema.json" },
+        { "project": "portfolio", "path": "contracts/asaa-ecosystem/v1/event-envelope.schema.json" }
+      ]
+    },
+    {
+      "id": "service-manifest.v1",
+      "provider": "asaa",
+      "canonical": { "project": "asaa", "path": "contracts/ecosystem/v1/service-manifest.schema.json" },
+      "copies": [
+        { "project": "jarvis", "path": "contracts/asaa-ecosystem/v1/service-manifest.schema.json" },
+        { "project": "templates", "path": "contracts/asaa-ecosystem/v1/service-manifest.schema.json" },
+        { "project": "portfolio", "path": "contracts/asaa-ecosystem/v1/service-manifest.schema.json" }
+      ]
+    },
+    {
+      "id": "configuration-policy-report.v1",
+      "provider": "configuration",
+      "canonical": { "project": "configuration", "path": "checks/check-all.mjs", "marker": "asaa.configuration.policy-report.v1" },
+      "copies": []
+    },
+    {
+      "id": "configuration-environment.v1",
+      "provider": "configuration",
+      "canonical": { "project": "configuration", "path": "policy/schemas/environment.schema.json" },
+      "copies": []
+    },
+    {
+      "id": "governance-report.v1",
+      "provider": "organization",
+      "canonical": { "project": "organization", "path": "scripts/lib/report.mjs", "marker": "asaa.governance.report.v1" },
+      "copies": []
+    },
+    {
+      "id": "oidc-issuer",
+      "provider": "configuration",
+      "canonical": { "project": "configuration", "path": "environments/base.json", "marker": "/realms/asaa" },
+      "copies": []
+    }
+  ]
+}

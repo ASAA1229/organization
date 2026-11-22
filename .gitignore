@@ -1,0 +1,37 @@
+# Organization repository ignore rules (ASAA/docs/BRANCHING_POLICY.md section 8.1, minimal set)
+
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Credentials and private keys
+*.pem
+*.key
+secrets/
+credentials/
+
+# Logs and scratch
+*.log
+tmp/
+
+# Local databases and backups
+*.db
+*.sqlite3
+backups/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Generated archives, checksums, SBOMs and release reports
+*.zip
+*.tar.gz
+*.sha256
+*.cdx.json
+customer-release-report.json
+
+# Generated governance reports
+governance-report.json
