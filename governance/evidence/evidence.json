@@ -1,0 +1,5 @@
+{
+  "schema": "asaa.governance.evidence.v1",
+  "description": "Reviewed task evidence records, added with scripts/governance.mjs evidence add. Each record names the task, the reviewed status, who recorded it, and references (commit, pull request or path).",
+  "records": []
+}
