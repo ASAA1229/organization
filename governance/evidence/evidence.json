@@ -2058,6 +2058,38 @@
         }
       ],
       "note": "SSO failure logs use fixed codes; secret-leak guard test"
+    },
+    {
+      "task": "E2:D3.13",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:30:45.047Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "b62e648aee37309449e11220645f4e0c02a365af"
+        }
+      ],
+      "note": "every listed backend route now has a permission-gated UI path; register revise already existed; screens not rendered in a browser"
+    },
+    {
+      "task": "E2:D0.4",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:30:45.047Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "8335c9d060229ca7fc878190358722f166a75a36"
+        },
+        {
+          "repo": "portfolio",
+          "commit": "5848e7c8f3573d5cabf6546ba92a1fc059b291e9"
+        }
+      ],
+      "note": "correlation-header.v1: JARVIS and Portfolio responses carry X-Request-ID (PRs JARVIS #84, Portfolio #39); contracts linked to dependencies (organization 0fe9bb5)"
     }
   ]
 }
