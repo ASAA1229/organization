@@ -42,6 +42,24 @@ export function commitEvidence(repoPath) {
   return byTask;
 }
 
+// Commits reachable from each standard flow branch on origin, so a task's commits can be located in new, dev and main.
+// A closed or merged pull request is not assumed to have reached every branch.
+export const FLOW_BRANCHES = ['new', 'dev', 'main'];
+
+export function branchReachability(repoPath) {
+  const sets = {};
+  for (const b of FLOW_BRANCHES) {
+    const out = git(repoPath, ['rev-list', `origin/${b}`]);
+    sets[b] = out === null ? null : new Set(out.split('\n').filter(Boolean));
+  }
+  return sets;
+}
+
+function integrationOf(commits, reach) {
+  if (!reach) return null;
+  return Object.fromEntries(FLOW_BRANCHES.map((b) => [b, reach[b] === null ? null : commits.some((c) => reach[b].has(c.commit))]));
+}
+
 function latestRecord(records, taskId) {
   return records.filter((r) => r.task === taskId).sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0)).at(-1) ?? null;
 }
@@ -50,7 +68,11 @@ export function progressReport(reg, evidence, { root } = {}) {
   const findings = [];
   const statuses = reg.backlog.statuses;
   const commitsByProject = new Map();
-  for (const p of reg.projects) commitsByProject.set(p.id, commitEvidence(projectPath(p, root)));
+  const reachByProject = new Map();
+  for (const p of reg.projects) {
+    commitsByProject.set(p.id, commitEvidence(projectPath(p, root)));
+    reachByProject.set(p.id, branchReachability(projectPath(p, root)));
+  }
 
   for (const r of evidence.records ?? []) {
     if (!statuses.includes(r.status)) findings.push(finding({ code: 'EVIDENCE-INVALID', category: 'progress', severity: 'error', subject: `${r.task}:${r.date}`, message: `evidence for ${r.task} uses unknown status ${r.status}` }));
@@ -68,9 +90,14 @@ export function progressReport(reg, evidence, { root } = {}) {
     if (status === 'IMPLEMENTED' && commits.length === 0 && !(record?.refs ?? []).some((r) => r.commit || r.pr)) {
       findings.push(finding({ code: 'STATUS-WITHOUT-EVIDENCE', category: 'progress', severity: 'error', project: t.project, subject: t.id, message: `${t.id} is recorded IMPLEMENTED but no commit or pull request evidence exists`, remediation: 'link the implementing commit or pull request, or correct the status (ORG-R03)' }));
     }
+    const integration = integrationOf(commits, reachByProject.get(t.project));
+    if (status === 'IMPLEMENTED' && commits.length > 0 && integration?.new === false) {
+      findings.push(finding({ code: 'IMPLEMENTED-NOT-INTEGRATED', category: 'progress', severity: 'warning', project: t.project, subject: t.id, message: `${t.id} is recorded IMPLEMENTED but none of its commits is on new`, remediation: 'merge the implementing pull request into new, or correct the status' }));
+    }
     return {
       id: t.id, project: t.project, milestone: milestoneOf(t.id), title: t.title, status, source,
       blocker: record?.blocker ?? null,
+      integration,
       trace: {
         requirements: [...(t.requirements ?? []), ...(record?.requirements ?? [])],
         commits: commits.map((c) => c.commit.slice(0, 12)),
@@ -104,5 +131,5 @@ export function progressReport(reg, evidence, { root } = {}) {
     return { project: p.id, baselinePercent: p.baselineProgress?.percent ?? null, tasks: list.length, byStatus: Object.fromEntries(statuses.map((s) => [s, count(list, s)])) };
   });
 
-  return { tasks, milestones, projects, findings, method: 'status from latest evidence record, else IN PROGRESS when commits cite the task id, else NOT STARTED; percentages = IMPLEMENTED / tasks (and / non-blocked tasks)' };
+  return { tasks, milestones, projects, findings, method: 'status from latest evidence record, else IN PROGRESS when commits cite the task id, else NOT STARTED; percentages = IMPLEMENTED / tasks (and / non-blocked tasks); integration = whether a citing commit is reachable from origin/new, dev and main' };
 }

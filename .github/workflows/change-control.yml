@@ -1,0 +1,50 @@
+name: Organization change control
+
+# Reusable pull request change-control check (D0.18, D0.24). Every ASAA1229 repository calls this workflow on its pull
+# requests so branch-flow, promotion-authorization and pull-request-body rules are enforced with one implementation.
+# When called, github.* describes the calling repository and its pull request event.
+
+on:
+  workflow_call:
+    inputs:
+      organization-ref:
+        description: organization ref that holds the governance rules (defaults to new)
+        type: string
+        default: new
+
+permissions:
+  contents: read
+
+jobs:
+  change-control:
+    name: Pull request change control
+    if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out organization governance rules
+        uses: actions/checkout@v5
+        with:
+          repository: ASAA1229/organization
+          # The organization repository's own pull requests are checked against the rules they change.
+          ref: ${{ github.repository == 'ASAA1229/organization' && github.sha || inputs.organization-ref }}
+          path: organization
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Evaluate pull request
+        working-directory: organization
+        # Untrusted pull request fields are passed through the environment, never interpolated into the script.
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BASE: ${{ github.event.pull_request.base.ref }}
+          PR_HEAD: ${{ github.event.pull_request.head.ref }}
+          PR_HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          PR_REPO: ${{ github.repository }}
+          PR_LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          printf '%s' "$PR_BODY" > "$RUNNER_TEMP/pr-body.md"
+          node scripts/governance.mjs pr-check --number "$PR_NUMBER" --base "$PR_BASE" --head "$PR_HEAD" \
+            --repo "$PR_REPO" --head-repo "$PR_HEAD_REPO" --body-file "$RUNNER_TEMP/pr-body.md" --labels "$PR_LABELS"
