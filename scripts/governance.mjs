@@ -13,6 +13,9 @@
 //                                             integrated, tested, accepted, released) from verified evidence
 //   trace       <task-id>                     requirement -> task -> repository -> commits/PRs -> evidence
 //   contracts                                 integration contract presence and copy drift
+//   identity                                  realm clients vs project client settings (service identity contract)
+//   data-domains                              data domains: system of record, consumers, undecided owner fields
+//   graph       [--format json|dot]           project dependency graph with readiness and linked risks
 //   change-control [--github]                 open pull request rules and protected-branch history
 //   pr-check    --base <b> --head <h> [--body-file <f>] [--labels a,b] [--repo <owner/name>] [--head-repo <owner/name>]
 //                                             evaluate one pull request (for use in project CI)
@@ -34,6 +37,8 @@ import { riskReport } from './lib/risk.mjs';
 import { progressReport, validateEvidenceRecord } from './lib/progress.mjs';
 import { changeControlReport, evaluatePullRequest } from './lib/changecontrol.mjs';
 import { contractsReport } from './lib/contracts.mjs';
+import { dataDomainReport, identityReport } from './lib/interfaces.mjs';
+import { dependencyGraph, graphToDot } from './lib/risk.mjs';
 import { ORG_ROOT } from './lib/core.mjs';
 
 const argv = process.argv.slice(2);
@@ -46,7 +51,7 @@ const github = flag('--github');
 
 function usage(msg) {
   if (msg) console.error(msg);
-  console.error('usage: node scripts/governance.mjs <report|health|model|ownership|inventory|compliance|secrets|risks|progress|trace|contracts|change-control|pr-check|evidence> (see file header)');
+  console.error('usage: node scripts/governance.mjs <report|health|model|ownership|inventory|compliance|secrets|risks|progress|trace|contracts|identity|data-domains|graph|change-control|pr-check|evidence> (see file header)');
   process.exitCode = 2;
 }
 
@@ -83,6 +88,9 @@ switch (command) {
     exitFor(f);
     break;
   }
+  case 'identity': { const r = identityReport(reg); print(r); exitFor(r.findings); break; }
+  case 'data-domains': { const r = dataDomainReport(reg); print(r); exitFor(r.findings); break; }
+  case 'graph': { const g = dependencyGraph(reg); console.log(opt('--format') === 'dot' ? graphToDot(g) : JSON.stringify(g, null, 2)); break; }
   case 'risks': { const r = riskReport(reg); print(r); exitFor(r.findings); break; }
   case 'progress': {
     const r = progressReport(reg, loadEvidence(), { github });

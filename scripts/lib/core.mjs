@@ -26,6 +26,9 @@ export function loadRegistry(dir = REGISTRY_DIR) {
     backlog: file('backlog'),
     changeControl: file('change-control'),
     contracts: file('contracts').contracts,
+    // Optional registers (Phase E): identity clients and data domains.
+    identity: existsSync(join(dir, 'identity.json')) ? file('identity') : null,
+    dataDomains: existsSync(join(dir, 'data-domains.json')) ? file('data-domains') : null,
   };
 }
 

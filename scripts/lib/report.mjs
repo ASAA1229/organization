@@ -9,8 +9,9 @@ import { ORG_ROOT, WORKSPACE_ROOT, loadEvidence, loadRegistry, readJson, summari
 import { ownershipReport, validateModel } from './model.mjs';
 import { inventoryAll } from './inventory.mjs';
 import { complianceReport } from './compliance.mjs';
-import { riskReport } from './risk.mjs';
+import { dependencyGraph, riskReport } from './risk.mjs';
 import { progressReport } from './progress.mjs';
+import { dataDomainReport, identityReport } from './interfaces.mjs';
 import { changeControlReport } from './changecontrol.mjs';
 import { contractsReport } from './contracts.mjs';
 
@@ -61,11 +62,15 @@ export function buildReport({ root = WORKSPACE_ROOT, github = false, configRepor
   const progress = progressReport(reg, evidence, { root, github });
   const changeControl = changeControlReport(reg, { root, github });
   const contracts = contractsReport(reg, { root });
+  const identity = identityReport(reg, { root });
+  const dataDomains = dataDomainReport(reg, { root });
+  const graph = dependencyGraph(reg, { root });
   const configReport = loadConfigurationReport({ file: configReportFile, root, run: runConfiguration });
 
   const findings = [
     ...model, ...ownership.findings, ...inventory.flatMap((i) => i.findings), ...compliance.findings, ...risk.findings,
-    ...progress.findings, ...changeControl.findings, ...contracts.findings, ...configurationFindings(configReport),
+    ...progress.findings, ...changeControl.findings, ...contracts.findings, ...identity.findings, ...dataDomains.findings,
+    ...configurationFindings(configReport),
   ];
 
   const projects = reg.projects.map((p) => {
@@ -85,7 +90,13 @@ export function buildReport({ root = WORKSPACE_ROOT, github = false, configRepor
   return {
     schema: GOVERNANCE_REPORT_SCHEMA,
     generatedAt: now.toISOString(),
-    sources: { github, configurationPolicyReport: configReport ? configReport.gate ?? 'present' : 'unavailable' },
+    sources: {
+      github,
+      configurationPolicyReport: configReport ? configReport.gate ?? 'present' : 'unavailable',
+      // Evidence is fresh only when it was compared with GitHub and no local ref differed (E:D0.2).
+      evidenceFreshness: !github ? 'not-verified' : findings.some((f) => f.code === 'INVENTORY-STALE' && f.severity !== 'info') ? 'stale' : 'verified',
+      integratedRef: 'origin/new',
+    },
     gate: summarize(findings).gate,
     summary: summarize(findings),
     projects,
@@ -97,6 +108,9 @@ export function buildReport({ root = WORKSPACE_ROOT, github = false, configRepor
     inventory: inventory.map(({ findings: _f, ...rest }) => rest),
     compliance: compliance.repositories,
     contracts: contracts.contracts,
+    identity: identity.clients,
+    dataDomains: dataDomains.domains,
+    dependencyGraph: graph,
     pullRequests: changeControl.pullRequests,
     tasks: progress.tasks,
     findings,
