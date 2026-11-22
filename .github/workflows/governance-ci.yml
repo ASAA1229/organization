@@ -5,12 +5,15 @@ on:
     branches: [new, dev, main, test, fix]
   pull_request:
     branches: [new, dev, main]
+    # Label and body changes re-run change control so an owner authorization label takes effect.
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
 
 permissions:
   contents: read
 
 jobs:
   governance:
+    if: github.event_name != 'pull_request' || contains(fromJSON('["opened", "synchronize", "reopened"]'), github.event.action)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -24,18 +27,11 @@ jobs:
         run: node --test scripts/validate-governance.test.mjs
       - name: Validate governance data model
         run: node scripts/governance.mjs model
-      - name: Check this pull request against change control
-        if: github.event_name == 'pull_request'
-        # Untrusted pull request fields are passed through the environment, never interpolated into the script.
-        env:
-          PR_BODY: ${{ github.event.pull_request.body }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-          PR_BASE: ${{ github.base_ref }}
-          PR_HEAD: ${{ github.head_ref }}
-          PR_LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
-        run: |
-          printf '%s' "$PR_BODY" > "$RUNNER_TEMP/pr-body.md"
-          node scripts/governance.mjs pr-check --number "$PR_NUMBER" --base "$PR_BASE" --head "$PR_HEAD" --body-file "$RUNNER_TEMP/pr-body.md" --labels "$PR_LABELS"
+
+  change-control:
+    name: Change control
+    if: github.event_name == 'pull_request'
+    uses: ./.github/workflows/change-control.yml
 
   ecosystem-report:
     name: Cross-project health and risk report

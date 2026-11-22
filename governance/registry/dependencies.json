@@ -10,17 +10,17 @@
     {
       "id": "DEP-IDENTITY", "provider": "configuration", "consumers": ["asaa", "jarvis", "portfolio"],
       "contract": "OIDC issuer http://127.0.0.1:8280/realms/asaa (identity/realm/asaa-realm.json)", "owner": "architecture-security", "status": "active-in-code",
-      "evidence": [{ "project": "configuration", "path": "identity/realm/asaa-realm.json" }, { "project": "asaa", "path": "apps/ap-api/src/asaa_identity/keycloak.py" }], "fallback": null, "failureImpact": "single sign-on unavailable across products"
+      "evidence": [{ "project": "configuration", "path": "identity/realm/asaa-realm.json" }, { "project": "asaa", "path": "apps/ap-api/src/asaa_identity/keycloak.py" }, { "project": "jarvis", "path": "src/identity/ssoOidc.ts" }, { "project": "portfolio", "path": "src/lib/oidc.ts" }], "fallback": null, "failureImpact": "single sign-on unavailable across products"
     },
     {
       "id": "DEP-EVENTS", "provider": "asaa", "consumers": ["jarvis", "templates", "portfolio"],
       "contract": "asaa.event.v1 envelope POSTed to /api/v1/integration/events (contracts/*/v1/event-envelope.schema.json)", "owner": "architecture-security", "status": "active-in-code",
-      "evidence": [{ "project": "asaa", "path": "contracts/ecosystem/v1/event-envelope.schema.json" }], "fallback": "applications keep their own audit store", "failureImpact": "ecosystem audit trail incomplete"
+      "evidence": [{ "project": "asaa", "path": "contracts/ecosystem/v1/event-envelope.schema.json" }, { "project": "asaa", "path": "apps/ap-api/src/asaa_integration/events.py" }, { "project": "jarvis", "path": "src/integration/asaaEvents.ts" }, { "project": "templates", "path": "apps/api/src/modules/integration/events.ts" }, { "project": "portfolio", "path": "src/lib/asaa-events.ts" }], "fallback": "applications keep their own audit store", "failureImpact": "ecosystem audit trail incomplete"
     },
     {
       "id": "DEP-SERVICE-MANIFEST", "provider": "organization", "consumers": ["asaa", "jarvis", "templates", "portfolio"],
       "contract": "asaa.service-manifest v1 served at /.well-known/asaa-service", "owner": "architecture-security", "status": "active-in-code",
-      "evidence": [{ "project": "asaa", "path": "contracts/ecosystem/v1/service-manifest.schema.json" }], "fallback": null, "failureImpact": "status aggregation cannot discover services"
+      "evidence": [{ "project": "asaa", "path": "contracts/ecosystem/v1/service-manifest.schema.json" }, { "project": "asaa", "path": "apps/ap-api/src/asaa_integration/manifest.py" }, { "project": "jarvis", "path": "src/integration/serviceManifest.ts" }, { "project": "templates", "path": "apps/api/src/modules/integration/manifest.ts" }, { "project": "portfolio", "path": "src/lib/service-manifest.ts" }], "fallback": null, "failureImpact": "status aggregation cannot discover services"
     },
     {
       "id": "DEP-AI-GATEWAY", "provider": "jarvis", "consumers": ["portfolio"],

@@ -6,7 +6,7 @@
 //   - propagation: a risk inherits exposure from the dependencies it is linked to
 // Missing scores, owners and dates are reported as owner decisions; nothing is estimated on the owner's behalf.
 
-import { finding } from './core.mjs';
+import { finding, git, projectPath } from './core.mjs';
 
 export function scoreRisk(risk) {
   if (!Number.isInteger(risk.probability) || !Number.isInteger(risk.impact)) return null;
@@ -35,7 +35,17 @@ export function dependencyCycles(dependencies) {
   return cycles;
 }
 
-export function riskReport(reg, { today = new Date().toISOString().slice(0, 10) } = {}) {
+// Evidence paths are checked against the project's integrated branch (origin/new), not the working tree, so a file that
+// only exists on an unmerged work branch does not count. null = repository not available locally (not verifiable).
+export function evidencePresent(reg, e, { root, ref = 'origin/new' } = {}) {
+  const project = reg.projects.find((p) => p.id === e.project);
+  if (!project) return false;
+  const path = projectPath(project, root);
+  if (git(path, ['rev-parse', '--verify', '--quiet', ref]) === null) return null;
+  return git(path, ['cat-file', '-e', `${ref}:${e.path}`]) !== null;
+}
+
+export function riskReport(reg, { today = new Date().toISOString().slice(0, 10), root } = {}) {
   const findings = [];
   const required = reg.risks.requiredFields;
   const deps = new Map(reg.dependencies.map((d) => [d.id, d]));
@@ -61,6 +71,9 @@ export function riskReport(reg, { today = new Date().toISOString().slice(0, 10) 
     const ready = d.status === 'active-in-code' && (d.evidence ?? []).length > 0;
     if (!d.owner) findings.push(finding({ code: 'DEPENDENCY-UNOWNED', category: 'dependency', severity: 'warning', subject: d.id, message: `dependency ${d.id} has no owner`, remediation: 'owner decision: assign an owner role' }));
     if (d.status === 'active-in-code' && !(d.evidence ?? []).length) findings.push(finding({ code: 'DEPENDENCY-NO-EVIDENCE', category: 'dependency', severity: 'error', subject: d.id, message: `dependency ${d.id} is marked active without evidence` }));
+    for (const e of d.evidence ?? []) {
+      if (evidencePresent(reg, e, { root }) === false) findings.push(finding({ code: 'DEPENDENCY-EVIDENCE-MISSING', category: 'dependency', severity: 'warning', subject: `${d.id}:${e.project}:${e.path}`, message: `dependency ${d.id} cites ${e.project}:${e.path}, which does not exist on new`, remediation: 'correct the evidence path or the dependency status' }));
+    }
     if (!d.fallback) findings.push(finding({ code: 'DEPENDENCY-NO-FALLBACK', category: 'dependency', severity: 'info', subject: d.id, message: `dependency ${d.id} has no recorded fallback` }));
     return { id: d.id, provider: d.provider, consumers: d.consumers, status: d.status, owner: d.owner, ready };
   });
