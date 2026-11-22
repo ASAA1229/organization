@@ -20,8 +20,9 @@ import { milestoneOf } from './model.mjs';
 
 // Phase D ids (D0.1) and Phase E ids (E:D3.4). The Phase E checklist reuses D-numbers with different meanings, so its
 // ids carry the E: prefix and a bare D-token never matches inside an E: token.
-const TASK_TOKEN = /(?<![A-Za-z]:)\bD([0-5])\.(\d{1,2})(?:\s*[-–]\s*(?:D\1\.)?(\d{1,2}))?\b/g;
-const PHASE_E_TOKEN = /\bE:D([0-6])\.(\d{1,2})(?:\s*[-–]\s*(?:E:D\1\.)?(\d{1,2}))?\b/g;
+const TASK_TOKEN = /(?<![A-Za-z0-9]:)\bD([0-5])\.(\d{1,2})(?:\s*[-–]\s*(?:D\1\.)?(\d{1,2}))?\b/g;
+// E:D3.4 (Phase E) and E2:D3.4 (Phase E2); the prefix is captured so a range keeps its own phase.
+const PHASE_E_TOKEN = /\b(E2?):D([0-6])\.(\d{1,2})(?:\s*[-–]\s*(?:\1:D\2\.)?(\d{1,2}))?\b/g;
 
 function expand(ids, prefix, m) {
   const from = Number(m[2]);
@@ -33,7 +34,7 @@ function expand(ids, prefix, m) {
 export function extractTaskIds(text) {
   const ids = new Set();
   for (const m of text.matchAll(TASK_TOKEN)) expand(ids, '', m);
-  for (const m of text.matchAll(PHASE_E_TOKEN)) expand(ids, 'E:', m);
+  for (const m of text.matchAll(PHASE_E_TOKEN)) expand(ids, `${m[1]}:`, [m[0], m[2], m[3], m[4]]);
   return [...ids];
 }
 

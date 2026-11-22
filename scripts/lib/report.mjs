@@ -11,7 +11,7 @@ import { inventoryAll } from './inventory.mjs';
 import { complianceReport } from './compliance.mjs';
 import { dependencyGraph, riskReport } from './risk.mjs';
 import { progressReport } from './progress.mjs';
-import { dataDomainReport, identityReport } from './interfaces.mjs';
+import { dataDomainReport, identityReport, sharedToolingReport } from './interfaces.mjs';
 import { changeControlReport } from './changecontrol.mjs';
 import { contractsReport } from './contracts.mjs';
 
@@ -64,12 +64,13 @@ export function buildReport({ root = WORKSPACE_ROOT, github = false, configRepor
   const contracts = contractsReport(reg, { root });
   const identity = identityReport(reg, { root });
   const dataDomains = dataDomainReport(reg, { root });
+  const sharedTooling = sharedToolingReport(reg, { root });
   const graph = dependencyGraph(reg, { root });
   const configReport = loadConfigurationReport({ file: configReportFile, root, run: runConfiguration });
 
   const findings = [
     ...model, ...ownership.findings, ...inventory.flatMap((i) => i.findings), ...compliance.findings, ...risk.findings,
-    ...progress.findings, ...changeControl.findings, ...contracts.findings, ...identity.findings, ...dataDomains.findings,
+    ...progress.findings, ...changeControl.findings, ...contracts.findings, ...identity.findings, ...dataDomains.findings, ...sharedTooling.findings,
     ...configurationFindings(configReport),
   ];
 
@@ -112,6 +113,7 @@ export function buildReport({ root = WORKSPACE_ROOT, github = false, configRepor
     contracts: contracts.contracts,
     identity: identity.clients,
     dataDomains: dataDomains.domains,
+    sharedTooling: sharedTooling.tools,
     dependencyGraph: graph,
     pullRequests: changeControl.pullRequests,
     tasks: progress.tasks,

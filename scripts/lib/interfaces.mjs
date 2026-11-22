@@ -5,6 +5,7 @@
 //     classification, retention and correction/deletion workflow that are still undecided are reported
 // Files are read from origin/new (the integrated branch), not from the working tree.
 
+import { createHash } from 'node:crypto';
 import { finding, git, projectPath } from './core.mjs';
 
 export const INTEGRATED_REF = 'origin/new';
@@ -96,4 +97,24 @@ export function dataDomainReport(reg, options = {}) {
     return { id: d.id, systemOfRecord: d.systemOfRecord, consumers: d.consumers ?? [], producers: d.producers ?? [], personalData: !!d.personalData, evidencePresent: evidenceOk.every(Boolean), undecided };
   });
   return { domains, findings };
+}
+
+// Duplicated tooling across repositories (E2:D0.8, E2:D1.9): each registered tool's copies are compared on origin/new
+// (line endings normalised). Diverged copies are reported so the owner can decide whether to consolidate; a copy that
+// disappeared from a project is reported as a register error.
+export function sharedToolingReport(reg, options = {}) {
+  const findings = [];
+  const doc = reg.sharedTooling;
+  if (!doc) return { tools: [], findings };
+  const tools = doc.tools.map((t) => {
+    const copies = t.projects.map((projectId) => {
+      const text = readAt(reg, projectId, t.path, options);
+      return { project: projectId, present: text !== null, digest: text === null ? null : createHash('sha256').update(text.replace(/\r\n/g, '\n')).digest('hex').slice(0, 12) };
+    });
+    for (const c of copies.filter((x) => !x.present)) findings.push(finding({ code: 'SHARED-TOOLING-MISSING', category: 'shared-tooling', severity: 'warning', project: c.project, subject: `${t.id}:${c.project}`, message: `${t.id}: ${c.project} no longer has ${t.path}; update governance/registry/shared-tooling.json` }));
+    const variants = new Set(copies.filter((x) => x.present).map((x) => x.digest));
+    if (variants.size > 1) findings.push(finding({ code: 'SHARED-TOOLING-DIVERGED', category: 'shared-tooling', severity: 'info', subject: t.id, message: `${t.id} has ${variants.size} different copies across ${copies.filter((x) => x.present).map((x) => x.project).join(', ')}`, remediation: doc.consolidationDecision ? null : 'owner decision: consolidate into one shared tool or keep project-specific variants' }));
+    return { id: t.id, path: t.path, copies, variants: variants.size };
+  });
+  return { tools, findings, consolidationDecision: doc.consolidationDecision };
 }

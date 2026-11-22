@@ -114,7 +114,24 @@ export function dependencyGraph(reg, { root } = {}) {
       });
     }
   }
-  return { nodes, edges, cycles: dependencyCycles(reg.dependencies) };
+  return { nodes, edges, cycles: dependencyCycles(reg.dependencies), integrationOrder: integrationOrder(reg) };
+}
+
+// Order in which projects integrate (E2:D0.9): a provider comes before its consumers. Projects in a provider/consumer
+// cycle cannot be ordered and are returned together as one stage, so the cycle stays visible.
+export function integrationOrder(reg) {
+  const ids = reg.projects.map((p) => p.id);
+  const incoming = new Map(ids.map((id) => [id, new Set()]));
+  for (const d of reg.dependencies) for (const c of d.consumers) if (c !== d.provider && incoming.has(c)) incoming.get(c).add(d.provider);
+  const stages = [];
+  const placed = new Set();
+  while (placed.size < ids.length) {
+    const ready = ids.filter((id) => !placed.has(id) && [...incoming.get(id)].every((p) => placed.has(p)));
+    const stage = ready.length ? ready : ids.filter((id) => !placed.has(id));
+    stages.push({ stage: stages.length + 1, projects: stage, cyclic: ready.length === 0 });
+    for (const id of stage) placed.add(id);
+  }
+  return stages;
 }
 
 export function graphToDot(graph) {

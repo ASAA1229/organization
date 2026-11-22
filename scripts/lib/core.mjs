@@ -29,6 +29,7 @@ export function loadRegistry(dir = REGISTRY_DIR) {
     // Optional registers (Phase E): identity clients and data domains.
     identity: existsSync(join(dir, 'identity.json')) ? file('identity') : null,
     dataDomains: existsSync(join(dir, 'data-domains.json')) ? file('data-domains') : null,
+    sharedTooling: existsSync(join(dir, 'shared-tooling.json')) ? file('shared-tooling') : null,
   };
 }
 
