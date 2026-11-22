@@ -32,3 +32,6 @@ Thumbs.db
 *.sha256
 *.cdx.json
 customer-release-report.json
+
+# Generated governance reports
+governance-report.json
