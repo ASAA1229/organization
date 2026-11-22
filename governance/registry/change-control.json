@@ -1,0 +1,30 @@
+{
+  "schema": "asaa.governance.change-control.v1",
+  "source": "docs/policies/BRANCHING_AND_CHANGE_CONTROL.md (DEC-ORG-004)",
+  "routinePullRequestBase": "new",
+  "protectedBases": ["dev", "main"],
+  "allowedPromotions": [
+    { "from": "new", "to": "dev" },
+    { "from": "dev", "to": "main" }
+  ],
+  "promotionAuthorization": {
+    "rule": "A promotion pull request needs an explicit owner authorization recorded on the pull request",
+    "acceptedMarkers": ["label:owner-authorized-promotion"]
+  },
+  "pullRequestBodySections": [
+    { "id": "purpose", "patterns": ["purpose"] },
+    { "id": "linked-requirement", "patterns": ["linked requirement", "linked task", "task id", "linked tasks"] },
+    { "id": "scope", "patterns": ["scope"] },
+    { "id": "affected-components", "patterns": ["affected component", "components"] },
+    { "id": "risk", "patterns": ["risk"] },
+    { "id": "test-evidence", "patterns": ["test evidence", "sanity", "tests"] },
+    { "id": "security-privacy", "patterns": ["security"] },
+    { "id": "data-schema", "patterns": ["data/schema", "schema impact", "data impact"] },
+    { "id": "rollback", "patterns": ["rollback"] },
+    { "id": "documentation", "patterns": ["docs", "documentation"] }
+  ],
+  "forbidden": [
+    { "id": "force-push", "rule": "Never force-push or rewrite published history" },
+    { "id": "direct-protected-commit", "rule": "dev and main only change through merge commits of reviewed pull requests" }
+  ]
+}
