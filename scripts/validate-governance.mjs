@@ -1,7 +1,14 @@
+// Repository governance validation for the organization repository (CI entry point).
+//   1. README.md and the docs/ and reports/ directories exist.
+//   2. The governance registry passes data-model integrity validation.
+//   3. No tracked file is secret-bearing or contains credential material (values are never printed).
+// Cross-repository checks live in scripts/governance.mjs.
+
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
-
-const root = process.cwd();
+import { findViolations as findSecretViolations, scanFiles } from './lib/secrets.mjs';
+import { loadRegistry } from './lib/core.mjs';
+import { validateModel } from './lib/model.mjs';
 
 export function findTrackedFiles(directory, base = directory) {
   const files = [];
@@ -14,70 +21,33 @@ export function findTrackedFiles(directory, base = directory) {
   return files.sort();
 }
 
-const SECRET_PATTERNS = [
-  /-----BEGIN (?:RSA |EC |OPENSSH |)PRIVATE KEY-----/,
-  /\bgithub_pat_[A-Za-z0-9_]{20,}\b/,
-  /\bgh[pousr]_[A-Za-z0-9]{20,}\b/,
-  /\bAKIA[0-9A-Z]{16}\b/,
-  /\bglpat-[A-Za-z0-9_-]{20,}\b/,
-  /\bnpm_[A-Za-z0-9]{20,}\b/,
-  /\bxox[baprs]-[A-Za-z0-9-]{10,}\b/,
-  /\bAIza[0-9A-Za-z_-]{30,}\b/,
-  /\bsk-proj-[A-Za-z0-9_-]{20,}\b/,
-  /\b(?:sk|rk)_live_[A-Za-z0-9]{16,}\b/,
-  /\bAccountKey=[A-Za-z0-9+/=]{40,}/,
-];
-
-const TEXT_FILE_EXTENSIONS = /\.(md|txt|json|ya?ml|mjs|cjs|js|jsx|ts|tsx|sh|ps1|py|toml|ini|conf|cfg|properties|xml|tf|tfvars|sql|go|java|cs|rs|swift|gradle)$/i;
-const SENSITIVE_KEYSTORE_EXTENSIONS = /\.(pem|key|p12|pfx|jks|keystore|ppk)$/i;
-const ENV_FILE = /(^|\/)\.env(?:\.[^/]+)?$/i;
-const SAFE_ENV_EXAMPLE = /(^|\/)\.env\.(?:example|sample|template|dist)$/i;
-
 export function findViolations(files, readFile) {
-  const violations = [];
+  return findSecretViolations(files, readFile);
+}
 
-  for (const file of files) {
-    const normalized = file.replace(/\\/g, '/');
-    const safeExample = SAFE_ENV_EXAMPLE.test(normalized);
-    if ((ENV_FILE.test(normalized) && !safeExample) || SENSITIVE_KEYSTORE_EXTENSIONS.test(normalized)) {
-      violations.push(normalized + ': secret-bearing file is tracked');
-    }
+export function validate(root = process.cwd()) {
+  const errors = [];
+  if (!existsSync(join(root, 'README.md'))) errors.push('README.md is missing.');
+  const missingDirectories = ['docs', 'reports'].filter((d) => !existsSync(join(root, d)) || !statSync(join(root, d)).isDirectory());
+  if (missingDirectories.length) errors.push(`missing directories: ${missingDirectories.join(', ')}`);
 
-    const isEnvText = ENV_FILE.test(normalized);
-    if (!TEXT_FILE_EXTENSIONS.test(normalized) && !isEnvText) continue;
-
-    const text = readFile(file);
-    for (const pattern of SECRET_PATTERNS) {
-      if (pattern.test(text)) {
-        violations.push(normalized + ': secret-like credential material detected');
-      }
-    }
+  if (existsSync(join(root, 'governance', 'registry'))) {
+    for (const f of validateModel(loadRegistry(join(root, 'governance', 'registry')))) if (f.severity === 'error') errors.push(`registry: ${f.message}`);
   }
 
-  return [...new Set(violations)];
+  const files = findTrackedFiles(root);
+  for (const d of scanFiles(files, (file) => readFileSync(join(root, file), 'utf8')).filter((x) => x.severity !== 'low')) {
+    errors.push(d.line === null ? `${d.file}: secret-bearing file is tracked (${d.rule})` : `${d.file}:${d.line}: ${d.rule} (${d.severity}, fingerprint ${d.fingerprint})`);
+  }
+  return { ok: errors.length === 0, errors, fileCount: files.length };
 }
 
-const requiredDirectories = ['docs', 'reports'];
-if (!existsSync(join(root, 'README.md'))) {
-  console.error('Governance validation failed: README.md is missing.');
-  process.exit(1);
+if (process.argv[1]?.endsWith('validate-governance.mjs')) {
+  const result = validate();
+  if (!result.ok) {
+    console.error('Governance validation failed:');
+    for (const e of result.errors) console.error('- ' + e);
+    process.exit(1);
+  }
+  console.log('Governance validation passed: ' + result.fileCount + ' files checked.');
 }
-
-const missingDirectories = requiredDirectories.filter((directory) => {
-  const path = join(root, directory);
-  return !existsSync(path) || !statSync(path).isDirectory();
-});
-if (missingDirectories.length > 0) {
-  console.error('Governance validation failed: missing directories: ' + missingDirectories.join(', '));
-  process.exit(1);
-}
-
-const files = findTrackedFiles(root);
-const violations = findViolations(files, (file) => readFileSync(join(root, file), 'utf8'));
-if (violations.length > 0) {
-  console.error('Governance validation failed:');
-  for (const violation of violations) console.error('- ' + violation);
-  process.exit(1);
-}
-
-console.log('Governance validation passed: ' + files.length + ' files checked.');
