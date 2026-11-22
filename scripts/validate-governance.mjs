@@ -1,7 +1,14 @@
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { extname, join, relative } from 'node:path';
+// Repository governance validation for the organization repository (CI entry point).
+//   1. README.md and the docs/ and reports/ directories exist.
+//   2. The governance registry passes data-model integrity validation.
+//   3. No tracked file is secret-bearing or contains credential material (values are never printed).
+// Cross-repository checks live in scripts/governance.mjs.
 
-const root = process.cwd();
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { join, relative } from 'node:path';
+import { findViolations as findSecretViolations, scanFiles } from './lib/secrets.mjs';
+import { loadRegistry } from './lib/core.mjs';
+import { validateModel } from './lib/model.mjs';
 
 export function findTrackedFiles(directory, base = directory) {
   const files = [];
@@ -15,49 +22,32 @@ export function findTrackedFiles(directory, base = directory) {
 }
 
 export function findViolations(files, readFile) {
-  const violations = [];
-  const secretPatterns = [
-    /-----BEGIN (?:RSA |EC |OPENSSH |)PRIVATE KEY-----/,
-    /\bgithub_pat_[A-Za-z0-9_]{20,}\b/,
-    /\bgh[pousr]_[A-Za-z0-9]{20,}\b/,
-    /\bAKIA[0-9A-Z]{16}\b/,
-  ];
+  return findSecretViolations(files, readFile);
+}
 
-  for (const file of files) {
-    const normalized = file.replace(/\\/g, '/');
-    if (/(^|\/)\.env$|\.pem$/i.test(normalized) && !normalized.endsWith('.env.example')) {
-      violations.push(`${normalized}: secret-bearing file is tracked`);
-    }
-    if (!/\.(md|txt|json|ya?ml|mjs|js|ps1|py|ts|tsx|sh)$/i.test(normalized)) continue;
-    const text = readFile(file);
-    for (const pattern of secretPatterns) {
-      if (pattern.test(text)) violations.push(`${normalized}: secret-like credential material detected`);
-    }
+export function validate(root = process.cwd()) {
+  const errors = [];
+  if (!existsSync(join(root, 'README.md'))) errors.push('README.md is missing.');
+  const missingDirectories = ['docs', 'reports'].filter((d) => !existsSync(join(root, d)) || !statSync(join(root, d)).isDirectory());
+  if (missingDirectories.length) errors.push(`missing directories: ${missingDirectories.join(', ')}`);
+
+  if (existsSync(join(root, 'governance', 'registry'))) {
+    for (const f of validateModel(loadRegistry(join(root, 'governance', 'registry')))) if (f.severity === 'error') errors.push(`registry: ${f.message}`);
   }
-  return [...new Set(violations)];
+
+  const files = findTrackedFiles(root);
+  for (const d of scanFiles(files, (file) => readFileSync(join(root, file), 'utf8')).filter((x) => x.severity !== 'low')) {
+    errors.push(d.line === null ? `${d.file}: secret-bearing file is tracked (${d.rule})` : `${d.file}:${d.line}: ${d.rule} (${d.severity}, fingerprint ${d.fingerprint})`);
+  }
+  return { ok: errors.length === 0, errors, fileCount: files.length };
 }
 
-const requiredDirectories = ['docs', 'reports'];
-if (!existsSync(join(root, 'README.md'))) {
-  console.error('Governance validation failed: README.md is missing.');
-  process.exit(1);
+if (process.argv[1]?.endsWith('validate-governance.mjs')) {
+  const result = validate();
+  if (!result.ok) {
+    console.error('Governance validation failed:');
+    for (const e of result.errors) console.error('- ' + e);
+    process.exit(1);
+  }
+  console.log('Governance validation passed: ' + result.fileCount + ' files checked.');
 }
-
-const missingDirectories = requiredDirectories.filter((directory) => {
-  const path = join(root, directory);
-  return !existsSync(path) || !statSync(path).isDirectory();
-});
-if (missingDirectories.length > 0) {
-  console.error(`Governance validation failed: missing directories: ${missingDirectories.join(', ')}`);
-  process.exit(1);
-}
-
-const files = findTrackedFiles(root);
-const violations = findViolations(files, (file) => readFileSync(join(root, file), 'utf8'));
-if (violations.length > 0) {
-  console.error('Governance validation failed:');
-  for (const violation of violations) console.error(`- ${violation}`);
-  process.exit(1);
-}
-
-console.log(`Governance validation passed: ${files.length} files checked.`);

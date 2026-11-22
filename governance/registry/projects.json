@@ -1,0 +1,65 @@
+{
+  "schema": "asaa.governance.projects.v1",
+  "projects": [
+    {
+      "id": "configuration",
+      "name": "Configuration",
+      "kind": "shared-foundation",
+      "classification": "Professional",
+      "repository": { "slug": "ASAA1229/Configuration", "localDir": "Configuration" },
+      "baselineProgress": { "percent": 12, "source": "Phase D master development prompt" },
+      "responsibilities": ["policy", "dependency-approval", "data-locality", "environment-configuration", "identity-configuration"],
+      "raci": { "accountable": "organization-owner", "responsible": "project-owner", "consulted": ["architecture-security"], "informed": ["repository-admin"] }
+    },
+    {
+      "id": "organization",
+      "name": "organization",
+      "kind": "shared-foundation",
+      "classification": "Professional",
+      "repository": { "slug": "ASAA1229/organization", "localDir": "organization" },
+      "baselineProgress": { "percent": 22, "source": "Phase D master development prompt" },
+      "responsibilities": ["governance", "repository-inventory", "ownership", "risk-and-dependency", "progress-tracking", "compliance", "traceability", "change-control"],
+      "raci": { "accountable": "organization-owner", "responsible": "project-owner", "consulted": ["architecture-security"], "informed": ["repository-admin"] }
+    },
+    {
+      "id": "asaa",
+      "name": "ASAA",
+      "kind": "product",
+      "classification": "Professional",
+      "repository": { "slug": "ASAA1229/ASAA", "localDir": "ASAA" },
+      "baselineProgress": { "percent": 64, "source": "Phase D master development prompt" },
+      "responsibilities": ["enterprise-platform", "identity-lifecycle", "workforce", "finance-workflows", "reporting", "ecosystem-events"],
+      "raci": { "accountable": "organization-owner", "responsible": "project-owner", "consulted": ["architecture-security", "operations-data-owner"], "informed": ["repository-admin"] }
+    },
+    {
+      "id": "jarvis",
+      "name": "JARVIS",
+      "kind": "product",
+      "classification": "Professional",
+      "repository": { "slug": "ASAA1229/JARVIS", "localDir": "JARVIS" },
+      "baselineProgress": { "percent": 76, "source": "Phase D master development prompt" },
+      "responsibilities": ["assistant", "agent-automation", "voice", "device-sessions", "ai-gateway", "ci-artifact-interfaces"],
+      "raci": { "accountable": "organization-owner", "responsible": "project-owner", "consulted": ["security-ai-owner"], "informed": ["repository-admin"] }
+    },
+    {
+      "id": "templates",
+      "name": "Templates",
+      "kind": "product",
+      "classification": "Professional",
+      "repository": { "slug": "ASAA1229/Templates", "localDir": "Templates" },
+      "baselineProgress": { "percent": 74, "source": "Phase D master development prompt" },
+      "responsibilities": ["template-authoring", "generation", "export", "environment-snapshot", "ci-artifact-connectors"],
+      "raci": { "accountable": "organization-owner", "responsible": "project-owner", "consulted": ["architecture-security"], "informed": ["repository-admin"] }
+    },
+    {
+      "id": "portfolio",
+      "name": "Portfolio",
+      "kind": "product",
+      "classification": "Professional",
+      "repository": { "slug": "ASAA1229/Portfolio", "localDir": "portfolio" },
+      "baselineProgress": { "percent": 68, "source": "Phase D master development prompt" },
+      "responsibilities": ["profiles", "media-storage", "ai-introduction-chat", "publishing"],
+      "raci": { "accountable": "organization-owner", "responsible": "project-owner", "consulted": ["security-ai-owner"], "informed": ["repository-admin"] }
+    }
+  ]
+}
