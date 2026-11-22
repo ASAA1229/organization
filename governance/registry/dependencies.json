@@ -29,8 +29,8 @@
     },
     {
       "id": "DEP-JARVIS-TEMPLATES", "provider": "jarvis", "consumers": ["templates"],
-      "contract": "JARVIS mini-features through a configurable, disabled-by-default client", "owner": "security-ai-owner", "status": "candidate",
-      "evidence": [], "fallback": "Templates works without JARVIS", "failureImpact": "AI-assisted template features unavailable"
+      "contract": "JARVIS mini-features (summarize, classify, review-assist) through a disabled-by-default client: GET /v1/health, POST /v1/chat/completions with the site key (JARVIS_FEATURES_ENABLED=false by default)", "owner": "security-ai-owner", "status": "active-in-code",
+      "evidence": [{ "project": "templates", "path": "apps/api/src/integrations/jarvis.ts" }], "fallback": "Templates works without JARVIS", "failureImpact": "AI-assisted template features unavailable"
     },
     {
       "id": "DEP-SHARED-ASSETS", "provider": "organization", "consumers": ["portfolio", "templates"],
@@ -39,8 +39,8 @@
     },
     {
       "id": "DEP-CI-ARTIFACTS", "provider": "organization", "consumers": ["asaa", "jarvis", "templates", "portfolio"],
-      "contract": "Pipeline conventions, credentials, artifact provenance (ci/jenkins in each repository; providers disabled until approved)", "owner": null, "status": "candidate",
-      "evidence": [], "fallback": "GitHub Actions only", "failureImpact": "artifact provenance not uniform"
+      "contract": "Pipeline conventions, credentials, artifact provenance. Provider interfaces with mock implementations exist; live Jenkins/Nexus stay disabled until owner approval", "owner": null, "status": "active-in-code",
+      "evidence": [{ "project": "jarvis", "path": "src/release/releasePipeline.ts" }, { "project": "templates", "path": "apps/api/src/modules/connectors/connectors.ts" }], "fallback": "GitHub Actions only", "failureImpact": "artifact provenance not uniform"
     },
     {
       "id": "DEP-GOVERNANCE-REPORT", "provider": "organization", "consumers": ["configuration", "asaa", "jarvis", "templates", "portfolio"],
