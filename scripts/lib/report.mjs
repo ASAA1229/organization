@@ -93,6 +93,8 @@ export function buildReport({ root = WORKSPACE_ROOT, github = false, configRepor
     sources: {
       github,
       configurationPolicyReport: configReport ? configReport.gate ?? 'present' : 'unavailable',
+      // Exact Configuration version the policy findings came from (commit and change-ledger head), when reported (E:D1.7).
+      configurationVersion: configReport?.configurationVersion ?? null,
       // Evidence is fresh only when it was compared with GitHub and no local ref differed (E:D0.2).
       evidenceFreshness: !github ? 'not-verified' : findings.some((f) => f.code === 'INVENTORY-STALE' && f.severity !== 'info') ? 'stale' : 'verified',
       integratedRef: 'origin/new',
