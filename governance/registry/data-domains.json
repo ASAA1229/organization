@@ -1,0 +1,65 @@
+{
+  "schema": "asaa.governance.data-domains.v1",
+  "source": "System of record and synchronization taken from repository code (2026-11-22). Owner, classification, retention and correction/deletion workflow are recorded only where a source states them; null means an owner decision is still required (organization docs/architecture/ECOSYSTEM_ARCHITECTURE.md section 4).",
+  "requiredFields": ["owner", "classification", "retention", "correctionDeletion"],
+  "domains": [
+    {
+      "id": "people", "title": "Employee and workforce records", "systemOfRecord": "asaa",
+      "evidence": [{ "project": "asaa", "path": "apps/ap-api/src/asaa_people" }],
+      "consumers": [], "synchronization": "none: not copied to other projects",
+      "personalData": true, "owner": null, "classification": null, "retention": null, "correctionDeletion": null
+    },
+    {
+      "id": "finance", "title": "Accounts payable, receivable and payables records", "systemOfRecord": "asaa",
+      "evidence": [{ "project": "asaa", "path": "apps/ap-api/src/asaa_ap/models.py" }, { "project": "asaa", "path": "apps/ap-api/src/asaa_payables/models.py" }],
+      "consumers": [], "synchronization": "none: not copied to other projects",
+      "personalData": false, "owner": null, "classification": null, "retention": null, "correctionDeletion": null
+    },
+    {
+      "id": "ecosystem-events", "title": "Ingested ecosystem audit events", "systemOfRecord": "asaa",
+      "evidence": [{ "project": "asaa", "path": "apps/ap-api/src/asaa_integration/models.py" }],
+      "consumers": [], "producers": ["jarvis", "templates", "portfolio"],
+      "synchronization": "asaa.event.v1 envelopes POSTed by each producer (DEP-EVENTS); producers keep their own audit store",
+      "personalData": false, "owner": null, "classification": null,
+      "retention": "180 days, configurable (owner-approved 2026-11-18, ASAA apps/ap-api/src/asaa_ap/config.py integration_event_retention_days)",
+      "correctionDeletion": null
+    },
+    {
+      "id": "identities", "title": "User and service identities", "systemOfRecord": "configuration",
+      "evidence": [{ "project": "configuration", "path": "identity/realm/asaa-realm.json" }, { "project": "asaa", "path": "apps/ap-api/src/asaa_identity/keycloak.py" }],
+      "consumers": ["asaa", "jarvis", "portfolio"],
+      "synchronization": "OIDC tokens issued by the realm; ASAA provisions users through the asaa-identity-sync service account (DEP-IDENTITY)",
+      "personalData": true, "owner": null, "classification": null, "retention": null, "correctionDeletion": null
+    },
+    {
+      "id": "devices", "title": "Paired devices, sessions and approvals", "systemOfRecord": "jarvis",
+      "evidence": [{ "project": "jarvis", "path": "src/core/deviceSecurity.ts" }],
+      "consumers": [], "synchronization": "none: device data stays in JARVIS",
+      "personalData": true, "owner": null, "classification": null, "retention": null, "correctionDeletion": null
+    },
+    {
+      "id": "templates-catalog", "title": "Templates, releases and delivery ledger", "systemOfRecord": "templates",
+      "evidence": [{ "project": "templates", "path": "apps/api/prisma/schema.prisma" }],
+      "consumers": [], "synchronization": "none: exports and hand-offs are recorded in the Templates delivery ledger",
+      "personalData": false, "owner": null, "classification": null, "retention": null, "correctionDeletion": null
+    },
+    {
+      "id": "profiles-media", "title": "Portfolio profiles, media and resumes", "systemOfRecord": "portfolio",
+      "evidence": [{ "project": "portfolio", "path": "src/lib/profile-storage.ts" }],
+      "consumers": [], "synchronization": "none: each of the four profiles is isolated inside Portfolio",
+      "personalData": true, "owner": null, "classification": null, "retention": null, "correctionDeletion": null
+    },
+    {
+      "id": "dependency-policy", "title": "Dependency, image and configuration policy records", "systemOfRecord": "configuration",
+      "evidence": [{ "project": "configuration", "path": "policy/install-import-approvals.json" }],
+      "consumers": ["organization"], "synchronization": "asaa.configuration.policy-report.v1 consumed by the governance report (DEP-POLICY-GATE)",
+      "personalData": false, "owner": null, "classification": null, "retention": null, "correctionDeletion": null
+    },
+    {
+      "id": "governance-registry", "title": "Projects, risks, dependencies, backlog and evidence", "systemOfRecord": "organization",
+      "evidence": [{ "project": "organization", "path": "governance/registry/projects.json" }],
+      "consumers": ["configuration", "asaa", "jarvis", "templates", "portfolio"], "synchronization": "asaa.governance.report.v1 (DEP-GOVERNANCE-REPORT)",
+      "personalData": false, "owner": null, "classification": null, "retention": null, "correctionDeletion": null
+    }
+  ]
+}

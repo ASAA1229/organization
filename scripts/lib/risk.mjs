@@ -63,8 +63,10 @@ export function riskReport(reg, { today = new Date().toISOString().slice(0, 10),
       findings.push(finding({ code: 'RISK-MITIGATION-OVERDUE', category: 'risk', severity: 'error', subject: r.id, message: `${r.id} mitigation due date ${r.dueDate} has passed while the risk is open` }));
     }
     const linked = (r.relatedDependencies ?? []).map((id) => deps.get(id)).filter(Boolean);
+    // A linked dependency is unresolved while it is not active in code with evidence on origin/new, or has no owner (E:D2.4).
+    const unresolved = linked.filter((d) => !(d.status === 'active-in-code' && (d.evidence ?? []).length > 0 && (d.evidence ?? []).every((e) => evidencePresent(reg, e, { root }) !== false)) || !d.owner).map((d) => d.id);
     const exposedProjects = [...new Set(linked.flatMap((d) => [d.provider, ...d.consumers]))].sort();
-    return { id: r.id, description: r.description, category: r.category, owner: r.owner, status: r.status, score: scored?.score ?? null, band: scored?.band ?? 'unscored', completeness: Math.round(((required.length - missing.length) / required.length) * 100), exposedProjects };
+    return { id: r.id, description: r.description, category: r.category, owner: r.owner, status: r.status, score: scored?.score ?? null, band: scored?.band ?? 'unscored', completeness: Math.round(((required.length - missing.length) / required.length) * 100), exposedProjects, unresolvedDependencies: unresolved };
   });
 
   const dependencies = reg.dependencies.map((d) => {
@@ -84,5 +86,41 @@ export function riskReport(reg, { today = new Date().toISOString().slice(0, 10),
 
   const exposure = {};
   for (const d of reg.dependencies) for (const c of d.consumers) exposure[c] = [...(exposure[c] ?? []), d.id];
-  return { risks, dependencies, exposure, findings };
+  // Exposure to dependencies that are not ready (candidate, missing evidence on origin/new) or have no owner.
+  const notReady = new Set(dependencies.filter((d) => !d.ready || !d.owner).map((d) => d.id));
+  const unresolvedExposure = Object.fromEntries(Object.entries(exposure).map(([p, ids]) => [p, ids.filter((id) => notReady.has(id))]));
+  for (const r of risks) {
+    if (r.status === 'open' && r.unresolvedDependencies.length) findings.push(finding({ code: 'RISK-DEPENDENCY-UNRESOLVED', category: 'risk', severity: 'info', subject: r.id, message: `${r.id} is linked to unresolved dependencies: ${r.unresolvedDependencies.join(', ')}`, data: { dependencies: r.unresolvedDependencies } }));
+  }
+  return { risks, dependencies, exposure, unresolvedExposure, findings };
+}
+
+// Project dependency graph (E:D2.3): nodes are the registered projects; edges run provider -> consumer for every
+// registered dependency, with its status, readiness and whether all of its evidence exists on origin/new. Open risks
+// linked to a dependency are attached to its edges.
+export function dependencyGraph(reg, { root } = {}) {
+  const nodes = reg.projects.map((p) => ({ id: p.id, name: p.name, kind: p.kind ?? null }));
+  const risksByDep = new Map();
+  for (const r of reg.risks.risks ?? []) for (const d of r.relatedDependencies ?? []) risksByDep.set(d, [...(risksByDep.get(d) ?? []), r.id]);
+  const edges = [];
+  for (const d of reg.dependencies) {
+    const evidence = (d.evidence ?? []).map((e) => evidencePresent(reg, e, { root }));
+    for (const consumer of d.consumers) {
+      edges.push({
+        from: d.provider, to: consumer, dependency: d.id, status: d.status, owner: d.owner,
+        ready: d.status === 'active-in-code' && evidence.length > 0 && evidence.every((x) => x !== false),
+        evidencePresent: evidence.length ? evidence.every((x) => x === true) : false,
+        risks: risksByDep.get(d.id) ?? [],
+      });
+    }
+  }
+  return { nodes, edges, cycles: dependencyCycles(reg.dependencies) };
+}
+
+export function graphToDot(graph) {
+  const lines = ['digraph asaa_ecosystem {', '  rankdir=LR;'];
+  for (const n of graph.nodes) lines.push(`  "${n.id}" [label="${n.name}"];`);
+  for (const e of graph.edges) lines.push(`  "${e.from}" -> "${e.to}" [label="${e.dependency}${e.ready ? '' : ' (not ready)'}"${e.ready ? '' : ', style=dashed'}];`);
+  lines.push('}');
+  return lines.join('\n');
 }

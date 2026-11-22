@@ -1,0 +1,16 @@
+{
+  "schema": "asaa.governance.identity.v1",
+  "source": "Configuration identity/realm/asaa-realm.json clients and the client settings each project declares in its example configuration (repository evidence, 2026-11-22). The canonical identity approach remains an open architecture decision (organization docs/architecture/ECOSYSTEM_ARCHITECTURE.md section 6).",
+  "realm": { "project": "configuration", "path": "identity/realm/asaa-realm.json", "environment": "environments/base.json" },
+  "clients": [
+    { "clientId": "asaa-portal", "project": "asaa", "kind": "user-login", "consumer": { "project": "asaa", "path": ".env.example", "key": "VITE_OIDC_CLIENT_ID" } },
+    { "clientId": "asaa-api", "project": "asaa", "kind": "api-audience", "consumer": { "project": "asaa", "path": "apps/ap-api/.env.example", "key": "ASAA_AP_JWT_AUDIENCE" } },
+    { "clientId": "asaa-identity-sync", "project": "asaa", "kind": "service-account", "consumer": { "project": "asaa", "path": "apps/ap-api/.env.example", "key": "ASAA_IDENTITY_KEYCLOAK_CLIENT_ID" } },
+    { "clientId": "jarvis-companion", "project": "jarvis", "kind": "user-login", "consumer": { "project": "jarvis", "path": ".env.example", "key": "JARVIS_OIDC_CLIENT_ID" } },
+    { "clientId": "jarvis-events", "project": "jarvis", "kind": "service-account", "consumer": { "project": "jarvis", "path": ".env.example", "key": "ASAA_EVENTS_CLIENT_ID" } },
+    { "clientId": "templates-web", "project": "templates", "kind": "user-login", "consumer": null },
+    { "clientId": "templates-events", "project": "templates", "kind": "service-account", "consumer": { "project": "templates", "path": "apps/api/.env.example", "key": "ASAA_EVENTS_CLIENT_ID" } },
+    { "clientId": "portfolio-admin", "project": "portfolio", "kind": "user-login", "consumer": { "project": "portfolio", "path": ".env.example", "key": "PORTFOLIO_OIDC_CLIENT_ID" } },
+    { "clientId": "portfolio-events", "project": "portfolio", "kind": "service-account", "consumer": { "project": "portfolio", "path": ".env.example", "key": "ASAA_EVENTS_CLIENT_ID" } }
+  ]
+}
