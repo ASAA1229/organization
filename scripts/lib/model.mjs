@@ -40,6 +40,10 @@ export function validateModel(reg) {
     for (const c of d.consumers) if (!projectIds.has(c)) add('error', d.id, `dependency ${d.id} consumer ${c} is not a project`);
     if (d.owner && !roles.has(d.owner)) add('error', d.id, `dependency ${d.id} owner ${d.owner} is not a defined role`);
     for (const e of d.evidence ?? []) if (!projectIds.has(e.project)) add('error', d.id, `dependency ${d.id} evidence names unknown project ${e.project}`);
+    // Every integration names its contract (E2:D0.4): an active dependency without one has no defined interface.
+    const contractIds = new Set(reg.contracts.map((c) => c.id));
+    for (const cid of d.contractIds ?? []) if (!contractIds.has(cid)) add('error', d.id, `dependency ${d.id} names unknown contract ${cid}`);
+    if (d.status === 'active-in-code' && !(d.contractIds ?? []).length) add('warning', d.id, `dependency ${d.id} is active in code but names no contract (provider ${d.provider}, consumers ${d.consumers.join(', ')})`);
   }
   const taskIds = new Set();
   const milestoneIds = new Set(reg.backlog.milestones.map((m) => m.id));

@@ -1,0 +1,15 @@
+{
+  "schema": "asaa.governance.shared-tooling.v1",
+  "source": "Release and supply-chain scripts copied between project repositories (origin/new, 2026-11-23). Copies have diverged into project-specific variants; whether to consolidate them into one shared tool is an owner/architecture decision (ECOSYSTEM_ARCHITECTURE.md section 1: shared capabilities only where reuse creates clear value and ownership is defined).",
+  "consolidationDecision": null,
+  "tools": [
+    { "id": "sbom-verify", "path": "scripts/sbom-verify.mjs", "projects": ["asaa", "jarvis", "templates", "portfolio"] },
+    { "id": "artifact-integrity", "path": "scripts/artifact-integrity.mjs", "projects": ["jarvis", "portfolio"] },
+    { "id": "customer-release-verifier", "path": "scripts/customer-release-verifier.mjs", "projects": ["jarvis", "portfolio"] },
+    { "id": "release-index", "path": "scripts/release-index.mjs", "projects": ["jarvis", "portfolio"] },
+    { "id": "release-disposition", "path": "scripts/release-disposition.mjs", "projects": ["jarvis", "portfolio"] },
+    { "id": "policy-signature", "path": "scripts/policy-signature.mjs", "projects": ["jarvis", "portfolio"] },
+    { "id": "on-site-change-detection", "path": "scripts/on-site-change-detection.mjs", "projects": ["jarvis", "portfolio"] },
+    { "id": "check-package-manager", "path": "scripts/check-package-manager.mjs", "projects": ["templates", "portfolio"] }
+  ]
+}

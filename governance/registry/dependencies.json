@@ -3,47 +3,47 @@
   "source": "reports/RISK_AND_DEPENDENCY_REGISTER.md candidate list, plus integrations evidenced in repository code",
   "dependencies": [
     {
-      "id": "DEP-POLICY-GATE", "provider": "configuration", "consumers": ["asaa", "jarvis", "templates", "portfolio"],
+      "id": "DEP-POLICY-GATE", "contractIds": ["configuration-policy-report.v1"], "provider": "configuration", "consumers": ["asaa", "jarvis", "templates", "portfolio"],
       "contract": "asaa.configuration.policy-report.v1 (checks/check-all.mjs --json)", "owner": "project-owner", "status": "active-in-code",
       "evidence": [{ "project": "configuration", "path": "checks/check-all.mjs" }], "fallback": null, "failureImpact": "unapproved dependencies or data-locality violations reach project branches"
     },
     {
-      "id": "DEP-IDENTITY", "provider": "configuration", "consumers": ["asaa", "jarvis", "portfolio"],
+      "id": "DEP-IDENTITY", "contractIds": ["oidc-issuer"], "provider": "configuration", "consumers": ["asaa", "jarvis", "portfolio"],
       "contract": "OIDC issuer http://127.0.0.1:8280/realms/asaa (identity/realm/asaa-realm.json)", "owner": "architecture-security", "status": "active-in-code",
       "evidence": [{ "project": "configuration", "path": "identity/realm/asaa-realm.json" }, { "project": "asaa", "path": "apps/ap-api/src/asaa_identity/keycloak.py" }, { "project": "jarvis", "path": "src/identity/ssoOidc.ts" }, { "project": "portfolio", "path": "src/lib/oidc.ts" }], "fallback": null, "failureImpact": "single sign-on unavailable across products"
     },
     {
-      "id": "DEP-EVENTS", "provider": "asaa", "consumers": ["jarvis", "templates", "portfolio"],
+      "id": "DEP-EVENTS", "contractIds": ["event-envelope.v1"], "provider": "asaa", "consumers": ["jarvis", "templates", "portfolio"],
       "contract": "asaa.event.v1 envelope POSTed to /api/v1/integration/events (contracts/*/v1/event-envelope.schema.json)", "owner": "architecture-security", "status": "active-in-code",
       "evidence": [{ "project": "asaa", "path": "contracts/ecosystem/v1/event-envelope.schema.json" }, { "project": "asaa", "path": "apps/ap-api/src/asaa_integration/events.py" }, { "project": "jarvis", "path": "src/integration/asaaEvents.ts" }, { "project": "templates", "path": "apps/api/src/modules/integration/events.ts" }, { "project": "portfolio", "path": "src/lib/asaa-events.ts" }], "fallback": "applications keep their own audit store", "failureImpact": "ecosystem audit trail incomplete"
     },
     {
-      "id": "DEP-SERVICE-MANIFEST", "provider": "organization", "consumers": ["asaa", "jarvis", "templates", "portfolio"],
+      "id": "DEP-SERVICE-MANIFEST", "contractIds": ["service-manifest.v1", "ecosystem-registry.v1"], "provider": "organization", "consumers": ["asaa", "jarvis", "templates", "portfolio"],
       "contract": "asaa.service-manifest v1 served at /.well-known/asaa-service", "owner": "architecture-security", "status": "active-in-code",
       "evidence": [{ "project": "asaa", "path": "contracts/ecosystem/v1/service-manifest.schema.json" }, { "project": "asaa", "path": "apps/ap-api/src/asaa_integration/manifest.py" }, { "project": "jarvis", "path": "src/integration/serviceManifest.ts" }, { "project": "templates", "path": "apps/api/src/modules/integration/manifest.ts" }, { "project": "portfolio", "path": "src/lib/service-manifest.ts" }], "fallback": null, "failureImpact": "status aggregation cannot discover services"
     },
     {
-      "id": "DEP-AI-GATEWAY", "provider": "jarvis", "consumers": ["portfolio"],
+      "id": "DEP-AI-GATEWAY", "contractIds": ["ai-gateway.v1"], "provider": "jarvis", "consumers": ["portfolio"],
       "contract": "openai-chat-completions-subset (JARVIS /v1), optional and disabled by default", "owner": "security-ai-owner", "status": "active-in-code",
       "evidence": [{ "project": "portfolio", "path": "src/lib/ai-provider.ts" }], "fallback": "offline answers", "failureImpact": "AI introduction and chat fall back to offline answers"
     },
     {
-      "id": "DEP-JARVIS-TEMPLATES", "provider": "jarvis", "consumers": ["templates"],
+      "id": "DEP-JARVIS-TEMPLATES", "contractIds": ["ai-gateway.v1"], "provider": "jarvis", "consumers": ["templates"],
       "contract": "JARVIS mini-features (summarize, classify, review-assist) through a disabled-by-default client: GET /v1/health, POST /v1/chat/completions with the site key (JARVIS_FEATURES_ENABLED=false by default)", "owner": "security-ai-owner", "status": "active-in-code",
       "evidence": [{ "project": "templates", "path": "apps/api/src/integrations/jarvis.ts" }], "fallback": "Templates works without JARVIS", "failureImpact": "AI-assisted template features unavailable"
     },
     {
-      "id": "DEP-SHARED-ASSETS", "provider": "organization", "consumers": ["portfolio", "templates"],
+      "id": "DEP-SHARED-ASSETS", "contractIds": [], "provider": "organization", "consumers": ["portfolio", "templates"],
       "contract": "Storage, rights, access, retention for shared assets/media", "owner": null, "status": "candidate",
       "evidence": [], "fallback": null, "failureImpact": "inconsistent asset rights and retention"
     },
     {
-      "id": "DEP-CI-ARTIFACTS", "provider": "organization", "consumers": ["asaa", "jarvis", "templates", "portfolio"],
+      "id": "DEP-CI-ARTIFACTS", "contractIds": [], "provider": "organization", "consumers": ["asaa", "jarvis", "templates", "portfolio"],
       "contract": "Pipeline conventions, credentials, artifact provenance. Provider interfaces with mock implementations exist; live Jenkins/Nexus stay disabled until owner approval", "owner": null, "status": "active-in-code",
       "evidence": [{ "project": "jarvis", "path": "src/release/releasePipeline.ts" }, { "project": "templates", "path": "apps/api/src/modules/connectors/connectors.ts" }], "fallback": "GitHub Actions only", "failureImpact": "artifact provenance not uniform"
     },
     {
-      "id": "DEP-GOVERNANCE-REPORT", "provider": "organization", "consumers": ["configuration", "asaa", "jarvis", "templates", "portfolio"],
+      "id": "DEP-GOVERNANCE-REPORT", "contractIds": ["governance-report.v1"], "provider": "organization", "consumers": ["configuration", "asaa", "jarvis", "templates", "portfolio"],
       "contract": "asaa.governance.report.v1 (scripts/governance.mjs report --json)", "owner": "project-owner", "status": "active-in-code",
       "evidence": [{ "project": "organization", "path": "scripts/governance.mjs" }], "fallback": null, "failureImpact": "no aggregated health and risk view"
     }

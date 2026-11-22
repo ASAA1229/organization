@@ -33,6 +33,12 @@
       ]
     },
     {
+      "id": "ai-gateway.v1",
+      "provider": "jarvis",
+      "canonical": { "project": "jarvis", "path": "src/gateway/siteAiGateway.ts", "marker": "/v1/chat/completions" },
+      "copies": []
+    },
+    {
       "id": "configuration-policy-report.v1",
       "provider": "configuration",
       "canonical": { "project": "configuration", "path": "checks/check-all.mjs", "marker": "asaa.configuration.policy-report.v1" },
