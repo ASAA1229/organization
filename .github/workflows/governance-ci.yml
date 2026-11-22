@@ -1,0 +1,75 @@
+name: Organization governance CI
+
+on:
+  push:
+    branches: [new, dev, main, test, fix]
+  pull_request:
+    branches: [new, dev, main]
+
+permissions:
+  contents: read
+
+jobs:
+  governance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Validate repository governance
+        run: node scripts/validate-governance.mjs
+      - name: Run governance tests
+        run: node --test scripts/validate-governance.test.mjs
+      - name: Validate governance data model
+        run: node scripts/governance.mjs model
+      - name: Check this pull request against change control
+        if: github.event_name == 'pull_request'
+        # Untrusted pull request fields are passed through the environment, never interpolated into the script.
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BASE: ${{ github.base_ref }}
+          PR_HEAD: ${{ github.head_ref }}
+          PR_LABELS: ${{ join(github.event.pull_request.labels.*.name, ',') }}
+        run: |
+          printf '%s' "$PR_BODY" > "$RUNNER_TEMP/pr-body.md"
+          node scripts/governance.mjs pr-check --number "$PR_NUMBER" --base "$PR_BASE" --head "$PR_HEAD" --body-file "$RUNNER_TEMP/pr-body.md" --labels "$PR_LABELS"
+
+  ecosystem-report:
+    name: Cross-project health and risk report
+    runs-on: ubuntu-latest
+    needs: governance
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          path: organization
+          fetch-depth: 0
+      - uses: actions/checkout@v5
+        with: { repository: ASAA1229/Configuration, ref: new, path: Configuration, fetch-depth: 0 }
+      - uses: actions/checkout@v5
+        with: { repository: ASAA1229/ASAA, ref: new, path: ASAA, fetch-depth: 0 }
+      - uses: actions/checkout@v5
+        with: { repository: ASAA1229/JARVIS, ref: new, path: JARVIS, fetch-depth: 0 }
+      - uses: actions/checkout@v5
+        with: { repository: ASAA1229/Templates, ref: new, path: Templates, fetch-depth: 0 }
+      - uses: actions/checkout@v5
+        with: { repository: ASAA1229/Portfolio, ref: new, path: portfolio, fetch-depth: 0 }
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - name: Build governance report
+        # Findings in other repositories are reported, not used to block this repository's own changes.
+        continue-on-error: true
+        working-directory: organization
+        run: node scripts/governance.mjs report --out governance-report.json > /dev/null
+      - name: Upload governance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: governance-report
+          path: organization/governance-report.json
+          if-no-files-found: warn
+          retention-days: 30

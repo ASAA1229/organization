@@ -172,3 +172,12 @@ The branch API reported `protected: false` for every listed branch in all six re
 For Portfolio, JARVIS, Templates, ASAA and Configuration, branch-protection/ruleset administration was not available through the connected GitHub integration. The existing disabled rulesets were not activated and no new rulesets were created. The active Configuration ruleset is not proof of required PR reviews or CI checks. This is a material governance risk because current project policy says `main` and `dev` are protected integration/release branches.
 
 **Required follow-up:** obtain an authorized administrator path to configure and verify rulesets/branch protection, including pull-request-only promotion, appropriate status checks and deletion/force-push controls. For the private `organization` repository, confirm the plan limitation and choose a zero-cost-compatible governance approach rather than assuming protection is active.
+
+
+## Governance and delivery verification — 2026-11-20
+
+The organization-wide repository audit confirms six public repositories with the standard branches `main`, `dev`, `new`, `fix`, and `test`. All 30 standard branch records were observed with `protected: false`; branch protection is approved by the owner but remains unapplied/unverified. No open pull requests were found in the audit snapshot. No branch promotion or merge was performed.
+
+The required promotion flow is working branches → `new`; only `new` → `dev`; only `dev` → `main`. Enforce source/target restrictions through GitHub policy checks where native rulesets cannot express them.
+
+Current branch-level CI exceptions: ASAA `dev` and `main` API quality/PostgreSQL integration failed; Templates `dev` CI failed; Portfolio `dev` verification/artifact-integrity failed; Configuration `new` organization-policy CI failed. ASAA, JARVIS, Templates and Portfolio had observed passing `new` workflows as recorded in the per-project repositories. The `organization` repository had no CI runs; JARVIS `dev`/`main` runs were not found. See the dated organization report for exact run references and remaining gaps.
