@@ -55,7 +55,7 @@ export function validateModel(reg) {
   }
   for (const c of reg.contracts) {
     if (!projectIds.has(c.provider)) add('error', c.id, `contract ${c.id} provider ${c.provider} is not a project`);
-    for (const copy of [c.canonical, ...c.copies]) if (!projectIds.has(copy.project)) add('error', c.id, `contract ${c.id} names unknown project ${copy.project}`);
+    for (const copy of [c.canonical, ...c.copies, ...(c.implementations ?? [])]) if (!projectIds.has(copy.project)) add('error', c.id, `contract ${c.id} names unknown project ${copy.project}`);
   }
   return out;
 }
