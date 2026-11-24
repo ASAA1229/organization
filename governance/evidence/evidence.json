@@ -2430,9 +2430,14 @@
       "kind": "development",
       "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
       "date": "2026-11-24T20:23:23.393Z",
-      "status": "IN PROGRESS",
-      "refs": [],
-      "note": "demo workspace seed under development"
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "d1b78f33f2081964324133768844ab69fdcc65af"
+        }
+      ],
+      "note": "pull request 32; 216 rows over 31 tables plus governed registers; seeded twice with identical counts; full pytest 757 passed, 6 skipped"
     },
     {
       "task": "E3:D3.24",
