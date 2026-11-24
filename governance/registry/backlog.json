@@ -1,6 +1,6 @@
 {
   "schema": "asaa.governance.backlog.v1",
-  "source": "ASAA1229 master development backlogs: Phase D (D*), Phase E (E:D*) and Phase E2 (E2:D*); identifiers are authoritative. Each later checklist reuses D-numbers with different meanings, so its identifiers carry a phase prefix.",
+  "source": "ASAA1229 master development backlogs: Phase D (D*), Phase E (E:D*), Phase E2 (E2:D*) and Phase E3 (E3:D*); identifiers are authoritative. Each later checklist reuses D-numbers with different meanings, so its identifiers carry a phase prefix. Phase E3 tasks carry epic, priority, dependencies, requirement references and completion criteria.",
   "statuses": ["NOT STARTED", "IN PROGRESS", "IMPLEMENTED", "BLOCKED — OWNER", "BLOCKED — EXTERNAL DEPENDENCY", "DEFERRED — TESTING", "OUT OF SCOPE"],
   "milestones": [
     { "id": "D0", "title": "Shared foundations and blockers", "projects": ["configuration", "organization"], "priority": "P0" },
@@ -22,7 +22,10 @@
     { "id": "E2:D3", "title": "Phase E2: ASAA", "projects": ["asaa"], "priority": "P0", "checklist": "phase-e2" },
     { "id": "E2:D4", "title": "Phase E2: JARVIS", "projects": ["jarvis"], "priority": "P1", "checklist": "phase-e2" },
     { "id": "E2:D5", "title": "Phase E2: Templates", "projects": ["templates"], "priority": "P1", "checklist": "phase-e2" },
-    { "id": "E2:D6", "title": "Phase E2: Portfolio", "projects": ["portfolio"], "priority": "P1", "checklist": "phase-e2" }
+    { "id": "E2:D6", "title": "Phase E2: Portfolio", "projects": ["portfolio"], "priority": "P1", "checklist": "phase-e2" },
+    { "id": "E3:D0", "title": "Phase E3: integration and promotion", "projects": ["configuration", "organization", "asaa", "jarvis", "templates", "portfolio"], "priority": "P0", "checklist": "phase-e3" },
+    { "id": "E3:D2", "title": "Phase E3: organization checkpoints", "projects": ["organization"], "priority": "P0", "checklist": "phase-e3" },
+    { "id": "E3:D3", "title": "Phase E3: ASAA identity and authorization", "projects": ["asaa"], "priority": "P1", "checklist": "phase-e3" }
   ],
   "tasks": [
     { "id": "D0.1", "project": "configuration", "title": "Dependency approval engine" },
@@ -279,6 +282,10 @@
     { "id": "E2:D6.7", "project": "portfolio", "title": "Publishing, unpublishing and content freshness", "checklist": "phase-e2" },
     { "id": "E2:D6.8", "project": "portfolio", "title": "Monitoring and usage limits across all four profiles", "checklist": "phase-e2" },
     { "id": "E2:D6.9", "project": "portfolio", "title": "Source-level performance and maintainability", "checklist": "phase-e2" },
-    { "id": "E2:D6.10", "project": "portfolio", "title": "Secrets and service-account credentials never exposed in responses or logs", "checklist": "phase-e2" }
+    { "id": "E2:D6.10", "project": "portfolio", "title": "Secrets and service-account credentials never exposed in responses or logs", "checklist": "phase-e2" },
+    { "id": "E3:D0.1", "project": "organization", "title": "Promote new to dev in organization, ASAA, JARVIS and Templates", "epic": "Branch promotion", "priority": "P0", "dependsOn": [], "requirements": ["DEC-ORG-004"], "completionCriteria": "origin/dev contains origin/new in all six repositories through owner-authorized promotion pull requests", "checklist": "phase-e3" },
+    { "id": "E3:D2.1", "project": "organization", "title": "Organization-wide checkpoint tracking from evidence", "epic": "Governance monitoring", "priority": "P0", "dependsOn": [], "requirements": ["ECOSYSTEM checkpoints 1-5"], "completionCriteria": "governance report evaluates checkpoints 1-5 against their exit criteria from repository and evidence data; never from percentages", "checklist": "phase-e3" },
+    { "id": "E3:D3.14", "project": "asaa", "title": "Server-side data-scope enforcement from approved role assignments", "epic": "ASAA-E02 Identity, authentication and authorization", "priority": "P1", "dependsOn": [], "requirements": ["ASAA REQUIREMENTS: role/permission templates and data scopes at organization, unit, department, project, customer and record levels"], "completionCriteria": "approved assignments narrow token permissions to their scopes (never widen); unit and customer scope types exist; HR, AR, delivery and payroll lists and details are scope-filtered; strict mode available", "checklist": "phase-e3" },
+    { "id": "E3:D3.15", "project": "asaa", "title": "Identity relationship structures and dummy identity fixtures", "epic": "ASAA-E02 Identity, authentication and authorization", "priority": "P1", "dependsOn": ["E3:D3.14"], "requirements": ["ASAA REQUIREMENTS: distinguish job titles, system roles, reporting relationships and approval authority"], "completionCriteria": "job title, system role, reporting relationship and approval authority are distinct and auditable; a development-only seed builds a fictional organization used by tests", "checklist": "phase-e3" }
   ]
 }

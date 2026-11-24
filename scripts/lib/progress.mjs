@@ -21,8 +21,8 @@ import { milestoneOf } from './model.mjs';
 // Phase D ids (D0.1) and Phase E ids (E:D3.4). The Phase E checklist reuses D-numbers with different meanings, so its
 // ids carry the E: prefix and a bare D-token never matches inside an E: token.
 const TASK_TOKEN = /(?<![A-Za-z0-9]:)\bD([0-5])\.(\d{1,2})(?:\s*[-–]\s*(?:D\1\.)?(\d{1,2}))?\b/g;
-// E:D3.4 (Phase E) and E2:D3.4 (Phase E2); the prefix is captured so a range keeps its own phase.
-const PHASE_E_TOKEN = /\b(E2?):D([0-6])\.(\d{1,2})(?:\s*[-–]\s*(?:\1:D\2\.)?(\d{1,2}))?\b/g;
+// E:D3.4 (Phase E), E2:D3.4 (Phase E2) and E3:D3.4 (Phase E3); the prefix is captured so a range keeps its own phase.
+const PHASE_E_TOKEN = /\b(E[23]?):D([0-6])\.(\d{1,2})(?:\s*[-–]\s*(?:\1:D\2\.)?(\d{1,2}))?\b/g;
 
 function expand(ids, prefix, m) {
   const from = Number(m[2]);
@@ -219,6 +219,7 @@ export function progressReport(reg, evidence, { root, github = false } = {}) {
 
     return {
       id: t.id, project: t.project, milestone: milestoneOf(t.id), checklist: t.checklist ?? 'phase-d', title: t.title, status, source, lifecycle,
+      ...(t.epic ? { epic: t.epic, priority: t.priority ?? null, dependsOn: t.dependsOn ?? [], completionCriteria: t.completionCriteria ?? null } : {}),
       blocker: record?.blocker ?? null,
       integration,
       trace: {
