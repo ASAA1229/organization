@@ -2113,6 +2113,421 @@
       "status": "BLOCKED — OWNER",
       "refs": [],
       "blocker": "promotion of new to dev needs owner-authorized promotion pull requests (organization 4, ASAA 7, JARVIS 2, Templates 4 commits pending)"
+    },
+    {
+      "task": "E3:D1.10",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "configuration",
+          "commit": "6a8536965973b6fe19180c6b81a56aa2e1256160"
+        }
+      ]
+    },
+    {
+      "task": "E3:D1.11",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "configuration",
+          "commit": "76c75d2df6eded4ef0c9034273b54c48da38d091"
+        }
+      ],
+      "note": "pull request 18 awaiting owner review"
+    },
+    {
+      "task": "E3:D3.16",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "0e6e98219944e2ab4ab31682fb556d270ced5c1e"
+        }
+      ]
+    },
+    {
+      "task": "E3:D3.17",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "68850f90ac613e196b30c7b524f23849f0954c97"
+        }
+      ]
+    },
+    {
+      "task": "E3:D3.18",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "61feb0c8a1ebd84f30b07274ffb04c4ab6a56718"
+        },
+        {
+          "repo": "asaa",
+          "commit": "f2ac010413c6a9b1e24b98227f2a5331f8d9a97f"
+        },
+        {
+          "repo": "asaa",
+          "commit": "e5905afee3273a091121281ff7c2c19fa15ba266"
+        }
+      ]
+    },
+    {
+      "task": "E3:D3.19",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "4d4513bb5e49f95f1c74c9d4bd877134ce1b3b69"
+        }
+      ],
+      "note": "pull request 29 awaiting owner review"
+    },
+    {
+      "task": "E3:D3.20",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "793c78acd4b8020c6ab83498e2c2f70bcaf004db"
+        }
+      ],
+      "note": "ReportsWorkspace crashed on null metrics (overdue_invoices null without an organization time zone); null metrics now render as not available; platform.spec.js 5/5 locally; pull request 29"
+    },
+    {
+      "task": "E3:D3.21",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "eaf85e161aaf06e95cbefcabb4a01de886366dc7"
+        }
+      ],
+      "note": "AR adjustments, receipt allocation, reports and payroll run-level routes scope-filtered; full pytest 752 passed, 6 skipped; credit notes, void and aging in ar_credit.py remain unscoped (follow-up); pull request 29"
+    },
+    {
+      "task": "E3:D3.22",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "85e59c119cb5172ab8efa06242949c72551787c1"
+        }
+      ],
+      "note": "pull request 30; verified locally: /health, /docs, /openapi.json and portal answer 200 from a fresh worktree"
+    },
+    {
+      "task": "E3:D4.12",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "bdb41a046b9d8ed0631b137c30ef8cb1a83d864f"
+        }
+      ]
+    },
+    {
+      "task": "E3:D4.13",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "52edf509736406e3d9d05f3477aabafa7def8d12"
+        },
+        {
+          "repo": "jarvis",
+          "commit": "629645730b592cf3b900ffe83716c4574ee8a93a"
+        }
+      ]
+    },
+    {
+      "task": "E3:D4.14",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "c0a811c4f17919bb25176fade9d7639fa12ffd7c"
+        }
+      ]
+    },
+    {
+      "task": "E3:D5.13",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "bd4b28dff59c3b245141037dbf9db36f8d5958c7"
+        }
+      ]
+    },
+    {
+      "task": "E3:D5.14",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "547df79f625d13a181bf7d8b054e49a8144c58d5"
+        },
+        {
+          "repo": "templates",
+          "commit": "48d84e143388283f76f654d69ccc713dd99407dc"
+        },
+        {
+          "repo": "templates",
+          "commit": "1938586708a99fdba4738836c2d64e2780a8e59a"
+        }
+      ]
+    },
+    {
+      "task": "E3:D5.15",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "8ade46d05530269759a632c6404cb025aa871b80"
+        }
+      ]
+    },
+    {
+      "task": "E3:D5.16",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "ff5738aeebd0b85adb06cc54061d73954a526ef0"
+        },
+        {
+          "repo": "templates",
+          "commit": "b69f6baf42b9b78a77118259f9dd23d0526a8d3d"
+        },
+        {
+          "repo": "templates",
+          "commit": "f627a341892e3019cebab9f5a3fe488a66ae5a61"
+        },
+        {
+          "repo": "templates",
+          "commit": "8bdfd4402ea5f4d6ad27f19ce064e571a5035a37"
+        }
+      ]
+    },
+    {
+      "task": "E3:D5.17",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "6b76e2fcde738faec12b88cca56708342a165892"
+        }
+      ]
+    },
+    {
+      "task": "E3:D6.11",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "bb68130bc66df6888580d70e432df5a032dcbd9a"
+        }
+      ]
+    },
+    {
+      "task": "E3:D6.12",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "95b83d8d779cbe93332b716ac933a9a24b415d7c"
+        }
+      ]
+    },
+    {
+      "task": "E3:D6.14",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "2f8b2afe5bdba5fa425688fd1fa2dce648d6609f"
+        }
+      ],
+      "note": "pull request 43 awaiting owner review"
+    },
+    {
+      "task": "E3:D6.13",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T18:56:18.918Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "d85b53881d4db0038130b66e16db99416d91a7aa"
+        }
+      ]
+    },
+    {
+      "task": "E3:D3.23",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T20:23:23.393Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "d1b78f33f2081964324133768844ab69fdcc65af"
+        }
+      ],
+      "note": "pull request 32; 216 rows over 31 tables plus governed registers; seeded twice with identical counts; full pytest 757 passed, 6 skipped"
+    },
+    {
+      "task": "E3:D3.24",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T20:23:23.393Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "72be46a0ee05b77b671e28dfe565c4ada9aa6526"
+        }
+      ],
+      "note": "pull request 31; vitest 75 pass; prompt=none fallback verified against local Keycloak"
+    },
+    {
+      "task": "E3:D5.18",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T20:23:23.393Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "c0d90ce9d87539b373cab2c292e3b06700245019"
+        },
+        {
+          "repo": "templates",
+          "commit": "59d860b097c65aeff785220788c4512dd1dfc23f"
+        },
+        {
+          "repo": "templates",
+          "commit": "4ea9ccd6e1175c8654060e701f003e3e48c26a52"
+        }
+      ],
+      "note": "pull request 22; CI run 45470779113 green; test-only changes"
+    },
+    {
+      "task": "E3:D4.15",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T21:02:07.879Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "39550cdb26328fe26c3c8b1871aea9edfc8d97e2"
+        },
+        {
+          "repo": "jarvis",
+          "commit": "2bfd6f0381e1d1ac305baa567174ff6bf1056d9c"
+        }
+      ],
+      "note": "pull request 89; npm test 709 pass; headless Edge walkthrough with a fake provider"
+    },
+    {
+      "task": "E3:D4.16",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T21:02:07.879Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "943d6301a06cc123106ee2903f55f2be67bb2201"
+        },
+        {
+          "repo": "jarvis",
+          "commit": "155dfa8b7f630436959b6b8474bf3a2273a5d02b"
+        }
+      ],
+      "note": "pull request 90 (stacked on 89); npm test 721 pass, 1 skipped"
+    },
+    {
+      "task": "E3:D4.17",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T21:02:07.879Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "80ed8a878b4f89793582d32517296cff65f759f1"
+        },
+        {
+          "repo": "jarvis",
+          "commit": "338ae4bb47dfdffa678c8f0eefb8ccd23be51c75"
+        }
+      ],
+      "note": "pull request 91 (stacked on 90); npm test 734 pass; extension 13 tests pass and packages a vsix; not yet run inside VS Code"
     }
   ]
 }
