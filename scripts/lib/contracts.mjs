@@ -1,12 +1,14 @@
 // Integration contracts between the six repositories (D0.25).
 // Each contract has a canonical file in its provider and optional copies in consumers. Copies must exist and be
 // semantically identical (JSON compared after parsing, so formatting and key order do not matter). A marker string,
-// when given, must be present in the canonical file.
+// when given, must be present in the canonical file. A contract may also list implementations: files in consuming or
+// providing projects that must contain a marker on origin/new (for conventions such as the correlation header, where
+// every service implements the contract in its own code rather than copying a file).
 
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { finding, projectPath } from './core.mjs';
+import { finding, git, projectPath } from './core.mjs';
 
 function canonicalJson(value) {
   if (Array.isArray(value)) return `[${value.map(canonicalJson).join(',')}]`;
@@ -48,6 +50,13 @@ export function contractsReport(reg, { root } = {}) {
       if (text === null) findings.push(finding({ code: 'CONTRACT-COPY-MISSING', category: 'contract', severity: 'error', project: copy.project, subject: `${c.id}:${copy.project}`, message: `contract ${c.id}: ${copy.project}/${copy.path} is missing` }));
       else if (copyDigest !== digest) findings.push(finding({ code: 'CONTRACT-DRIFT', category: 'contract', severity: 'error', project: copy.project, subject: `${c.id}:${copy.project}`, message: `contract ${c.id}: ${copy.project}/${copy.path} differs from the canonical ${c.canonical.project}/${c.canonical.path}`, remediation: `align the copy with the canonical contract in ${c.canonical.project}` }));
     }
+    entry.implementations = (c.implementations ?? []).map((impl) => {
+      const project = byId.get(impl.project);
+      const text = project ? git(projectPath(project, root), ['show', `origin/new:${impl.path}`]) : null;
+      const implemented = text !== null && text.toLowerCase().includes(impl.marker.toLowerCase());
+      if (!implemented) findings.push(finding({ code: 'CONTRACT-NOT-IMPLEMENTED', category: 'contract', severity: 'warning', project: impl.project, subject: `${c.id}:${impl.project}`, message: `contract ${c.id}: ${impl.project}/${impl.path} on origin/new does not implement ${impl.marker}`, remediation: impl.role ? `implement the ${impl.role}` : null }));
+      return { ...impl, present: text !== null, implemented };
+    });
     return entry;
   });
   return { contracts, findings };

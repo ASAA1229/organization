@@ -30,12 +30,20 @@ export function scanRepositorySecrets(project, { root, orgRoot } = {}) {
   return { scanned: files.length, detections, available: true };
 }
 
+function workflowText(files, path) {
+  return files.filter((f) => f.startsWith('.github/workflows/') && /\.ya?ml$/.test(f)).map((f) => readFileSync(join(path, f), 'utf8'));
+}
+
 const CHECKS = [
   { id: 'readme', label: 'README present', test: (files) => files.includes('README.md') },
   { id: 'gitignore', label: '.gitignore present', test: (files) => files.includes('.gitignore') },
   { id: 'gitignore-env', label: '.gitignore excludes env files', test: (files, path) => files.includes('.gitignore') && /(^|\n)\s*\.env/.test(readFileSync(join(path, '.gitignore'), 'utf8')) },
   { id: 'ci-workflow', label: 'GitHub Actions workflow present', test: (files) => files.some((f) => f.startsWith('.github/workflows/') && /\.ya?ml$/.test(f)) },
   { id: 'no-workflow-write-all', label: 'workflows do not grant write-all permissions', test: (files, path) => files.filter((f) => f.startsWith('.github/workflows/')).every((f) => !/permissions:\s*write-all/.test(readFileSync(join(path, f), 'utf8'))) },
+  // Every repository runs the shared change-control check on its pull requests; product repositories also run the
+  // Configuration policy gate (E:D2.8, E:D0.9).
+  { id: 'change-control-gate', label: 'pull requests run the organization change-control check', test: (files, path) => workflowText(files, path).some((t) => /ASAA1229\/organization\/\.github\/workflows\/change-control\.yml@|\.\/\.github\/workflows\/change-control\.yml/.test(t)) },
+  { id: 'policy-gate', label: 'pull requests run the Configuration policy gate (product repositories)', applies: (p) => p.kind === 'product', test: (files, path) => workflowText(files, path).some((t) => /ASAA1229\/Configuration\/\.github\/workflows\/organization-policy-ci\.yml@/.test(t)) },
   { id: 'ecosystem-contract', label: 'ecosystem contract copy present (product repositories)', applies: (p) => p.kind === 'product', test: (files) => files.some((f) => /contracts\/(asaa-)?ecosystem\/v1\/ecosystem-registry\.json$/.test(f)) },
 ];
 

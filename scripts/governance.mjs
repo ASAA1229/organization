@@ -2,6 +2,7 @@
 //
 //   report      [--github] [--config-report <file>] [--no-config] [--out <file>]   full asaa.governance.report.v1 (JSON)
 //   health      [--github]                    per-project health ratings with reasons
+//   checkpoints [--github] [--no-config]      delivery checkpoints 1-5 evaluated against their exit criteria
 //   model                                     data-model integrity findings
 //   ownership                                 RACI per project and unassigned roles
 //   inventory   [--github]                    repositories, standard branches, work branches, promotion lag;
@@ -9,14 +10,22 @@
 //   compliance                                repository compliance checks and secret scan summary
 //   secrets     [--project <id>]              secret detections (file, line, rule, fingerprint; never values)
 //   risks                                     risk scores, completeness, dependency readiness and cycles
-//   progress    [--project <id>]              task status from evidence, milestone and project progress
+//   progress    [--project <id>] [--github]   development status and delivery lifecycle (implemented-unverified,
+//                                             integrated, tested, accepted, released) from verified evidence
 //   trace       <task-id>                     requirement -> task -> repository -> commits/PRs -> evidence
 //   contracts                                 integration contract presence and copy drift
+//   identity                                  realm clients vs project client settings (service identity contract)
+//   data-domains                              data domains: system of record, consumers, undecided owner fields
+//   graph       [--format json|dot]           project dependency graph, linked risks and integration order
+//   shared-tooling                            copies of shared scripts across repositories and their divergence
 //   change-control [--github]                 open pull request rules and protected-branch history
 //   pr-check    --base <b> --head <h> [--body-file <f>] [--labels a,b] [--repo <owner/name>] [--head-repo <owner/name>]
 //                                             evaluate one pull request (for use in project CI)
-//   evidence add --task <id> --status <status> --by <who> [--commit <sha>] [--pr <n>] [--repo <id>]
-//                [--blocker <text>] [--note <text>] [--requirement <ref>]
+//   evidence add --task <id> --by <who> [--repo <id>] [--note <text>] [--requirement <ref>] and one of
+//                --kind development --status <status> [--commit <sha>] [--pr <n>] [--blocker <text>]   (default kind)
+//                --kind test --result pass|fail --commit <sha> --environment <env> [--scope <text>]
+//                --kind acceptance --decision accepted|rejected   (--by must hold an accepting role)
+//                --kind release --version <v> --commit <sha on main>
 //
 // Exit codes: 0 ok, 1 findings with errors (or refused write), 2 usage error.
 
@@ -27,9 +36,11 @@ import { ownershipReport, validateModel } from './lib/model.mjs';
 import { inventoryAll } from './lib/inventory.mjs';
 import { complianceReport } from './lib/compliance.mjs';
 import { riskReport } from './lib/risk.mjs';
-import { progressReport } from './lib/progress.mjs';
+import { progressReport, validateEvidenceRecord } from './lib/progress.mjs';
 import { changeControlReport, evaluatePullRequest } from './lib/changecontrol.mjs';
 import { contractsReport } from './lib/contracts.mjs';
+import { dataDomainReport, identityReport, sharedToolingReport } from './lib/interfaces.mjs';
+import { dependencyGraph, graphToDot } from './lib/risk.mjs';
 import { ORG_ROOT } from './lib/core.mjs';
 
 const argv = process.argv.slice(2);
@@ -42,11 +53,11 @@ const github = flag('--github');
 
 function usage(msg) {
   if (msg) console.error(msg);
-  console.error('usage: node scripts/governance.mjs <report|health|model|ownership|inventory|compliance|secrets|risks|progress|trace|contracts|change-control|pr-check|evidence> (see file header)');
+  console.error('usage: node scripts/governance.mjs <report|health|checkpoints|model|ownership|inventory|compliance|secrets|risks|progress|trace|contracts|identity|data-domains|shared-tooling|graph|change-control|pr-check|evidence> (see file header)');
   process.exitCode = 2;
 }
 
-const reg = command && !['report', 'health'].includes(command) ? loadRegistry() : null;
+const reg = command && !['report', 'health', 'checkpoints'].includes(command) ? loadRegistry() : null;
 
 switch (command) {
   case 'report': {
@@ -55,6 +66,14 @@ switch (command) {
     if (out) writeFileSync(out, JSON.stringify(report, null, 2) + '\n');
     print(report);
     process.exitCode = report.gate === 'pass' ? 0 : 1;
+    break;
+  }
+  case 'checkpoints': {
+    const report = buildReport({ github, runConfiguration: !flag('--no-config') });
+    for (const c of report.checkpoints) {
+      console.log(`Checkpoint ${c.id} ${c.name}: ${c.status}`);
+      for (const k of c.criteria) console.log(`  [${k.state}] ${k.label}${k.ownerDependent && k.state === 'not-met' ? ' (owner)' : ''}: ${k.detail}`);
+    }
     break;
   }
   case 'health': {
@@ -79,18 +98,22 @@ switch (command) {
     exitFor(f);
     break;
   }
+  case 'identity': { const r = identityReport(reg); print(r); exitFor(r.findings); break; }
+  case 'shared-tooling': { const r = sharedToolingReport(reg); print(r); exitFor(r.findings); break; }
+  case 'data-domains': { const r = dataDomainReport(reg); print(r); exitFor(r.findings); break; }
+  case 'graph': { const g = dependencyGraph(reg); console.log(opt('--format') === 'dot' ? graphToDot(g) : JSON.stringify(g, null, 2)); break; }
   case 'risks': { const r = riskReport(reg); print(r); exitFor(r.findings); break; }
   case 'progress': {
-    const r = progressReport(reg, loadEvidence());
+    const r = progressReport(reg, loadEvidence(), { github });
     const p = opt('--project');
-    print({ method: r.method, milestones: r.milestones, projects: r.projects, tasks: p ? r.tasks.filter((t) => t.project === p) : r.tasks });
+    print({ method: r.method, milestones: r.milestones, projects: r.projects, tasks: p ? r.tasks.filter((t) => t.project === p) : r.tasks, findings: r.findings.filter((f) => f.severity !== 'info') });
     exitFor(r.findings);
     break;
   }
   case 'trace': {
     const id = argv[1];
     if (!id) { usage('trace <task-id>'); break; }
-    const t = progressReport(reg, loadEvidence()).tasks.find((x) => x.id === id);
+    const t = progressReport(reg, loadEvidence(), { github }).tasks.find((x) => x.id === id);
     if (!t) { usage(`unknown task ${id}`); break; }
     const project = reg.projects.find((p) => p.id === t.project);
     print({ task: t.id, title: t.title, status: t.status, repository: project.repository.slug, ...t.trace, evidence: loadEvidence().records.filter((r) => r.task === id) });
@@ -118,18 +141,28 @@ switch (command) {
   case 'evidence': {
     if (argv[1] !== 'add') { usage('evidence add ...'); break; }
     const task = opt('--task');
-    const status = opt('--status');
+    const kind = opt('--kind') ?? 'development';
     const by = opt('--by');
-    if (!task || !status || !by) { usage('evidence add --task <id> --status <status> --by <who>'); break; }
-    if (!reg.backlog.tasks.some((t) => t.id === task)) { console.error(`refused: unknown task ${task}`); process.exitCode = 1; break; }
-    if (!reg.backlog.statuses.includes(status)) { console.error(`refused: status must be one of ${reg.backlog.statuses.join(', ')}`); process.exitCode = 1; break; }
-    if (status.startsWith('BLOCKED') && !opt('--blocker')) { console.error('refused: a BLOCKED status needs --blocker'); process.exitCode = 1; break; }
-    if (status === 'IMPLEMENTED' && !opt('--commit') && !opt('--pr')) { console.error('refused: IMPLEMENTED needs --commit or --pr evidence'); process.exitCode = 1; break; }
-    const doc = loadEvidence();
+    const taskDef = reg.backlog.tasks.find((t) => t.id === task);
+    if (!task || !by) { usage('evidence add --task <id> --by <who> [--kind development|test|acceptance|release] ...'); break; }
+    if (!taskDef) { console.error(`refused: unknown task ${task}`); process.exitCode = 1; break; }
+    const repo = opt('--repo') ?? taskDef.project;
     const refs = [];
-    if (opt('--commit')) refs.push({ repo: opt('--repo') ?? reg.backlog.tasks.find((t) => t.id === task).project, commit: opt('--commit') });
-    if (opt('--pr')) refs.push({ repo: opt('--repo') ?? reg.backlog.tasks.find((t) => t.id === task).project, pr: Number(opt('--pr')) });
-    const record = { task, status, by, date: new Date().toISOString(), refs, ...(opt('--blocker') ? { blocker: opt('--blocker') } : {}), ...(opt('--note') ? { note: opt('--note') } : {}), ...(opt('--requirement') ? { requirements: [opt('--requirement')] } : {}) };
+    if (opt('--commit') && kind === 'development') refs.push({ repo, commit: opt('--commit') });
+    if (opt('--pr')) refs.push({ repo, pr: Number(opt('--pr')) });
+    const record = {
+      task, kind, by, date: new Date().toISOString(),
+      ...(kind === 'development' ? { status: opt('--status'), refs } : {}),
+      ...(kind === 'test' ? { result: opt('--result'), commit: opt('--commit'), environment: opt('--environment'), repo, scope: opt('--scope') ?? null } : {}),
+      ...(kind === 'acceptance' ? { decision: opt('--decision'), refs } : {}),
+      ...(kind === 'release' ? { version: opt('--version'), commit: opt('--commit'), repo } : {}),
+      ...(opt('--blocker') ? { blocker: opt('--blocker') } : {}),
+      ...(opt('--note') ? { note: opt('--note') } : {}),
+      ...(opt('--requirement') ? { requirements: [opt('--requirement')] } : {}),
+    };
+    const problems = validateEvidenceRecord(record, reg);
+    if (problems.length) { console.error(`refused: ${problems.join('; ')}`); process.exitCode = 1; break; }
+    const doc = loadEvidence();
     doc.records.push(record);
     writeFileSync(EVIDENCE_PATH, JSON.stringify(doc, null, 2) + '\n');
     print({ recorded: record });
