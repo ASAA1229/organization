@@ -2424,6 +2424,51 @@
           "commit": "d85b53881d4db0038130b66e16db99416d91a7aa"
         }
       ]
+    },
+    {
+      "task": "E3:D3.23",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T20:23:23.393Z",
+      "status": "IN PROGRESS",
+      "refs": [],
+      "note": "demo workspace seed under development"
+    },
+    {
+      "task": "E3:D3.24",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T20:23:23.393Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "72be46a0ee05b77b671e28dfe565c4ada9aa6526"
+        }
+      ],
+      "note": "pull request 31; vitest 75 pass; prompt=none fallback verified against local Keycloak"
+    },
+    {
+      "task": "E3:D5.18",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T20:23:23.393Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "c0d90ce9d87539b373cab2c292e3b06700245019"
+        },
+        {
+          "repo": "templates",
+          "commit": "59d860b097c65aeff785220788c4512dd1dfc23f"
+        },
+        {
+          "repo": "templates",
+          "commit": "4ea9ccd6e1175c8654060e701f003e3e48c26a52"
+        }
+      ],
+      "note": "pull request 22; CI run 45470779113 green; test-only changes"
     }
   ]
 }
