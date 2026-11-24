@@ -1081,6 +1081,1038 @@
         }
       ],
       "note": "no-bucket path consistent with storage and AI boundaries"
+    },
+    {
+      "task": "E2:D0.1",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "0fe9bb523959431f4200405c305d64a3293943e9"
+        }
+      ],
+      "note": "E2 checklist registered; evidence reconciled across six repositories"
+    },
+    {
+      "task": "E2:D0.2",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "0449172e739dff93b7f7de7694a6334b81a5a74c"
+        }
+      ],
+      "note": "optional templates-web SSO (existing accounts only, no roles from token); identity register maps the consumer"
+    },
+    {
+      "task": "E2:D0.3",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "f3845068a47b6737b0308cb3c739c8ab7879306d"
+        }
+      ],
+      "note": "portfolio-events declared (ASAA_EVENTS_CLIENT_ID) with client-credentials delivery"
+    },
+    {
+      "task": "E2:D0.4",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "0fe9bb523959431f4200405c305d64a3293943e9"
+        }
+      ],
+      "note": "every dependency names its contracts; DEP-CI-ARTIFACTS has none (pipeline conventions undecided)"
+    },
+    {
+      "task": "E2:D0.5",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "d624007e73bccc6c26a44f9f905371a281eb00e5"
+        }
+      ],
+      "note": "data-domain register checked against origin/new evidence; owner fields undecided"
+    },
+    {
+      "task": "E2:D0.6",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "4ddff5a9367deff7f0aaf26326d76e755fbcd01b"
+        }
+      ],
+      "note": "status from verified commit and merged-PR evidence only"
+    },
+    {
+      "task": "E2:D0.7",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "4ddff5a9367deff7f0aaf26326d76e755fbcd01b"
+        }
+      ],
+      "note": "development status and delivery lifecycle are separate dimensions"
+    },
+    {
+      "task": "E2:D0.8",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "BLOCKED — OWNER",
+      "refs": [],
+      "blocker": "duplicated release/supply-chain scripts detected and tracked (organization 0fe9bb5); consolidating them is an owner/architecture decision"
+    },
+    {
+      "task": "E2:D0.9",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "0fe9bb523959431f4200405c305d64a3293943e9"
+        }
+      ],
+      "note": "integration order derived from dependencies: organization, configuration, asaa, jarvis, templates+portfolio"
+    },
+    {
+      "task": "E2:D1.1",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "configuration",
+          "commit": "c6056aeaa19b09bc2be504dee9585ced667b47fa"
+        }
+      ],
+      "note": "approved snapshot equals current inventory (189 records)"
+    },
+    {
+      "task": "E2:D1.2",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "configuration",
+          "commit": "919944c34221ae13195ba6c72bdbabfbdffa3584"
+        }
+      ],
+      "note": "reusable gate evaluates the caller against Configuration new; report states configurationVersion (3b8b624)"
+    },
+    {
+      "task": "E2:D1.3",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "configuration",
+          "commit": "b45a6c4f41a163bc8495b2a00b6e901db67b20b4"
+        }
+      ],
+      "note": "environment profiles and schemas validated (check-schemas)"
+    },
+    {
+      "task": "E2:D1.4",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "configuration",
+          "commit": "921e870227af25870991bbfde6219d419be8c19f"
+        }
+      ],
+      "note": "secret-reference and drift checks; data-locality enforced by check-data-locality"
+    },
+    {
+      "task": "E2:D1.5",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "configuration",
+          "commit": "3b8b624003f872b6e22753cbf63009ea78f10f5b"
+        }
+      ],
+      "note": "configuration version stamped on every report; ledger-backed rollback with approval id"
+    },
+    {
+      "task": "E2:D1.6",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "configuration",
+          "commit": "acdb65710622de8d8437c0703df7763a1a8304de"
+        }
+      ],
+      "note": "approval requests tracked by the ledger drift check; all tracked files match their ledger heads"
+    },
+    {
+      "task": "E2:D1.7",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "configuration",
+          "commit": "1e4b5124423e4b3967d792a89138b64d062fe8fa"
+        }
+      ],
+      "note": "exact tags only; env overrides of variable tags checked"
+    },
+    {
+      "task": "E2:D1.8",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "BLOCKED — OWNER",
+      "refs": [],
+      "blocker": "REQ-20261122-8F2C2ECE: APPROVAL-2026-11-20-001 wording conflict, missing APR-INITIAL-KEYCLOAK and APR-INITIAL-DOCKER records"
+    },
+    {
+      "task": "E2:D1.9",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "0fe9bb523959431f4200405c305d64a3293943e9"
+        }
+      ],
+      "note": "no project repository duplicates the Configuration policy checks; overlapping release tooling is tracked in the shared-tooling register"
+    },
+    {
+      "task": "E2:D2.1",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "d624007e73bccc6c26a44f9f905371a281eb00e5"
+        }
+      ],
+      "note": "identity register for all nine realm clients; templates-web consumer mapped"
+    },
+    {
+      "task": "E2:D2.2",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "d624007e73bccc6c26a44f9f905371a281eb00e5"
+        }
+      ],
+      "note": "data-domain ownership and synchronization register"
+    },
+    {
+      "task": "E2:D2.3",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "0fe9bb523959431f4200405c305d64a3293943e9"
+        }
+      ],
+      "note": "dependency graph with integration order and unresolved exposure"
+    },
+    {
+      "task": "E2:D2.4",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "4ddff5a9367deff7f0aaf26326d76e755fbcd01b"
+        }
+      ],
+      "note": "backlog progress from evidence records and commits"
+    },
+    {
+      "task": "E2:D2.5",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "4ddff5a9367deff7f0aaf26326d76e755fbcd01b"
+        }
+      ],
+      "note": "lifecycle: implemented-unverified, integrated, tested, accepted, released"
+    },
+    {
+      "task": "E2:D2.6",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "0fe9bb523959431f4200405c305d64a3293943e9"
+        }
+      ],
+      "note": "D, E: and E2: task identifiers kept apart in commit evidence"
+    },
+    {
+      "task": "E2:D2.7",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "4ddff5a9367deff7f0aaf26326d76e755fbcd01b"
+        }
+      ],
+      "note": "cited commits must exist; with --github cited PRs must be merged"
+    },
+    {
+      "task": "E2:D2.8",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "6956e436caf5cd3c0754fa3fe9bd34c9235ceece"
+        }
+      ],
+      "note": "risks list unresolved dependencies; per-project unresolved exposure"
+    },
+    {
+      "task": "E2:D2.9",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "d624007e73bccc6c26a44f9f905371a281eb00e5"
+        }
+      ],
+      "note": "stale refs, unregistered repositories and missing protections reported"
+    },
+    {
+      "task": "E2:D3.1",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "OUT OF SCOPE",
+      "refs": [],
+      "note": "no approved requirement for policy/risk review cycles found in USER_STORIES, EPIC_STATUS, PENDING_WORK_REGISTER or the baseline; delegation expiry was built (f518323)"
+    },
+    {
+      "task": "E2:D3.2",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "fbbfc1950a1b40c14cee0ead0a88d7a086e71445"
+        }
+      ],
+      "note": "suspension, reactivation, transfer and role change queue provider convergence"
+    },
+    {
+      "task": "E2:D3.3",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "BLOCKED — OWNER",
+      "refs": [],
+      "blocker": "recruitment, performance and employee relations appear only as unapproved P2 expansion bullets"
+    },
+    {
+      "task": "E2:D3.4",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "e3314a01b8be787e788a00b814750c8f96efef93"
+        }
+      ],
+      "note": "leave working-day counting, holidays, monthly accrual (accrual rounding to be confirmed by owner), per-year balance, cancellation; timesheets 6cdb6a8"
+    },
+    {
+      "task": "E2:D3.5",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "052e9d4f534c9b42ebd55011fa97f923b0525190"
+        }
+      ],
+      "note": "owner-entered, maker-checker payroll rule sets; refuses without an approved set; no rates seeded"
+    },
+    {
+      "task": "E2:D3.6",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "BLOCKED — OWNER",
+      "refs": [],
+      "blocker": "supplier onboarding documents and bank-detail verification policy"
+    },
+    {
+      "task": "E2:D3.7",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "dd562bbd35edd0533eb84270ced46c0f6dab794a"
+        }
+      ],
+      "note": "PO, receipts, matching, payment batches (tolerance owner-controlled)"
+    },
+    {
+      "task": "E2:D3.8",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "bc057ee75fefcca77cebf5c2f7c19b0decf7e085"
+        }
+      ],
+      "note": "debit notes, refunds, disputes added to credit notes, void, ageing and statements"
+    },
+    {
+      "task": "E2:D3.9",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "BLOCKED — OWNER",
+      "refs": [],
+      "blocker": "project/product/service-delivery scope decisions"
+    },
+    {
+      "task": "E2:D3.10",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "fc07a6b046da0f53e8873b5b2bac45234aaf27d1"
+        }
+      ],
+      "note": "lineage, freshness, analytics and trends; debit notes flow into ageing and reports (bc057ee)"
+    },
+    {
+      "task": "E2:D3.11",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "d2d81f6840407340d1cb7f963c8c8dd92e3ca364"
+        }
+      ],
+      "note": "durable event retry with scheduled worker (bf3b186)"
+    },
+    {
+      "task": "E2:D3.12",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "782d70e1d9d707ee4f4b801be7350f9bc7de7e0f"
+        }
+      ],
+      "note": "route permission/audit guard over all routes, kept green with E2b routes"
+    },
+    {
+      "task": "E2:D3.13",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IN PROGRESS",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "a5ac1a235a5ef4ac9ce0bb263d1784bb503ae00f"
+        }
+      ],
+      "note": "UI added for payroll rules, leave, AR adjustments; some admin/report routes still have no UI"
+    },
+    {
+      "task": "E2:D4.1",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "144af67a81ccf8a4c2added001ee309d22c4cae3"
+        }
+      ],
+      "note": "lifecycle consistent; needsOwnerReview mirrored in HUD and Android (98b28b6)"
+    },
+    {
+      "task": "E2:D4.2",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "f0f338a0fdcb8fdd4b63e595676c8535770e1b06"
+        }
+      ],
+      "note": "single tool registry enforced at plan and execute"
+    },
+    {
+      "task": "E2:D4.3",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "144af67a81ccf8a4c2added001ee309d22c4cae3"
+        }
+      ],
+      "note": "approval recovery, expiry and cancellation"
+    },
+    {
+      "task": "E2:D4.4",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "2bb209abd533f6c00e085d61cef4263e68a158f6"
+        }
+      ],
+      "note": "payment exclusion on every target parameter"
+    },
+    {
+      "task": "E2:D4.5",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "5d2f63f3cdf5f18ef0df5664144ea5b5288fcc59"
+        }
+      ],
+      "note": "revocation sweep verified across sessions, streams, approvals, queued commands and restart"
+    },
+    {
+      "task": "E2:D4.6",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "8ec57d91b63d9b4ee7dd460e0dc0bd55e2f638ca"
+        }
+      ],
+      "note": "approved knowledge-source registry; real corpus and evaluation criteria are owner decisions"
+    },
+    {
+      "task": "E2:D4.7",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "802dd87c5144ec39237c1b98c01da0c77ff9dbcc"
+        }
+      ],
+      "note": "embeddings and browser speech routed through the routing mode; call-site guard test"
+    },
+    {
+      "task": "E2:D4.8",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "98b28b680f4d1389cc9821ba4626acb97b06a00e"
+        }
+      ],
+      "note": "uncertain outcomes flagged for owner review; restart task-state test"
+    },
+    {
+      "task": "E2:D4.9",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "033188274c22744ff7b6bfdefb35dbd3f2acb4e2"
+        }
+      ],
+      "note": "provider-independent CI/artifact interfaces with mock and disabled providers"
+    },
+    {
+      "task": "E2:D4.10",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "BLOCKED — EXTERNAL DEPENDENCY",
+      "refs": [],
+      "blocker": "Android build needs a JDK, Android SDK and Gradle wrapper; definite source errors fixed (29dde77)"
+    },
+    {
+      "task": "E2:D4.11",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "BLOCKED — OWNER",
+      "refs": [],
+      "blocker": "live Jenkins/Nexus scope and credentials (E:D4.10)"
+    },
+    {
+      "task": "E2:D5.1",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "465414ad2b8ecb123918480f43c9ad2dc194c3b5"
+        }
+      ],
+      "note": "static flow review found no break"
+    },
+    {
+      "task": "E2:D5.2",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "3eb5a6bad02b15941604a7751cec1441132796c5"
+        }
+      ],
+      "note": "static flow review found no break"
+    },
+    {
+      "task": "E2:D5.3",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "465414ad2b8ecb123918480f43c9ad2dc194c3b5"
+        }
+      ],
+      "note": "static flow review found no break"
+    },
+    {
+      "task": "E2:D5.4",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "465414ad2b8ecb123918480f43c9ad2dc194c3b5"
+        }
+      ],
+      "note": "JARVIS mini-features off by default"
+    },
+    {
+      "task": "E2:D5.5",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "167c99334c8ab12e39264552e42ae92d4d69952f"
+        }
+      ],
+      "note": "static flow review found no break"
+    },
+    {
+      "task": "E2:D5.6",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "8d929a1023092af3718ec26f61dce74bb1d1fcad"
+        }
+      ],
+      "note": "static flow review found no break"
+    },
+    {
+      "task": "E2:D5.7",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "cdba277d560528947ce27149aa9c770f601604bb"
+        }
+      ],
+      "note": "approval-gated, ledgered hand-off"
+    },
+    {
+      "task": "E2:D5.8",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "6667e509142539b2cd4fb67d559a2f3870ad23b6"
+        }
+      ],
+      "note": "shared secret-file policy on every export and hand-off path"
+    },
+    {
+      "task": "E2:D5.9",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "b5b9f0ad8ba0e9796025384d047c064777c3cce0"
+        }
+      ],
+      "note": "container hardening; process fallback under the Node permission model; fail closed in staging/production"
+    },
+    {
+      "task": "E2:D5.10",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "0cb4573316b422082ae2f46c7017da9eb58d4d57"
+        }
+      ],
+      "note": "compatibility requirements validated at library load"
+    },
+    {
+      "task": "E2:D5.11",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "6361215b360cf40f34f48fc8d07834064f4d7b13"
+        }
+      ],
+      "note": "all approved Env Snapshot capabilities exist; native Linux/AIX execution deferred to testing"
+    },
+    {
+      "task": "E2:D5.12",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "templates",
+          "commit": "6f357cf06c4ecfab8ac35eabe431e5bdde34f024"
+        }
+      ],
+      "note": "every router authorizes; SSO keeps roles in Templates"
+    },
+    {
+      "task": "E2:D6.1",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "48fbf0dbfc2e6e9681a4c170689e7fd8e5becb0b"
+        }
+      ],
+      "note": "focused review found no break"
+    },
+    {
+      "task": "E2:D6.2",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "BLOCKED — OWNER",
+      "refs": [],
+      "blocker": "per-profile admin roles need the owner role model"
+    },
+    {
+      "task": "E2:D6.3",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "9929ee7343fa0de085e522f6b1132fa09ed4695b"
+        }
+      ],
+      "note": "focused review found no break"
+    },
+    {
+      "task": "E2:D6.4",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "96d9f67702b350928a5666964581facc593765a0"
+        }
+      ],
+      "note": "cap and monitoring agree with and without storage"
+    },
+    {
+      "task": "E2:D6.5",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "f3845068a47b6737b0308cb3c739c8ab7879306d"
+        }
+      ],
+      "note": "AI gateway errors generic (555cb5e); service identity for events"
+    },
+    {
+      "task": "E2:D6.6",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "96d9f67702b350928a5666964581facc593765a0"
+        }
+      ],
+      "note": "outbox, backoff, idempotency, dead-letter visibility in monitoring"
+    },
+    {
+      "task": "E2:D6.7",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "07c66133b35828d13fd48a18f8ce67d177e875e0"
+        }
+      ],
+      "note": "request-scoped content reads; unpublish takes effect on the next request"
+    },
+    {
+      "task": "E2:D6.8",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "96d9f67702b350928a5666964581facc593765a0"
+        }
+      ],
+      "note": "per-profile and isolate usage shown consistently"
+    },
+    {
+      "task": "E2:D6.9",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "07c66133b35828d13fd48a18f8ce67d177e875e0"
+        }
+      ],
+      "note": "duplicate content reads per page view removed"
+    },
+    {
+      "task": "E2:D6.10",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:17:56.279Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "portfolio",
+          "commit": "6b1c82db221a25ef39a4eb8eb2bc5cc0ab6208be"
+        }
+      ],
+      "note": "SSO failure logs use fixed codes; secret-leak guard test"
+    },
+    {
+      "task": "E2:D3.13",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:30:45.047Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "b62e648aee37309449e11220645f4e0c02a365af"
+        }
+      ],
+      "note": "every listed backend route now has a permission-gated UI path; register revise already existed; screens not rendered in a browser"
+    },
+    {
+      "task": "E2:D0.4",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-22T20:30:45.047Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "jarvis",
+          "commit": "8335c9d060229ca7fc878190358722f166a75a36"
+        },
+        {
+          "repo": "portfolio",
+          "commit": "5848e7c8f3573d5cabf6546ba92a1fc059b291e9"
+        }
+      ],
+      "note": "correlation-header.v1: JARVIS and Portfolio responses carry X-Request-ID (PRs JARVIS #84, Portfolio #39); contracts linked to dependencies (organization 0fe9bb5)"
+    },
+    {
+      "task": "E3:D2.1",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T10:57:23.705Z",
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "organization",
+          "commit": "e7244a6ebcb6e8c495f3c51ea80ebe47d2389b96"
+        }
+      ],
+      "note": "checkpoints 1-5 evaluated from evidence"
+    },
+    {
+      "task": "E3:D0.1",
+      "kind": "development",
+      "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
+      "date": "2026-11-24T10:57:23.705Z",
+      "status": "BLOCKED — OWNER",
+      "refs": [],
+      "blocker": "promotion of new to dev needs owner-authorized promotion pull requests (organization 4, ASAA 7, JARVIS 2, Templates 4 commits pending)"
     }
   ]
 }

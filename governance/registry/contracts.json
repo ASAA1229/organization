@@ -39,6 +39,18 @@
       "copies": []
     },
     {
+      "id": "correlation-header.v1",
+      "provider": "asaa",
+      "canonical": { "project": "asaa", "path": "contracts/ecosystem/v1/ecosystem-registry.json", "marker": "X-Request-ID" },
+      "copies": [],
+      "implementations": [
+        { "project": "asaa", "path": "apps/ap-api/src/asaa_ap/observability.py", "marker": "x-request-id", "role": "accept or generate and echo X-Request-ID on every API response" },
+        { "project": "jarvis", "path": "src/server/server.ts", "marker": "x-request-id", "role": "accept or generate and echo X-Request-ID on every API response" },
+        { "project": "templates", "path": "apps/api/src/middleware/security.ts", "marker": "x-request-id", "role": "accept or generate and echo X-Request-ID on every API response" },
+        { "project": "portfolio", "path": "src/server.ts", "marker": "x-request-id", "role": "accept or generate and echo X-Request-ID on every response" }
+      ]
+    },
+    {
       "id": "configuration-policy-report.v1",
       "provider": "configuration",
       "canonical": { "project": "configuration", "path": "checks/check-all.mjs", "marker": "asaa.configuration.policy-report.v1" },
