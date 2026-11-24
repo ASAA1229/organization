@@ -2207,18 +2207,28 @@
       "kind": "development",
       "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
       "date": "2026-11-24T18:56:18.918Z",
-      "status": "IN PROGRESS",
-      "refs": [],
-      "note": "end-to-end Receivables region regression under investigation on pull request 29"
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "793c78acd4b8020c6ab83498e2c2f70bcaf004db"
+        }
+      ],
+      "note": "ReportsWorkspace crashed on null metrics (overdue_invoices null without an organization time zone); null metrics now render as not available; platform.spec.js 5/5 locally; pull request 29"
     },
     {
       "task": "E3:D3.21",
       "kind": "development",
       "by": "development-agent (Claude Opus 5.5), not owner-reviewed",
       "date": "2026-11-24T18:56:18.918Z",
-      "status": "IN PROGRESS",
-      "refs": [],
-      "note": "AR adjustments, reports and payroll runs scoping under development"
+      "status": "IMPLEMENTED",
+      "refs": [
+        {
+          "repo": "asaa",
+          "commit": "eaf85e161aaf06e95cbefcabb4a01de886366dc7"
+        }
+      ],
+      "note": "AR adjustments, receipt allocation, reports and payroll run-level routes scope-filtered; full pytest 752 passed, 6 skipped; credit notes, void and aging in ar_credit.py remain unscoped (follow-up); pull request 29"
     },
     {
       "task": "E3:D3.22",
