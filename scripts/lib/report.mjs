@@ -11,6 +11,7 @@ import { inventoryAll } from './inventory.mjs';
 import { complianceReport } from './compliance.mjs';
 import { dependencyGraph, riskReport } from './risk.mjs';
 import { progressReport } from './progress.mjs';
+import { checkpointReport } from './checkpoints.mjs';
 import { dataDomainReport, identityReport, sharedToolingReport } from './interfaces.mjs';
 import { changeControlReport } from './changecontrol.mjs';
 import { contractsReport } from './contracts.mjs';
@@ -74,6 +75,8 @@ export function buildReport({ root = WORKSPACE_ROOT, github = false, configRepor
     ...configurationFindings(configReport),
   ];
 
+  const checkpoints = checkpointReport({ reg, progress, inventory, findings, evidence });
+
   const projects = reg.projects.map((p) => {
     const comp = compliance.repositories.find((r) => r.project === p.id);
     const prog = progress.projects.find((r) => r.project === p.id);
@@ -103,6 +106,7 @@ export function buildReport({ root = WORKSPACE_ROOT, github = false, configRepor
     gate: summarize(findings).gate,
     summary: summarize(findings),
     projects,
+    checkpoints,
     milestones: progress.milestones,
     progressMethod: progress.method,
     risks: risk.risks,

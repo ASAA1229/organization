@@ -2,6 +2,7 @@
 //
 //   report      [--github] [--config-report <file>] [--no-config] [--out <file>]   full asaa.governance.report.v1 (JSON)
 //   health      [--github]                    per-project health ratings with reasons
+//   checkpoints [--github] [--no-config]      delivery checkpoints 1-5 evaluated against their exit criteria
 //   model                                     data-model integrity findings
 //   ownership                                 RACI per project and unassigned roles
 //   inventory   [--github]                    repositories, standard branches, work branches, promotion lag;
@@ -52,11 +53,11 @@ const github = flag('--github');
 
 function usage(msg) {
   if (msg) console.error(msg);
-  console.error('usage: node scripts/governance.mjs <report|health|model|ownership|inventory|compliance|secrets|risks|progress|trace|contracts|identity|data-domains|shared-tooling|graph|change-control|pr-check|evidence> (see file header)');
+  console.error('usage: node scripts/governance.mjs <report|health|checkpoints|model|ownership|inventory|compliance|secrets|risks|progress|trace|contracts|identity|data-domains|shared-tooling|graph|change-control|pr-check|evidence> (see file header)');
   process.exitCode = 2;
 }
 
-const reg = command && !['report', 'health'].includes(command) ? loadRegistry() : null;
+const reg = command && !['report', 'health', 'checkpoints'].includes(command) ? loadRegistry() : null;
 
 switch (command) {
   case 'report': {
@@ -65,6 +66,14 @@ switch (command) {
     if (out) writeFileSync(out, JSON.stringify(report, null, 2) + '\n');
     print(report);
     process.exitCode = report.gate === 'pass' ? 0 : 1;
+    break;
+  }
+  case 'checkpoints': {
+    const report = buildReport({ github, runConfiguration: !flag('--no-config') });
+    for (const c of report.checkpoints) {
+      console.log(`Checkpoint ${c.id} ${c.name}: ${c.status}`);
+      for (const k of c.criteria) console.log(`  [${k.state}] ${k.label}${k.ownerDependent && k.state === 'not-met' ? ' (owner)' : ''}: ${k.detail}`);
+    }
     break;
   }
   case 'health': {

@@ -4,6 +4,7 @@
   "realm": { "project": "configuration", "path": "identity/realm/asaa-realm.json", "environment": "environments/base.json" },
   "clients": [
     { "clientId": "asaa-portal", "project": "asaa", "kind": "user-login", "consumer": { "project": "asaa", "path": ".env.example", "key": "VITE_OIDC_CLIENT_ID" } },
+    { "clientId": "asaa-api-docs", "project": "asaa", "kind": "user-login", "consumer": { "project": "asaa", "path": "apps/ap-api/.env.example", "key": "ASAA_AP_DOCS_OIDC_CLIENT_ID" } },
     { "clientId": "asaa-api", "project": "asaa", "kind": "api-audience", "consumer": { "project": "asaa", "path": "apps/ap-api/.env.example", "key": "ASAA_AP_JWT_AUDIENCE" } },
     { "clientId": "asaa-identity-sync", "project": "asaa", "kind": "service-account", "consumer": { "project": "asaa", "path": "apps/ap-api/.env.example", "key": "ASAA_IDENTITY_KEYCLOAK_CLIENT_ID" } },
     { "clientId": "jarvis-companion", "project": "jarvis", "kind": "user-login", "consumer": { "project": "jarvis", "path": ".env.example", "key": "JARVIS_OIDC_CLIENT_ID" } },
