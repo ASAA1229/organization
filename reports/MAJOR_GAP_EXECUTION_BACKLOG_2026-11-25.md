@@ -129,3 +129,30 @@ GitHub compare was run on 2026-11-25 for each repository. These counts are a fre
 | Configuration | 6 | 3 | 5 | diverged |
 
 **Interpretation:** all six repositories have branch divergence that requires review. ASAA's new branch is currently behind dev by three commits and has no new-only commits relative to dev. The other five repositories have commits on both sides. Do not merge or bulk-sync. Inspect the exact differing commits and file patches, then continue changes on the approved working branch without promoting to dev/main. Owner PR authorization remains deferred.
+
+
+## Fresh CI diagnosis — 2026-11-25
+
+The following exact workflow records were inspected after the owner-baseline documentation changes:
+
+| Repository | Workflow evidence | Result | Interpretation |
+|---|---|---|---|
+| ASAA | PostgreSQL integration run 45487138367, API quality run 45487138362 and Web CI run 45487138443 on SHA 5e2d4513 | All passed | Core checks passed for that exact SHA. |
+| ASAA | Organization gates run 45487139191 on SHA 5e2d4513 | Failed | The change-control job rejected PR #33 (new → dev) because it has no owner-authorization marker. It also warned that the PR body is missing required review sections. This is an intentional owner-approval gate, not a code defect. Leave it blocked; do not add an authorization marker or merge. |
+| JARVIS | CI run 45564959956, run 1269, SHA 3bd49d11 | Passed | Latest observed JARVIS CI is green for this exact commit. Physical MSI/Android acceptance and live optional integrations remain separate gates. |
+| Templates | CI run 45588309418, run 881, SHA 410ae999 | In progress at assessment | New environment-example change is under CI; do not claim pass until completion. Previous run 45487828988, run 880, SHA c8a8f6f5 passed. |
+| Portfolio | CI run 45487753313, run 736, SHA 6b5fd54a | Failed | Verify job passed; E2E and browser audit failed because SSR requests returned HTTP 500. Logs show the error "Cannot read private member #state from an object whose class did not declare it" during request reconstruction. |
+| Portfolio | Fix commit a261bd0f and regression-test commit 8dfb8659 | New CI runs 45588594306 (737) and 45588614036 (738) | Run 737 was in progress and run 738 pending at assessment. The fix reconstructs requests from standard fields and relays abort signals in the local runtime rather than passing a foreign Request object to the constructor. Verification is pending. |
+| organization | Governance CI run 45588240265, run 52, SHA f3077e53 | Passed | Owner baseline, requirements, architecture and major-gap register passed the repository governance workflow. |
+| Configuration | Organization Policy CI run 45567561374, run 39, SHA df123c82 | Passed | Latest observed policy workflow is green. The older 2026-11-20 failure must not be represented as the current CI state. |
+
+### Updated immediate priorities
+
+1. Wait for and inspect Portfolio runs 737/738; fix any remaining exact-head failures on new.
+2. Inspect Templates run 881 when complete; fix any failures on new.
+3. Keep ASAA PR #33 blocked until the owner authorizes promotion; do not bypass its change-control check.
+4. Confirm the Configuration run-39 snapshot and report state; retain exact dependency approval evidence and do not silently expand approvals.
+5. Continue JARVIS physical-device preparation and local tooling checks; its latest CI is green.
+6. Continue organization documentation and shared-data contract work; the governance workflow passed.
+
+All workflow conclusions are scoped to their exact SHA and run. A green CI workflow is not production acceptance.
