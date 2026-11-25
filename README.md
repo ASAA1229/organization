@@ -51,7 +51,7 @@ It is intended to help a new team member understand the organization and its pro
 
 This repository governs and summarizes organization-wide context. Each project repository remains authoritative for its own source code, detailed technical design, implementation records, tests, and release evidence. A summary here must link to project evidence and must not turn an unverified statement into a completion claim.
 
-The master requirements baseline was approved as a **planning and governance baseline** on 2026-11-14. That approval is not authorization to implement, test, deploy, merge, purchase services, or release software.
+The master requirements baseline was approved for planning on 2026-11-14. On 2026-11-25, the owner separately authorized independent continuation of remaining engineering, documentation, local setup and testing within approved scope on working branches. This does not authorize paid services, promotion into dev/main, production deployment or release.
 
 ## Branch and change policy
 
@@ -86,3 +86,15 @@ The [Configuration repository](https://github.com/ASAA1229/Configuration) is now
 The 2026-11-20 organization assessment records six public repositories, all five standard branches in each repository, unprotected branch records, branch-specific CI exceptions and organization-wide NO-GO. No code, merges, promotions or deployments were performed.
 
 See [reports/ORGANIZATION_STATUS_2026-11-20.md](reports/ORGANIZATION_STATUS_2026-11-20.md) for the dated evidence, outstanding gates and next actions. Workflow results are specific to their recorded run and commit; missing runs are not passes.
+
+
+## Owner execution baseline — 2026-11-25
+
+- [Owner decisions and execution constraints](docs/OWNER_DECISIONS_AND_EXECUTION_BASELINE.md)
+- [Major-gap execution backlog and owner blocker queue](reports/MAJOR_GAP_EXECUTION_BACKLOG_2026-11-25.md)
+
+The owner has authorized independent continuation of remaining work across all six repositories. Continue unblocked work while recording concrete owner-only blockers. Cost remains ₹0 until investment is explicitly authorized. Use dummy/mock data and free/local alternatives where required; ask for credentials only when a real task needs them. Use local PostgreSQL and MongoDB installations where available.
+
+The approved data direction is hybrid: separate project databases plus shared organizational databases on shared infrastructure. Centralized APIs/services are the default cross-project access path; direct database access is an exception requiring justification and least privilege.
+
+PR promotion into dev/main is deliberately postponed. Do not merge, release or activate paid services without explicit owner authorization. The owner blocker queue must distinguish verified current evidence from older audit snapshots.
