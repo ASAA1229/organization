@@ -171,3 +171,10 @@ Latest policy CI run 45567561374 (run 39) passed. Its log confirms:
 - Overall check-all: PASS.
 
 Do not keep the old 22-finding / 187-vs-192 snapshot mismatch as a current blocker. Preserve the 2026-11-20 report as historical evidence. The separate policy-design question about future optional external identity-provider support remains: keep external providers disabled by default and do not enable or transmit identity data externally without a concrete owner-approved configuration.
+
+
+## Branch-protection verification attempt — 2026-11-25
+
+A fresh GET of the main-branch protection endpoint for all six repositories returned HTTP 403 (Resource not accessible by integration). The connected GitHub integration cannot verify or administer branch-protection settings. The 2026-11-20 audit had recorded standard branch records as unprotected, but that historical observation is not a fresh confirmation.
+
+**Status:** branch protection remains UNVERIFIED. Do not state that it is currently enabled. When owner availability permits, an organization/repository administrator must inspect GitHub Settings → Rules → Rulesets / Branch protection and confirm pull-request requirements, required checks, deletion and force-push restrictions. This does not block independent work on new; it is a governance gate before branch promotion.
