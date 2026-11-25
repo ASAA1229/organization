@@ -156,3 +156,18 @@ The following exact workflow records were inspected after the owner-baseline doc
 6. Continue organization documentation and shared-data contract work; the governance workflow passed.
 
 All workflow conclusions are scoped to their exact SHA and run. A green CI workflow is not production acceptance.
+
+
+## Configuration policy gate resolution — 2026-11-25
+
+The prior dependency approval blocker CFG-P0-01 is **resolved for the exact Configuration commit** df123c82a762c9c9617dc4371b3193bfa381a7d3.
+
+Latest policy CI run 45567561374 (run 39) passed. Its log confirms:
+- Data-locality policy schema validation: PASS.
+- Data-locality checks: PASS.
+- Dependency approval: 197 approved entries, 197 current entries, zero removed since snapshot.
+- Secret-reference scan: PASS.
+- Configuration drift ledger: 16 entries, chain intact; drift check PASS.
+- Overall check-all: PASS.
+
+Do not keep the old 22-finding / 187-vs-192 snapshot mismatch as a current blocker. Preserve the 2026-11-20 report as historical evidence. The separate policy-design question about future optional external identity-provider support remains: keep external providers disabled by default and do not enable or transmit identity data externally without a concrete owner-approved configuration.
