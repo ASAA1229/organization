@@ -65,3 +65,18 @@ Record evidence date, commit/build, environment, scope, result, and limitations.
 ## 7. Open baseline items
 
 The exact question-level source mapping, applicability decisions, named RACI, complete dependency graph, acceptance criteria, evidence verification, gap scoring, estimates, and target dates are not yet fully reconciled in this repository. These must remain visible as pending rather than being invented.
+
+
+## 8. Owner execution decisions — 2026-11-25
+
+The owner has now explicitly authorized independent continuation of remaining work within the existing project scope. This updates the earlier statement in section 1: the 2026-11-14 approval alone was planning-only, but the 2026-11-25 instruction authorizes engineering, documentation, local setup, testing and scope-safe remediation on working branches. It does not authorize merges/promotions to `dev` or `main`, paid services, production release, or actions requiring unavailable owner credentials.
+
+The authoritative owner decisions are recorded in [OWNER_DECISIONS_AND_EXECUTION_BASELINE.md](../OWNER_DECISIONS_AND_EXECUTION_BASELINE.md). Key constraints:
+- Prioritize all six repositories by dependencies, urgency and risk; continue unblocked work when the owner is unavailable.
+- Strict ₹0 operating cost until investment is explicitly authorized; prefer free/local services and use dummy/mock data for unavailable integrations.
+- Identify missing credentials only when required. Maintain each project's `.env.example` with safe placeholders and never commit actual secrets.
+- Use the owner's existing local PostgreSQL and MongoDB installations. Adopt shared infrastructure with separate project databases plus shared organizational databases; prefer centralized APIs for cross-project data access and permit direct access only when justified.
+- Owner decisions: local authentication first with optional free external providers; local automated backups and recovery testing; mandatory RBAC, least privilege, audit, encryption and automated security tests; owner retains production-release authority.
+- Repository promotions into `dev` and `main` are postponed until explicit owner authorization.
+
+These decisions are implementation constraints and do not assert that the corresponding capabilities are already implemented or verified.
