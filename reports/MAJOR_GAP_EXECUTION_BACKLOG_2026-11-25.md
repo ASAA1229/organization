@@ -178,3 +178,17 @@ Do not keep the old 22-finding / 187-vs-192 snapshot mismatch as a current block
 A fresh GET of the main-branch protection endpoint for all six repositories returned HTTP 403 (Resource not accessible by integration). The connected GitHub integration cannot verify or administer branch-protection settings. The 2026-11-20 audit had recorded standard branch records as unprotected, but that historical observation is not a fresh confirmation.
 
 **Status:** branch protection remains UNVERIFIED. Do not state that it is currently enabled. When owner availability permits, an organization/repository administrator must inspect GitHub Settings → Rules → Rulesets / Branch protection and confirm pull-request requirements, required checks, deletion and force-push restrictions. This does not block independent work on new; it is a governance gate before branch promotion.
+
+
+## Execution work completed in this session — 2026-11-25
+
+| Repository | Change | Commit / evidence | Status |
+|---|---|---|---|
+| organization | Added owner decisions and execution baseline; reconciled requirements, architecture and open questions; created shared data architecture, environment audit and major-gap backlog; linked documents from README. | Governance CI run 45588240265 (run 52) and runs 53–55 passed for the earlier document commits; run 58 was queued after the latest branch-protection note. | Documentation implemented; latest commit CI pending. |
+| Templates | Added explicit blank JENKINS_TOKEN and NEXUS_TOKEN variables to apps/api/.env.example. | Commit 410ae999; CI run 45588309418 (run 881) in progress. | Implemented; CI pending. |
+| ASAA | Added a safe local PostgreSQL connection-string example to apps/ap-api/.env.example; SQLite fallback remains documented. No real credentials added. | Commit 87dfcdbf; API/PostgreSQL/web workflows 45588880159/45588879999/45588879990 in progress. | Implemented; CI pending. |
+| Portfolio | Fixed cross-runtime request reconstruction and added a regression test. | Commits a261bd0f and 8dfb8659; run 45588614036 (run 738) in progress; previous run 737 was cancelled by the newer commit. | Implemented; CI pending. |
+| Configuration | Recorded the passing policy gate and dependency snapshot reconciliation. | Commit 4ff5f0fa; underlying verified policy run 45567561374 on df123c82. | Documentation added; policy gate passed on named earlier commit. |
+| JARVIS | No source change in this increment. Latest observed CI run 45564959956 passed. | SHA 3bd49d11. | CI passed; physical device validation remains. |
+
+No merge, PR promotion, paid-service activation, production deployment or release was performed.
