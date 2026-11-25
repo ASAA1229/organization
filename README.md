@@ -98,3 +98,9 @@ The owner has authorized independent continuation of remaining work across all s
 The approved data direction is hybrid: separate project databases plus shared organizational databases on shared infrastructure. Centralized APIs/services are the default cross-project access path; direct database access is an exception requiring justification and least privilege.
 
 PR promotion into dev/main is deliberately postponed. Do not merge, release or activate paid services without explicit owner authorization. The owner blocker queue must distinguish verified current evidence from older audit snapshots.
+
+
+## Current architecture and environment references
+
+- [Shared data architecture](docs/architecture/SHARED_DATA_ARCHITECTURE.md) — hybrid PostgreSQL/MongoDB direction, shared data domains, conceptual relationships and API-first access.
+- [Environment configuration audit](reports/ENVIRONMENT_CONFIGURATION_AUDIT_2026-11-25.md) — .env.example inventory and missing-credential handling.
