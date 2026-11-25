@@ -62,3 +62,18 @@ For each integration document:
 ## 6. Architecture decisions still required
 
 Select canonical identity approach, shared API gateway strategy (if any), event transport, secrets management, observability stack, artifact registry, environment strategy, data classification, and integration ownership. Keep the zero-cost default and avoid selecting paid infrastructure without approval.
+
+
+## 7. Owner-approved database and cross-project data direction — 2026-11-25
+
+The following direction supersedes the open design questions in this document where they conflict:
+- Use centralized/shared local database infrastructure, with separate databases for individual projects and shared organizational databases (hybrid model).
+- Shared organizational domains include users/employees/roles, organization/departments, project ownership, authentication/authorization, audit records, common configuration/assets and reusable reference data.
+- Keep each project's operational data logically separated. Use explicit schemas, tables, constraints and foreign keys in PostgreSQL; use MongoDB collections/documents/indexes only for justified document-oriented workloads.
+- Do not create duplicate master records or cross-project direct database coupling. Identify the authoritative system of record and ownership for each domain.
+- Centralized, versioned APIs/services are the default cross-project access path. Direct database access is an exception requiring documented technical justification, least-privilege credentials and explicit data ownership.
+- Apply project/role/service permissions, environment separation, migrations, backups, retention and audit to shared and project-specific data.
+- The owner has PostgreSQL and MongoDB Compass installed locally. Inspect and use existing local services; request connection URLs/credentials only when required. Never place real secrets in source control.
+- The operating-cost ceiling remains ₹0. Use local infrastructure and mocks until a free/authorized service is available.
+
+The owner decisions do not imply that a shared database server, shared API, or cross-project integrations are already installed or accepted. Implementation and verification remain separate tracked work.
