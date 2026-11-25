@@ -100,3 +100,32 @@ The project status documents and CI references currently available are mostly da
 7. Reassess release gates. Keep all PR promotion and production releases on hold pending owner approval.
 
 **No owner action is required to begin steps 1–5 unless a specific permission, credential or approval is encountered.**
+
+
+## Fresh branch comparison — 2026-11-25
+
+GitHub compare was run on 2026-11-25 for each repository. These counts are a fresh snapshot and supersede older 2026-11-19/20 divergence counts where they conflict. They are not merge approvals.
+
+### new compared with dev
+
+| Repository | new ahead of dev | new behind dev | Changed files in comparison | State |
+|---|---:|---:|---:|---|
+| ASAA | 0 | 3 | 0 | new is behind dev |
+| JARVIS | 9 | 3 | 49 | diverged |
+| Templates | 10 | 2 | 23 | diverged |
+| Portfolio | 3 | 2 | 7 | diverged |
+| organization | 12 | 2 | 8 | diverged |
+| Configuration | 6 | 2 | 5 | diverged |
+
+### new compared with main
+
+| Repository | new ahead of main | new behind main | Changed files in comparison | State |
+|---|---:|---:|---:|---|
+| ASAA | 11 | 3 | 20 | diverged |
+| JARVIS | 9 | 5 | 49 | diverged |
+| Templates | 10 | 3 | 23 | diverged |
+| Portfolio | 3 | 3 | 7 | diverged |
+| organization | 12 | 3 | 8 | diverged |
+| Configuration | 6 | 3 | 5 | diverged |
+
+**Interpretation:** all six repositories have branch divergence that requires review. ASAA's new branch is currently behind dev by three commits and has no new-only commits relative to dev. The other five repositories have commits on both sides. Do not merge or bulk-sync. Inspect the exact differing commits and file patches, then continue changes on the approved working branch without promoting to dev/main. Owner PR authorization remains deferred.
