@@ -16,6 +16,9 @@ Progress is the count of **Completed** tasks divided by total registered tasks, 
 - No open pull requests are present in any of the six repositories.
 - The historical claim of 17 pending commits has no matching open PR or local commit queue. Refresh result: no 17-commit pending set is identifiable.
 - Protected-branch promotion and release are explicitly excluded until owner approval.
+- Organization status/register commit: `107155a`.
+- Configuration exact policy report commit: `0798287`.
+- Portfolio formatting remediation commit: `8da0b90`.
 
 | Task ID | Project | Module | Requirement | Existing status | Remaining work | Dependencies | Priority | Acceptance criteria | Evidence |
 |---|---|---|---|---|---|---|---|---|---|
