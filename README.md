@@ -104,3 +104,14 @@ PR promotion into dev/main is deliberately postponed. Do not merge, release or a
 
 - [Shared data architecture](docs/architecture/SHARED_DATA_ARCHITECTURE.md) — hybrid PostgreSQL/MongoDB direction, shared data domains, conceptual relationships and API-first access.
 - [Environment configuration audit](reports/ENVIRONMENT_CONFIGURATION_AUDIT_2026-11-25.md) — .env.example inventory and missing-credential handling.
+
+## Local governance dashboard
+
+Run the zero-dependency dashboard on the loopback-only interface:
+
+```powershell
+npm test
+npm run dashboard
+```
+
+Open `http://127.0.0.1:4177/`. The dashboard reads the latest local governance evidence and exposes only read-only health, report and checkpoint JSON endpoints.

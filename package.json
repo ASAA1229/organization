@@ -1,0 +1,10 @@
+{
+  "name": "@asaa/organization-governance",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test scripts/*.test.mjs",
+    "dashboard": "node scripts/dashboard.mjs",
+    "validate": "node scripts/validate-governance.mjs && node --test scripts/*.test.mjs && node scripts/governance.mjs model"
+  }
+}

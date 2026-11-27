@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ASAA1229 Organization Dashboard</title>
+    <style>
+      :root { color-scheme: dark; --bg:#0b1020; --panel:#151b2d; --line:#29324a; --ok:#59d499; --warn:#f6c85f; --bad:#ff7b72; --text:#eef2ff; }
+      body { margin:0; font-family:Segoe UI,Arial,sans-serif; background:var(--bg); color:var(--text); }
+      main { max-width:1200px; margin:auto; padding:24px; }
+      h1 { margin:0 0 6px; } .muted { color:#aab3c8; } .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; }
+      .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px; }
+      .health-green { color:var(--ok); } .health-amber { color:var(--warn); } .health-red { color:var(--bad); }
+      table { width:100%; border-collapse:collapse; } th,td { text-align:left; border-bottom:1px solid var(--line); padding:8px; }
+      button { background:#27324e; color:var(--text); border:1px solid var(--line); border-radius:6px; padding:8px 10px; cursor:pointer; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>ASAA1229 Organization Dashboard</h1>
+      <p class="muted" id="generated">Loading evidence...</p>
+      <button id="refresh">Refresh</button>
+      <section class="grid" id="summary"></section>
+      <h2>Projects</h2>
+      <div class="card"><table><thead><tr><th>Project</th><th>Health</th><th>Compliance</th><th>Lifecycle</th><th>Risk exposure</th></tr></thead><tbody id="projects"></tbody></table></div>
+      <h2>Checkpoints</h2>
+      <div class="card" id="checkpoints"></div>
+    </main>
+    <script>
+      async function refresh() {
+        const report = await (await fetch('/api/report')).json();
+        document.querySelector('#generated').textContent = `Generated ${report.generatedAt || 'unknown'} - source: ${report.sources?.github ? 'GitHub' : 'local'}`;
+        document.querySelector('#summary').innerHTML = `
+          <div class="card"><b>Gate</b><div>${report.gate}</div></div>
+          <div class="card"><b>Findings</b><div>${report.summary?.total ?? 0}</div></div>
+          <div class="card"><b>Errors</b><div>${report.summary?.bySeverity?.error ?? 0}</div></div>
+          <div class="card"><b>Warnings</b><div>${report.summary?.bySeverity?.warning ?? 0}</div></div>`;
+        document.querySelector('#projects').innerHTML = report.projects.map(p => {
+          const l = p.progress?.byLifecycle || {};
+          return `<tr><td>${p.name}</td><td class="health-${p.health.rating}">${p.health.rating}</td><td>${p.complianceScore ?? 'n/a'}%</td><td>${l.tested ?? 0} tested / ${l.accepted ?? 0} accepted / ${l.released ?? 0} released</td><td>${p.riskExposure}</td></tr>`;
+        }).join('');
+        document.querySelector('#checkpoints').innerHTML = report.checkpoints.map(c => `<p><b>${c.id}. ${c.name}</b>: ${c.status}</p>`).join('');
+      }
+      document.querySelector('#refresh').addEventListener('click', refresh);
+      refresh().catch(error => { document.querySelector('#generated').textContent = `Dashboard unavailable: ${error.message}`; });
+    </script>
+  </body>
+</html>
