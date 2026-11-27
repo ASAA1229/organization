@@ -16,6 +16,15 @@ No unanswered owner decision from the current decision batch is confirmed. Branc
 | ASAA1229/JARVIS | ce6238fe9c3d07018e2477876ed21b908072faa5 | Requirements, epic register, epic status, project status |
 | ASAA1229/Templates | 1a9a31f4c120b0a9f966cbc0adafa25d2543049d | Requirements, epic register, epic status, project status |
 | ASAA1229/Portfolio | d3a93d1aebc9132ddee483a596dd76c5bd63b0b2 | Requirements, epic register, epic status, project status |
+| ASAA1229/Configuration | 7833c97d720cb791a24eaeaed1c489c40bf558fe | README, project requirements, epic register, epic status, project status |
+
+## Shared baseline synchronization
+
+- ASAA: 202512594dbf084bee4188de9cec901934394896
+- JARVIS: b1c313c29a8caeba9ab64c8160ef3bd365f06f89
+- Templates: 515e5cec2b7ab8acdf6d5b678c36d35bc45a1fdb
+- Portfolio: ee770c953238abd69769d5f6dd3ef282e8b06775
+
 
 ## Status and evidence boundary
 
