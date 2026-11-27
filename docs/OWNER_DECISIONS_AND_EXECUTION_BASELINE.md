@@ -1,6 +1,6 @@
 # ASAA1229 Owner Decisions & Execution Baseline
 
-**Updated:** 2026-11-25  
+**Updated:** 2026-11-27  
 **Source:** Owner decisions Q1–Q36 in the ASAA1229 organization coordination conversation  
 **Status:** Current execution baseline; supersedes conflicting assumptions in older planning notes where explicitly stated.
 
@@ -12,7 +12,7 @@
 - User availability is limited and unpredictable. Do not wait for the user unless the next action genuinely requires their input.
 - Bring every unresolved major decision to the owner as a concise, direct question. Do not re-ask decisions already answered.
 - Owner retains final authority over major business decisions, credentials/secrets, paid spending, production release and repository promotion.
-- PR merges/promotions into `dev` or `main` are deliberately postponed until the owner explicitly authorizes them. Continue work on `new`; do not merge, close or retarget pending PRs.
+- Branch promotion timing is entirely the owner's choice. Do not classify new → dev, dev → main, branch comparison or PR promotion as an owner blocker, and do not repeatedly ask about it. Do not promote branches on the owner's behalf; continue authorized work on working branches.
 
 ## 2. Cost and service constraints
 
@@ -36,41 +36,47 @@
 The owner has PostgreSQL and MongoDB Compass installed on the development laptop. Inspect and use existing local PostgreSQL and MongoDB services; ask for connection details only when they are actually needed.
 
 Approved direction:
-- Shared/centralized local infrastructure, not one database server per project by default.
-- Hybrid organization: separate databases for individual projects plus shared organizational databases.
+- Hybrid centralized architecture: use the central ASAA data platform and domain-separated schemas by default.
+- Use separate databases only where isolation, security, scale or workload justifies them; independent stores communicate through controlled APIs.
 - Shared organizational domains include users/employees, roles, organization/departments, projects/ownership, authentication/authorization, audit records, common configuration/assets and reusable reference data.
 - Project data remains logically separated with explicit ownership, schemas, permissions, retention and migrations.
 - PostgreSQL is used for relational data (databases, schemas, tables, constraints, foreign keys and transactions).
 - MongoDB is used where document-oriented storage is justified (databases, collections, documents and indexes); do not duplicate relational records without a documented reason.
-- Cross-project access uses centralized, versioned APIs/services by default. Direct database access is allowed only when technically justified, tightly scoped and documented.
+- Cross-project access uses centralized identity and versioned APIs/services by default. Direct database access is allowed only when technically justified, tightly scoped and documented.
 - Define authoritative system of record, data classification, permitted consumers, retention, correction/deletion and synchronization for each shared domain.
 - Do not connect every project to every shared dataset. Apply least privilege and project-specific service identities.
 
 ## 5. Project-specific owner decisions
 
 ### ASAA
-- Build supplier and banking-related workflows that can safely be developed locally with dummy data.
-- Real banking connections and real financial credentials remain deferred until separately authorized and funded.
-- Use local authentication first. Support optional free external identity providers; do not require an external provider to run locally.
-- Implement automated local backups, configurable retention, documented RPO/RTO and restore/recovery tests. Numeric RPO/RTO targets still need a proposed, evidence-based draft and owner confirmation if they become business commitments.
+- Build complete supplier, procurement and banking workflows, adapters, scripts, functions and tests now using free/local tooling and dummy data by default.
+- Keep real banking connections and real transactions disabled until investment and explicit owner activation. Activation requires owner authentication, MFA, separate transaction approval, emergency disable, complete audit logs and transaction safeguards.
+- Keep dummy and real data strictly separated; support generated/manual dummy data, reset and cleanup.
+- HR decisions: five-day workweek; 12 holidays per year; two sick-leave days per month; shift-based nine-hour shifts including one-hour lunch; two-month probation; quarterly performance reviews; standard 15-day notice, customizable by role/category; overtime requires management authorization and owner decides compensation case by case.
+- HR and department managers jointly recommend hires; owner gives final approval and may delegate within defined limits. Salary is decided by the owner at recruitment based on role, department, experience, knowledge and employee category.
+- Workforce includes employees, contractors, interns, temporary staff, consultants, freelancers and external agency/vendor personnel. India is the initial jurisdiction; country rules are configurable.
+- Use centralized ASAA identity with local login and optional SSO providers; HR-driven onboarding/role changes/offboarding, immediate revocation, session/device invalidation, periodic access reviews and audit history.
+- Use local access by default, VPN for remote access and selectively exposed public services. Keep deployment local until the business is ready.
+- Maintain local backups, encrypted offline copies, point-in-time recovery, periodic restore tests, configurable retention and disaster-recovery procedures; recovery targets vary by service criticality.
 
 ### JARVIS
 - Android phones are available. Inspect the laptop development environment and configure free Android tooling where possible.
 - Physical MSI voice/wake-word acceptance and two-phone acceptance remain real-world validation tasks; ask for owner/device access only when necessary.
 - Continue all non-device work while physical validation is unavailable.
 - Keep payment apps excluded and high-impact actions behind explicit approval.
-- Jenkins/Nexus should have local/free/hybrid paths where useful, but live service credentials/endpoints are not assumed available.
+- Jenkins is in use. Nexus is paid and intentionally paused until investment; it is not a blocker. Do not request Nexus credentials.
 
 ### Templates
 - Keep access internal to authorized management and employees.
 - Use local/free execution and storage where possible; keep untrusted code isolated from the trusted API process.
 - Continue template, generation, export, certification, offline environment-snapshot and documentation work with dummy data when integrations are unavailable.
-- Real remote Git credentials, live Jenkins/Nexus and production deployment are deferred until available and authorized.
+- Jenkins is in use. Paid Nexus integration is intentionally paused until investment and is not a blocker. Real remote Git credentials and production deployment remain deferred until available and authorized.
 
 ### Portfolio
 - Owner has full administrator access.
 - Other administrators have restricted permissions.
 - Each profile owner can manage only their own profile and permitted content.
+- Portfolio administrator-role decisions are owner-controlled and considered decided; do not list them as an open owner blocker.
 - Preserve profile isolation, private media/resume handling and existing Lovable history/integration constraints.
 - Do not convert the product into a multi-tenant SaaS or add paid AI/infrastructure without approval.
 
@@ -109,7 +115,17 @@ Only request owner input when a concrete task requires one of these:
 3. A major business/product/security decision not covered by this baseline.
 4. Paid spending or a decision to move beyond the ₹0 constraint.
 5. Physical-device access or owner acceptance for a real-world test.
-6. Explicit authorization to merge/promote PRs into `dev` or `main`.
+6. Branch promotion is owner-controlled scheduling, not a blocker; do not ask again unless the owner requests promotion assistance.
 7. Final production release approval.
 
 Do not treat these as reasons to pause other work.
+
+
+## Owner clarification — 2026-11-27
+
+- Claude is responsible for repository implementation. ChatGPT's current scope is requirements, constraints, architecture, dependencies, risk review and documentation updates explicitly requested by the owner. Do not change application code, workflows, configuration, branches or PR state unless separately authorized.
+- The owner will develop, test, fix and promote branches on their own schedule. Branch promotion is not an owner blocker.
+- Jenkins is active. Nexus is paid and paused; not a blocker.
+- Portfolio administrator decisions are settled and not a blocker.
+- Configuration remains public by owner decision; sensitive configuration, infrastructure details and secrets must remain protected.
+- The latest Configuration policy evidence reported 197 approved / 197 current dependencies, zero removed, with locality, secret-reference and drift checks passing. Do not resurrect earlier discrepancies without newer evidence.

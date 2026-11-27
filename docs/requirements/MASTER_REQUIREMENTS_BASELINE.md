@@ -80,3 +80,21 @@ The authoritative owner decisions are recorded in [OWNER_DECISIONS_AND_EXECUTION
 - Repository promotions into `dev` and `main` are postponed until explicit owner authorization.
 
 These decisions are implementation constraints and do not assert that the corresponding capabilities are already implemented or verified.
+
+
+## Owner decisions and execution constraints — 2026-11-27
+
+This update records decisions made after the original v1.0 planning baseline and supersedes conflicting assumptions in older planning notes. Claude owns repository implementation. ChatGPT may update requirements documents only when explicitly asked; no application code, workflow, branch or PR changes are implied.
+
+- Branch promotion timing is the owner's choice and is not an owner blocker.
+- ₹0 operating cost until investment; use free/local tooling and dummy data where practical.
+- Jenkins is in use. Nexus is paid and intentionally paused; not a blocker.
+- ASAA HR: five-day workweek, 12 annual holidays, two sick days/month, nine-hour shift including one-hour lunch, two-month probation, quarterly reviews, standard 15-day notice (customizable by role/category), owner-decided salary at recruitment, owner-controlled hiring approval/delegation, and management-authorized overtime with owner-decided compensation.
+- ASAA finance/procurement: implement complete dummy/local supplier and banking workflows now; real adapters remain disabled until investment and explicit owner activation with MFA, separate transaction approval, emergency disable and audit logging.
+- Shared identity: centralized ASAA identity, local login plus optional external SSO; HR-driven access lifecycle and immediate revocation.
+- Data architecture: central data platform and domain schemas by default; separate databases only when justified, connected through controlled APIs.
+- Local-first access/deployment; VPN for remote access; public services selectively exposed. India initial jurisdiction, with configurable country rules and legal entities.
+- Portfolio admin decisions are settled by the owner. Configuration repository remains public with sensitive information protected.
+- JARVIS Android tooling: existing Android Studio/SDK, free local installation of missing components, plus command-line builds.
+
+These are approved requirements, not implementation or test evidence. Project delivery status must be changed only from current, exact-commit evidence.

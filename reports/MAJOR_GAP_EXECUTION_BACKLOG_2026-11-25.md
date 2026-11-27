@@ -192,3 +192,27 @@ A fresh GET of the main-branch protection endpoint for all six repositories retu
 | JARVIS | No source change in this increment. Latest observed CI run 45564959956 passed. | SHA 3bd49d11. | CI passed; physical device validation remains. |
 
 No merge, PR promotion, paid-service activation, production deployment or release was performed.
+
+
+## Owner blocker and decision reconciliation — 2026-11-27
+
+This reconciliation supersedes older owner-blocker classifications where they conflict with the owner's latest instructions. Historical assessments remain as dated evidence, not current blocker declarations.
+
+| Item previously raised | Current classification |
+|---|---|
+| new → dev / branch promotion / branch comparison | Owner-controlled timing; not a blocker. The owner will develop, test, fix and promote as they choose. |
+| Nexus credentials/integration | Intentionally paused because Nexus is paid; not a blocker. Jenkins is in use. |
+| Portfolio administrator-role decisions | Owner-controlled and considered decided; not a blocker. |
+| Configuration dependency approval discrepancies | Superseded by the 2026-11-25 reported policy run: 197/197 approved/current, zero removed; locality, secret-reference and drift checks passed. Reopen only with newer failing evidence. |
+| Real banking credentials/connections | Deliberately deferred until investment and explicit activation; dummy/local workflows continue. Not a current blocker. |
+| Android build environment | Owner decision complete: use existing Android Studio/SDK, install missing free components locally, and support CLI builds. |
+
+### Current owner-side blocker position
+
+No unanswered owner decision from the 2026-11-25 to 2026-11-27 decision batch is currently confirmed. This is not a claim that all engineering work is complete. Continue technical audit and development independently; ask only when a concrete task cannot proceed without owner authority, credentials, spending approval, physical-device acceptance or a genuinely new major business decision.
+
+### Current requirements decisions now closed
+
+ASAA HR calendar/workweek/leave, shifts/overtime, recruitment/probation/performance/notice/salary; supplier and dummy-first banking workflows; real-mode banking safeguards; hybrid data architecture; centralized identity and employee access lifecycle; local/VPN/public access; legal-entity and jurisdiction handling; local deployment; JARVIS Android build tooling; Portfolio admin-role ownership; Configuration public visibility; and Jenkins/Nexus status.
+
+Do not create new blockers by turning ordinary implementation details into questions. Preserve existing epic IDs and statuses until exact-commit evidence is refreshed.
